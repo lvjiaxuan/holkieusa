@@ -1,0 +1,100 @@
+{%- doc -%}
+  Renders hierarchical breadcrumb navigation for product pages with desktop-only display.
+  Supports custom breadcrumb paths via product metafield custom.breadcrumb_path
+
+  Creates a structured navigation path showing the product's location within the site hierarchy.
+
+  @param {object} product - Shopify product object for current page
+  @param {object} block - Section block containing settings and Shopify attributes
+  @param {object} [collection] - Specific collection context (auto-detected if omitted)
+
+  @example
+  {% render 'product-breadcrumb',
+     product: product,
+     block: block
+  %}
+{%- enddoc -%}
+
+{%- assign breadcrumb_path = product.metafields.custom.breadcrumb_path.value -%}
+
+<nav class="product__breadcrumb breadcrumb flex" role="navigation" aria-label="breadcrumbs" {{ block.shopify_attributes }}>
+  <ul class="inline-flex gap-4 md:gap-6">
+    <!-- homepage -->
+    <li class="flex items-center gap-4 md:gap-6">
+      <a class="block reversed-link" href="{{ shop.url }}" title="{{ 'general.breadcrumbs.home_link_title' | t | escape }}">
+        {% comment %}{%- render 'icon', icon: 'home', size: 'sm' -%}*{% endcomment %}Home
+      </a>
+    </li>
+    
+    {%- if breadcrumb_path and breadcrumb_path != empty -%}
+      <!-- middle class -->
+      {%- for item in breadcrumb_path -%}
+        <li class="flex items-center gap-4 md:gap-6">
+          <a class="reversed-link" href="{{ shop.url }}/collections/{{ item.handle }}">
+            {{ item.name }}
+          </a>
+        </li>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- default class -->
+      {%- if collection == blank -%}
+        {%- assign collection = product.collections | first -%}
+      {%- endif -%}
+      
+      {%- if collection -%}
+        <li class="flex items-center gap-4 md:gap-6">
+          <a class="reversed-link" href="{{ shop.url }}{{ collection.url }}">{{ collection.title }}</a>
+        </li>
+      {%- endif -%}
+    {%- endif -%}
+    
+    <!-- product title -->
+    <li class="flex items-center gap-4 md:gap-6">
+      <span>{{ product.title }}</span>
+    </li>
+  </ul>
+</nav>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{{ 'general.breadcrumbs.home' | t | escape }}",
+      "item": "{{ shop.url }}"
+    }
+    {%- assign position = 2 -%}
+    
+    {%- if breadcrumb_path and breadcrumb_path != empty -%}
+      {%- for item in breadcrumb_path -%}
+        ,{
+          "@type": "ListItem",
+          "position": {{ position }},
+          "name": "{{ item.name | escape }}",
+          "item": "{{ shop.url }}/collections/{{ item.handle }}"
+        }
+        {%- assign position = position | plus: 1 -%}
+      {%- endfor -%}
+    {%- else -%}
+      {%- if collection -%}
+        ,{
+          "@type": "ListItem",
+          "position": {{ position }},
+          "name": "{{ collection.title | escape }}",
+          "item": "{{ shop.url }}{{ collection.url }}"
+        }
+        {%- assign position = position | plus: 1 -%}
+      {%- endif -%}
+    {%- endif -%}
+    
+    ,{
+      "@type": "ListItem",
+      "position": {{ position }},
+      "name": "{{ product.title | escape }}",
+      "item": "{{ shop.url }}{{ product.url }}"
+    }
+  ]
+}
+</script>

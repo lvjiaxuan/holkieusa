@@ -1,0 +1,324 @@
+{% doc %}
+  @prompt
+    Add a breadcrumb, which can be searched for by Schema.org. This breadcrumb list needs an "All Blogs" as a second layer for the blog. When on the "/blogs/all" page, only show "All Blogs". Other pages, like About Us, Contact Us, and Activate, are all normal breadcrumbs.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-breadcrumb-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.padding_top }}px 0 {{ block.settings.padding_bottom }}px;
+  }
+
+  .ai-breadcrumb-container-{{ ai_gen_id }} {
+    max-width: {{ settings.page_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-breadcrumb-list-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: {{ block.settings.font_size }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-breadcrumb-item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-breadcrumb-link-{{ ai_gen_id }} {
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .ai-breadcrumb-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.link_hover_color }};
+    text-decoration: underline;
+  }
+
+  .ai-breadcrumb-separator-{{ ai_gen_id }} {
+    color: {{ block.settings.separator_color }};
+    user-select: none;
+  }
+
+  .ai-breadcrumb-current-{{ ai_gen_id }} {
+    color: {{ block.settings.current_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-breadcrumb-list-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<breadcrumb-navigation-{{ ai_gen_id }} class="ai-breadcrumb-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-breadcrumb-container-{{ ai_gen_id }}">
+    <nav aria-label="Breadcrumb">
+      <ol class="ai-breadcrumb-list-{{ ai_gen_id }}" itemscope itemtype="https://schema.org/BreadcrumbList">
+        {% liquid
+          assign current_url = request.path
+          assign is_blog_all = false
+          assign is_blog_page = false
+          assign current_blog = null
+
+          if current_url contains '/blogs/'
+            assign is_blog_page = true
+            if blog
+              assign current_blog = blog
+            endif
+            if current_url == '/blogs/all'
+              assign is_blog_all = true
+            endif
+          endif
+        %}
+
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" class="ai-breadcrumb-link-{{ ai_gen_id }}" itemprop="item">
+            <span itemprop="name">{{ block.settings.home_text }}</span>
+          </a>
+          <meta itemprop="position" content="1">
+        </li>
+
+        {% if is_blog_all %}
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+            <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+          </li>
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">{{ block.settings.all_blogs_text }}</span>
+            <meta itemprop="position" content="2">
+          </li>
+
+        {% elsif is_blog_page and current_blog %}
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+            <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+          </li>
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="/blogs/all" class="ai-breadcrumb-link-{{ ai_gen_id }}" itemprop="item">
+              <span itemprop="name">{{ block.settings.all_blogs_text }}</span>
+            </a>
+            <meta itemprop="position" content="2">
+          </li>
+
+          {% if article %}
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+              <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+            </li>
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a href="{{ current_blog.url }}" class="ai-breadcrumb-link-{{ ai_gen_id }}" itemprop="item">
+                <span itemprop="name">{{ current_blog.title }}</span>
+              </a>
+              <meta itemprop="position" content="3">
+            </li>
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+              <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+            </li>
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">{{ article.title }}</span>
+              <meta itemprop="position" content="4">
+            </li>
+          {% else %}
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+              <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+            </li>
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">{{ current_blog.title }}</span>
+              <meta itemprop="position" content="3">
+            </li>
+          {% endif %}
+
+        {% elsif collection %}
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+            <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+          </li>
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">{{ collection.title }}</span>
+            <meta itemprop="position" content="2">
+          </li>
+
+        {% elsif product %}
+          {% if collection %}
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+              <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+            </li>
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <a href="{{ collection.url }}" class="ai-breadcrumb-link-{{ ai_gen_id }}" itemprop="item">
+                <span itemprop="name">{{ collection.title }}</span>
+              </a>
+              <meta itemprop="position" content="2">
+            </li>
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+              <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+            </li>
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">{{ product.title }}</span>
+              <meta itemprop="position" content="3">
+            </li>
+          {% else %}
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+              <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+            </li>
+            <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">{{ product.title }}</span>
+              <meta itemprop="position" content="2">
+            </li>
+          {% endif %}
+
+        {% elsif page %}
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+            <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+          </li>
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">{{ page.title }}</span>
+            <meta itemprop="position" content="2">
+          </li>
+
+        {% elsif current_tags %}
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+            <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+          </li>
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ blog.url }}" class="ai-breadcrumb-link-{{ ai_gen_id }}" itemprop="item">
+              <span itemprop="name">{{ blog.title }}</span>
+            </a>
+            <meta itemprop="position" content="2">
+          </li>
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+            <span class="ai-breadcrumb-separator-{{ ai_gen_id }}">{{ block.settings.separator }}</span>
+          </li>
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">{{ current_tags | join: ', ' }}</span>
+            <meta itemprop="position" content="3">
+          </li>
+
+        {% endif %}
+      </ol>
+    </nav>
+  </div>
+</breadcrumb-navigation-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class BreadcrumbNavigation{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+    }
+
+    customElements.define('breadcrumb-navigation-{{ ai_gen_id }}', BreadcrumbNavigation{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Breadcrumb navigation",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "home_text",
+      "label": "Home text",
+      "default": "Home"
+    },
+    {
+      "type": "text",
+      "id": "all_blogs_text",
+      "label": "All blogs text",
+      "default": "All Blogs"
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator",
+      "default": "/"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover color",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "current_color",
+      "label": "Current page color",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "separator_color",
+      "label": "Separator color",
+      "default": "#999999"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumb navigation"
+    }
+  ]
+}
+{% endschema %}

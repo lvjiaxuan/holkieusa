@@ -1,0 +1,440 @@
+{% doc %}
+  @prompt
+    Add a table of contents before the article., heading need to show according the article H tag., I need the heading of post., I need a table of contents, it is for article heading tag, and can jump to the corresponding heading content., I need a table of contents, it is for article heading tag, and can jump to the corresponding heading content. and Why is your table of contents empty?, I need a table of contents, it is for article heading tag, and can jump to the corresponding heading content. and Why is your table of contents empty? and why the content is not compliment, Show numbering is not work, and I need the number to be according to the H2 tag., I need a table of contents, it is for article heading tag, and can jump to the corresponding heading content. and Why is your table of contents empty? and why the content is not compliment, Show numbering is not work, and I need the number to be according to the H2 tag. I also found some of your button is not working, like Heading levels, Show numbering, Style, and Behavior. I also need to adjust all sections padding., I need a table of contents, it is for article heading tag, and can jump to the corresponding heading content. and Why is your table of contents empty? and why the content is not compliment, Show numbering is not work, and I need the number to be according to the H2 tag. I also found some of your button is not working, like Heading levels, Show numbering, Style, and Behavior. I also need to adjust all sections padding., I need a table of contents, it is for the article heading tag, and can jump to the corresponding heading content. Remove other style, simple is fine., I need a table of contents, it is for the article heading tag, and can jump to the corresponding heading content. Remove other style, no numebr, beautiful and simple style is fine. The table of content is fold when open the article., I need a table of contents, it is for the article heading tag, and can jump to the corresponding heading content. Remove other style, no numebr, beautiful and simple style is fine. But need to remain the whole page Layout and Typesetting. The table of content is fold when open the article., I need a table of contents, it is for the article heading tag, and can jump to the corresponding heading content. The section needs to maintain the whole theme layout setting, like Top padding, and so on. Left and Right can be spaced properly, and the word can be centered., I need a table of contents, it is for the article heading tag, and can jump to the corresponding heading content. The section needs to maintain the whole theme layout setting, like Top padding, and so on. Left and Right can be spaced properly. and why the content is not compliment?, I need a table of contents, it is for the article heading tag, and can jump to the corresponding heading content. The section needs to maintain the whole theme layout setting, like Top padding, and so on. Left and Right can be spaced properly. and why the content of PC and moblie view is not compliment? Can it be scrop?
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-toc-wrapper-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding-top: {{ block.settings.padding_top }}px;
+    padding-bottom: {{ block.settings.padding_bottom }}px;
+  }
+
+  .ai-toc-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding-left: {{ block.settings.padding_horizontal }}px;
+    padding-right: {{ block.settings.padding_horizontal }}px;
+  }
+
+  .ai-toc-{{ ai_gen_id }} {
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: 8px;
+    overflow: hidden;
+    background: {{ block.settings.background_color }};
+  }
+
+  .ai-toc-header-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+  }
+
+  .ai-toc-header-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.hover_color }};
+  }
+
+  .ai-toc-title-{{ ai_gen_id }} {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+    color: {{ block.settings.title_color }};
+  }
+
+  .ai-toc-toggle-{{ ai_gen_id }} {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    color: {{ block.settings.title_color }};
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .ai-toc-toggle-{{ ai_gen_id }}.open {
+    transform: rotate(180deg);
+  }
+
+  .ai-toc-content-{{ ai_gen_id }} {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .ai-toc-content-{{ ai_gen_id }}.open {
+    max-height: {{ block.settings.max_height }}px;
+    overflow-y: auto;
+  }
+
+  .ai-toc-list-{{ ai_gen_id }} {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  .ai-toc-item-{{ ai_gen_id }} {
+    margin-bottom: 0.75rem;
+  }
+
+  .ai-toc-link-{{ ai_gen_id }} {
+    display: block;
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    line-height: 1.6;
+    transition: color 0.2s ease;
+    font-size: 0.9375rem;
+  }
+
+  .ai-toc-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  .ai-toc-item-{{ ai_gen_id }}[data-level="h2"] .ai-toc-link-{{ ai_gen_id }} {
+    font-weight: 500;
+  }
+
+  .ai-toc-item-{{ ai_gen_id }}[data-level="h3"] .ai-toc-link-{{ ai_gen_id }} {
+    padding-left: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .ai-toc-item-{{ ai_gen_id }}[data-level="h4"] .ai-toc-link-{{ ai_gen_id }} {
+    padding-left: 2rem;
+    font-size: 0.8125rem;
+    opacity: 0.9;
+  }
+
+  .ai-toc-empty-{{ ai_gen_id }} {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #999;
+    font-style: italic;
+    font-size: 0.875rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-toc-wrapper-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.padding_top | times: 0.7 }}px;
+      padding-bottom: {{ block.settings.padding_bottom | times: 0.7 }}px;
+    }
+
+    .ai-toc-container-{{ ai_gen_id }} {
+      padding-left: {{ block.settings.padding_horizontal | times: 0.5 }}px;
+      padding-right: {{ block.settings.padding_horizontal | times: 0.5 }}px;
+    }
+
+    .ai-toc-header-{{ ai_gen_id }} {
+      padding: 1rem 1.25rem;
+    }
+
+    .ai-toc-title-{{ ai_gen_id }} {
+      font-size: 1rem;
+    }
+
+    .ai-toc-content-{{ ai_gen_id }}.open {
+      max-height: {{ block.settings.max_height | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<article-toc-{{ ai_gen_id }} class="ai-toc-wrapper-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-toc-container-{{ ai_gen_id }}">
+    <div class="ai-toc-{{ ai_gen_id }}">
+      <div class="ai-toc-header-{{ ai_gen_id }}" data-toc-header>
+        <h2 class="ai-toc-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+        <svg class="ai-toc-toggle-{{ ai_gen_id }}" data-toc-toggle xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="ai-toc-content-{{ ai_gen_id }}" data-toc-content>
+        <ul class="ai-toc-list-{{ ai_gen_id }}" data-toc-list></ul>
+      </div>
+    </div>
+  </div>
+</article-toc-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ArticleTOC{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.initialized = false;
+      }
+
+      connectedCallback() {
+        this.header = this.querySelector('[data-toc-header]');
+        this.content = this.querySelector('[data-toc-content]');
+        this.toggle = this.querySelector('[data-toc-toggle]');
+        this.tocList = this.querySelector('[data-toc-list]');
+        
+        this.header.addEventListener('click', () => this.toggleTOC());
+        
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => this.init());
+        } else {
+          setTimeout(() => this.init(), 100);
+        }
+      }
+
+      init() {
+        if (this.initialized) return;
+        this.initialized = true;
+        
+        setTimeout(() => {
+          this.generateTOC();
+        }, 300);
+      }
+
+      toggleTOC() {
+        const isOpen = this.content.classList.contains('open');
+        
+        if (isOpen) {
+          this.content.classList.remove('open');
+          this.toggle.classList.remove('open');
+        } else {
+          this.content.classList.add('open');
+          this.toggle.classList.add('open');
+        }
+      }
+
+      findArticleContainer() {
+        const possibleSelectors = [
+          '.article__content',
+          '.article-content',
+          '.article__body',
+          '.blog-post__content',
+          '.blog-post-content',
+          '.rte',
+          'article .rte',
+          '.main-article',
+          'article',
+          'main article',
+          'main .article',
+          '[class*="article-"]',
+          '[class*="blog-"]',
+          'main'
+        ];
+
+        for (const selector of possibleSelectors) {
+          const containers = document.querySelectorAll(selector);
+          for (const container of containers) {
+            if (container.contains(this)) continue;
+            
+            const headings = container.querySelectorAll('h2, h3, h4, h5, h6');
+            if (headings.length > 0) {
+              return container;
+            }
+          }
+        }
+
+        return document.body;
+      }
+
+      generateTOC() {
+        const article = this.findArticleContainer();
+        
+        if (!article) {
+          this.showEmptyState('Searching for article headings...');
+          return;
+        }
+
+        const allHeadings = article.querySelectorAll('h2, h3, h4, h5, h6');
+        
+        const filteredHeadings = Array.from(allHeadings).filter(heading => {
+          if (heading.closest('.ai-toc-wrapper-{{ ai_gen_id }}')) {
+            return false;
+          }
+          
+          const text = heading.textContent.trim();
+          return text.length > 0;
+        });
+
+        if (filteredHeadings.length === 0) {
+          this.showEmptyState('No headings found. Headings will appear here once the article loads.');
+          return;
+        }
+
+        this.tocList.innerHTML = '';
+
+        filteredHeadings.forEach((heading, index) => {
+          const tagName = heading.tagName.toLowerCase();
+
+          if (!heading.id) {
+            const headingText = heading.textContent.trim()
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/^-+|-+$/g, '');
+            heading.id = headingText || 'heading-' + index;
+          }
+
+          const li = document.createElement('li');
+          li.className = 'ai-toc-item-{{ ai_gen_id }}';
+          li.setAttribute('data-level', tagName);
+
+          const link = document.createElement('a');
+          link.className = 'ai-toc-link-{{ ai_gen_id }}';
+          link.href = '#' + heading.id;
+          link.textContent = heading.textContent.trim();
+
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.getElementById(heading.id);
+            if (target) {
+              const offset = 100;
+              const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+              
+              if (history.pushState) {
+                history.pushState(null, null, '#' + heading.id);
+              }
+            }
+          });
+
+          li.appendChild(link);
+          this.tocList.appendChild(li);
+        });
+      }
+
+      showEmptyState(message) {
+        this.tocList.innerHTML = '';
+        const emptyMessage = document.createElement('div');
+        emptyMessage.className = 'ai-toc-empty-{{ ai_gen_id }}';
+        emptyMessage.textContent = message || 'No headings found';
+        this.tocList.appendChild(emptyMessage);
+      }
+    }
+
+    customElements.define('article-toc-{{ ai_gen_id }}', ArticleTOC{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Table of contents",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Table of Contents"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container width",
+      "min": 600,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "default": 1000
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Left and right padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "max_height",
+      "label": "Maximum height when open",
+      "min": 200,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "hover_color",
+      "label": "Header hover",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link",
+      "default": "#4b5563"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover",
+      "default": "#952525"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Table of contents"
+    }
+  ]
+}
+{% endschema %}
