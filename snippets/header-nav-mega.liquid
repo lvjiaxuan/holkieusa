@@ -136,7 +136,7 @@
       </ul>
     {%- endunless -%}
   </div>
-{%- else -%}
+{%- elsif block.type == 'mega_menu_tab' -%}
   <div class="mega-menu__container invisible">
     {%- unless section_rendering_api -%}
       <ul id="HeaderNavMega-{{ section.id }}-{{ position }}-{{ context }}" class="mega-menu__list page-width{% if full_width %} page-width--full{% endif %} flex flex-wrap w-full h-full overflow-hidden" role="list" tabindex="-1">
@@ -343,5 +343,86 @@
         </li>
       </ul>
     {%- endunless -%}
+  </div>
+{% elsif block.type == 'mega_menu_vertical' %}
+  <div class="mega-menu__container invisible">
+    <ul id="HeaderNavMega-{{ section.id }}-{{ position }}-{{ context }}" class="mega-menu__list page-width{% if full_width %} page-width--full{% endif %}" role="list" tabindex="-1">
+      {%- if link.links != blank -%}
+        <li class="mega-menu__item mega-menu__item--nav mega-menu__item--{{ block.settings.menu_width }}{% unless show_promotions %} mega-menu__item--full{% endunless %} opacity-0">
+          <div class="mega-menu__nav--vertical">
+            <div class="mega-menu__nav--vertical-list">
+              {%- for childlink in link.links -%}
+                <div class="mega-menu__nav--vertical-item" data-index="{{ forloop.index0 }}">
+                  {%- if childlink.links != blank -%}
+                    <button type="button" class="mega-menu__nav--vertical-link{% if childlink.current %} active{% endif %}" aria-expanded="false">
+                      <span>{{ childlink.title | escape }}</span>
+                      {% comment %} {%- render 'icon', icon: 'arrow-right', size: 'xs', class: 'mega-menu__nav--vertical-icon' -%} {% endcomment %}
+                    </button>
+                  {%- else -%}
+                    <a href="{{ childlink.url }}" class="mega-menu__nav--vertical-link{% if childlink.current %} active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                      <span>{{ childlink.title | escape }}</span>
+                    </a>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+            <div class="mega-menu__nav--vertical-content">
+              {%- for childlink in link.links -%}
+                {%- if childlink.links != blank -%}
+                  <div class="mega-menu__nav--vertical-panel" data-panel-for="{{ forloop.index0 }}">
+                    <ul class="mega-menu__nav--vertical-sublist">
+                      {%- for grandchildlink in childlink.links -%}
+                        <li data-collection-index="{{ forloop.index0 }}">
+                          <a href="{{ grandchildlink.url }}" class="mega-menu__nav--vertical-sublink{% if grandchildlink.current %} active{% endif %}">
+                            {{- grandchildlink.title | escape -}}
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+            <div class="mega-menu__nav--vertical-products" style="--product-columns: {{ block.settings.product_columns | default: 2 }};">
+              {%- for childlink in link.links -%}
+                {%- if childlink.links != blank -%}
+                  <div class="mega-menu__nav--vertical-products-panel" data-panel-for="{{ forloop.index0 }}">
+                    {%- for grandchildlink in childlink.links -%}
+                      {%- if grandchildlink.object != blank and grandchildlink.object.products != blank -%}
+                        <div class="mega-menu__nav--vertical-products-collection" data-collection-index="{{ forloop.index0 }}">
+                          {%- liquid
+                            assign product_limit = block.settings.product_limit | default: 10
+                            assign products_count = grandchildlink.object.products_count
+                          -%}
+                          {%- if products_count > product_limit -%}
+                            <div class="mega-menu__nav--vertical-products-header">
+                              <a href="{{ grandchildlink.url }}" class="mega-menu__nav--vertical-view-more">
+                                View all ({{ products_count }})
+                              </a>
+                            </div>
+                          {%- endif -%}
+                          <ul class="mega-menu__nav--vertical-products-grid">
+                            {%- for product in grandchildlink.object.products limit: product_limit -%}
+                              <li>
+                                <a href="{{ product.url }}" class="mega-menu__nav--vertical-product-link">
+                                  {%- if product.featured_image -%}
+                                    {{- product.featured_image | image_url: width: 300 | image_tag: width: '300', height: '300', loading: 'lazy' -}}
+                                  {%- endif -%}
+                                  <span>{{ product.title | escape }}</span>
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </li>
+      {%- endif -%}
+    </ul>
   </div>
 {%- endif -%}

@@ -76,7 +76,7 @@
                     </summary>
                     <div class="drawer__submenu{% unless enable_accordion_menu %} z-1 absolute top-0 left-0{% endunless %} flex flex-col w-full h-full">
                       {%- unless enable_accordion_menu -%}
-                        <button type="button" class="tracking-tight heading text-base flex items-center gap-3 w-full" data-close>{{ block.settings[tab_target] | escape }}</button>
+                        <button type="button" class="tracking-tight heading text-base relative flex items-center gap-3 w-full bg-base z-10" data-close>{{ block.settings[tab_target] | escape }}</button>
                       {%- endunless -%}
                       <div class="drawer__scrollable flex flex-col h-full">
                         <div class="horizontal-products product-grid">
@@ -133,6 +133,65 @@
               </li>
             {%- endif -%}
           {%- endfor -%}
+        {%- elsif block.type == 'mega_menu_vertical' -%}
+          {%- for childlink in link.links -%}
+            <li class="drawer__menu-group">
+              {%- if childlink.links != blank -%}
+                <details is="{% if enable_accordion_menu %}accordion-details{% else %}menu-details{% endif %}">
+                  <summary class="drawer__menu-item block heading text-2xl leading-none tracking-tight cursor-pointer relative" aria-expanded="false">
+                    {%- liquid
+                      echo childlink.title | escape
+                      echo chevron_icon
+                    -%}
+                  </summary>
+                  <div class="drawer__submenu{% unless enable_accordion_menu %} z-1 absolute top-0 left-0{% endunless %} flex flex-col w-full h-full">
+                    {%- unless enable_accordion_menu -%}
+                      <button type="button" class="tracking-tight heading text-base relative flex items-center gap-3 w-full bg-base z-10" data-close>{{ childlink.title | escape }}</button>
+                    {%- endunless -%}
+                    <div class="drawer__scrollable flex flex-col h-full" style="max-height: 500px;">
+                      {%- for grandchildlink in childlink.links -%}
+                        <div class="drawer__menu-group drawer__vertical-collection">
+                          {% comment %} <a class="drawer__menu-item block heading text-xl leading-none tracking-tight" href="{{ grandchildlink.url }}">
+                            {{- grandchildlink.title | escape -}}
+                          </a> {% endcomment %}
+                          {%- if grandchildlink.object != blank and grandchildlink.object.products != blank -%}
+                            {%- liquid
+                              assign product_limit = block.settings.product_limit | default: 6
+                            -%}
+                            <div class="drawer__vertical-products grid grid-cols-2 gap-1d5 mt-1d5 mb-1d5">
+                              {%- for product in grandchildlink.object.products limit: product_limit -%}
+                                <a href="{{ product.url }}" class="drawer__vertical-product-card flex flex-col gap-1">
+                                  {%- if product.featured_media -%}
+                                    <div class="media media--square relative overflow-hidden rounded">
+                                      {{- product.featured_media | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200,400', class: 'w-full h-full object-cover' -}}
+                                    </div>
+                                  {%- else -%}
+                                    <div class="media media--square relative overflow-hidden rounded bg-gray-100">
+                                      {{- 'product-1' | placeholder_svg_tag: 'w-full h-full' -}}
+                                    </div>
+                                  {%- endif -%}
+                                  <span class="text-xs leading-tight line-clamp-2">{{ product.title | escape }}</span>
+                                </a>
+                              {%- endfor -%}
+                            </div>
+                            {%- if grandchildlink.object.products_count > product_limit -%}
+                              <a href="{{ grandchildlink.url }}" class="drawer__vertical-view-all text-sm text-opacity flex items-center gap-1 mb-4">
+                                {{- 'collections.subcollections.all_products' | t: collection: grandchildlink.title -}}
+                                ({{ grandchildlink.object.products_count }})
+                                {%- render 'icon', icon: 'arrow-right', size: 'xs', class: 'transform' -%}
+                              </a>
+                            {%- endif -%}
+                          {%- endif -%}
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                </details>
+              {%- else -%}
+                <a class="drawer__menu-item block heading text-2xl leading-none tracking-tight" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
         {%- else -%}
           {%- for childlink in link.links -%}
             <li class="drawer__menu-group">
@@ -146,7 +205,7 @@
                   </summary>
                   <div class="drawer__submenu{% unless enable_accordion_menu %} z-1 absolute top-0 left-0{% endunless %} flex flex-col w-full h-full">
                     {%- unless enable_accordion_menu -%}
-                      <button type="button" class="tracking-tight heading text-base flex items-center gap-3 w-full" data-close>{{ childlink.title | escape }}</button>
+                      <button type="button" class="tracking-tight heading text-base relative flex items-center gap-3 w-full bg-base z-10" data-close>{{ childlink.title | escape }}</button>
                     {%- endunless -%}
                     <ul class="drawer__scrollable flex flex-col h-full">
                       {%- for grandchildlink in childlink.links -%}

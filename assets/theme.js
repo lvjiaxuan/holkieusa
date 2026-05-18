@@ -1585,6 +1585,17 @@ class AccordionDetails extends HTMLDetailsElement {
 
   onSummaryClick(event) {
     event.preventDefault();
+
+    // Close sibling accordion-details at the same level (accordion behavior)
+    const container = this.parentElement?.parentElement;
+    if (container) {
+      container.querySelectorAll('details[is="accordion-details"]').forEach((sibling) => {
+        if (sibling !== this && sibling.open) {
+          sibling.open = false;
+        }
+      });
+    }
+
     this.open = !this.open;
   }
 
@@ -2268,7 +2279,9 @@ class MenuDetails extends HTMLDetailsElement {
     super();
 
     this.summary.addEventListener('click', this.onSummaryClick.bind(this));
-    this.closeButton.addEventListener('click', this.onCloseButtonClick.bind(this));
+    if (this.closeButton) {
+      this.closeButton.addEventListener('click', this.onCloseButtonClick.bind(this));
+    }
   }
 
   get parent() {
@@ -2289,6 +2302,25 @@ class MenuDetails extends HTMLDetailsElement {
 
   onSummaryClick(event) {
     event.preventDefault();
+
+    // Close sibling details at the same level (accordion behavior)
+    const container = this.parentElement?.parentElement;
+    if (container) {
+      container.querySelectorAll('details').forEach((sibling) => {
+        if (sibling !== this) {
+          sibling.classList.remove('active');
+          sibling.removeAttribute('open');
+          const submenu = sibling.querySelector('.drawer__submenu');
+          if (submenu) submenu.classList.remove('active');
+          const summary = sibling.querySelector('summary');
+          if (summary) {
+            summary.setAttribute('aria-expanded', false);
+            summary.removeAttribute('tabindex');
+          }
+        }
+      });
+    }
+
     this.setAttribute('open', '');
     this.activeElement = event.currentTarget;
 
@@ -3343,15 +3375,171 @@ class DetailsMega extends DetailsDropdown {
     this.contentElement.querySelector('tabs-element')?.unload();
     setTimeout(() => {
       this.contentElement.querySelector('tabs-element')?.load();
+      this.initVerticalGridHover();
+      // Default: show first item and first collection products
+      this.showDefaultVerticalMenu();
     }, theme.config.motionReduced ? 0 : 450);
 
     document.body.classList.add('with-mega');
     return Motion.animate(this.contentElement.firstElementChild, { visibility: 'visible', transform: ['translateY(-105%)', 'translateY(0)'] }, { duration: theme.config.motionReduced ? 0 : 0.6, easing: [.7, 0, .2, 1] }).finished;
   }
 
+  showDefaultVerticalMenu() {
+    const navGrid = this.contentElement.querySelector('.mega-menu__nav--vertical');
+    if (!navGrid) return;
+
+    // Clear all previous active states first
+    navGrid.querySelectorAll('.mega-menu__nav--vertical-link.active').forEach(el => el.classList.remove('active'));
+    navGrid.querySelectorAll('.mega-menu__nav--vertical-sublink.active').forEach(el => el.classList.remove('active'));
+    navGrid.querySelectorAll('.mega-menu__nav--vertical-panel.is-open').forEach(el => el.classList.remove('is-open'));
+    navGrid.querySelectorAll('.mega-menu__nav--vertical-products-panel.is-open').forEach(el => el.classList.remove('is-open'));
+    navGrid.querySelectorAll('.mega-menu__nav--vertical-products-collection.is-open').forEach(el => el.classList.remove('is-open'));
+
+    const navList = navGrid.querySelector('.mega-menu__nav--vertical-list');
+    const navProducts = navGrid.querySelector('.mega-menu__nav--vertical-products');
+    if (!navList || !navProducts) return;
+
+    const firstLink = navList.querySelector('.mega-menu__nav--vertical-link');
+    const firstPanel = navGrid.querySelector('.mega-menu__nav--vertical-panel');
+    const firstProductPanel = navGrid.querySelector('.mega-menu__nav--vertical-products-panel');
+    const firstCollection = navProducts.querySelector('.mega-menu__nav--vertical-products-collection');
+    const firstSublink = firstPanel?.querySelector('.mega-menu__nav--vertical-sublink');
+
+    if (firstLink) firstLink.classList.add('active');
+    if (firstSublink) firstSublink.classList.add('active');
+    if (firstPanel) firstPanel.classList.add('is-open');
+    if (firstProductPanel) firstProductPanel.classList.add('is-open');
+    if (firstCollection) firstCollection.classList.add('is-open');
+  }
+
   async transitionOut() {
     document.body.classList.remove('with-mega');
     return Motion.animate(this.contentElement.firstElementChild, { visibility: 'hidden', transform: 'translateY(-105%)' }, { duration: theme.config.motionReduced ? 0 : 0.6, easing: [.7, 0, .2, 1] }).finished;
+  }
+
+  initVerticalGridHover() {
+    const navGrid = this.contentElement.querySelector('.mega-menu__nav--vertical');
+    if (!navGrid) return;
+
+    const navList = navGrid.querySelector('.mega-menu__nav--vertical-list');
+    const navContent = navGrid.querySelector('.mega-menu__nav--vertical-content');
+    const navProducts = navGrid.querySelector('.mega-menu__nav--vertical-products');
+    const items = navList.querySelectorAll('.mega-menu__nav--vertical-item');
+    const links = navList.querySelectorAll('.mega-menu__nav--vertical-link');
+    const panels = navContent.querySelectorAll('.mega-menu__nav--vertical-panel');
+    const productPanels = navProducts.querySelectorAll('.mega-menu__nav--vertical-products-panel');
+
+    if (!items.length) return;
+
+    let activeIndex = -1;
+    let activeCollectionIndex = 0;
+    let hoverTimer = null;
+    const HOVER_DELAY = 180; // ms delay before activating on hover
+
+    const clearHoverTimer = () => {
+      if (hoverTimer) {
+        clearTimeout(hoverTimer);
+        hoverTimer = null;
+      }
+    };
+
+    const clearAllActive = () => {
+      links.forEach(link => link.classList.remove('active'));
+      panels.forEach(panel => panel.classList.remove('is-open'));
+      productPanels.forEach(panel => panel.classList.remove('is-open'));
+      document.querySelectorAll('.mega-menu__nav--vertical-sublink.active').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.mega-menu__nav--vertical-products-collection.is-open').forEach(el => el.classList.remove('is-open'));
+    };
+
+    const setActive = (index, keepCollection) => {
+      activeIndex = index;
+      clearAllActive();
+      const link = links[index];
+      const panel = panels[index];
+      const productPanel = productPanels[index];
+      if (link) link.classList.add('active');
+      if (panel) panel.classList.add('is-open');
+      if (productPanel) productPanel.classList.add('is-open');
+
+      // Re-show the active collection and sublink
+      if (keepCollection !== false) {
+        // Re-activate the sublink
+        if (panel) {
+          const sublink = panel.querySelector(`.mega-menu__nav--vertical-sublist li[data-collection-index="${activeCollectionIndex}"] .mega-menu__nav--vertical-sublink`);
+          if (sublink) {
+            sublink.classList.add('active');
+          }
+        }
+
+        // Re-show the active collection
+        if (productPanel) {
+          const collection = productPanel.querySelector(`.mega-menu__nav--vertical-products-collection[data-collection-index="${activeCollectionIndex}"]`);
+          if (collection) {
+            collection.classList.add('is-open');
+          } else {
+            // Fallback to first collection
+            const firstCollection = productPanel.querySelector('.mega-menu__nav--vertical-products-collection');
+            if (firstCollection) {
+              firstCollection.classList.add('is-open');
+            }
+          }
+        }
+      }
+    };
+
+    items.forEach((item, index) => {
+      const link = item.querySelector('.mega-menu__nav--vertical-link');
+      const panel = navContent.querySelector(`.mega-menu__nav--vertical-panel[data-panel-for="${index}"]`);
+      const productPanel = navProducts.querySelector(`.mega-menu__nav--vertical-products-panel[data-panel-for="${index}"]`);
+
+      // Hover left item: show middle + right panels (with delay to prevent accidental triggers)
+      item.addEventListener('mouseenter', () => {
+        clearHoverTimer();
+        hoverTimer = setTimeout(() => {
+          if (activeIndex !== index) {
+            activeCollectionIndex = 0;
+          }
+          setActive(index);
+        }, HOVER_DELAY);
+      });
+
+      item.addEventListener('mouseleave', () => {
+        clearHoverTimer();
+      });
+
+      // Hover middle panel: keep active + preserve current collection
+      if (panel) {
+        panel.addEventListener('mouseenter', () => {
+          setActive(index, true);
+        });
+      }
+
+      // Hover right panel: keep active (preserve current collection)
+      if (productPanel) {
+        productPanel.addEventListener('mouseenter', () => {
+          setActive(index, true);
+        });
+      }
+
+      // Hover sublink: show corresponding collection products (with delay)
+      if (panel) {
+        const sublinks = panel.querySelectorAll('.mega-menu__nav--vertical-sublink');
+        sublinks.forEach((sublink, subIndex) => {
+          sublink.addEventListener('mouseenter', () => {
+            clearHoverTimer();
+            hoverTimer = setTimeout(() => {
+              activeCollectionIndex = subIndex;
+              setActive(index, true);
+              sublink.classList.add('active');
+            }, HOVER_DELAY);
+          });
+
+          sublink.addEventListener('mouseleave', () => {
+            clearHoverTimer();
+          });
+        });
+      }
+    });
   }
 }
 customElements.define('details-mega', DetailsMega, { extends: 'details' });
