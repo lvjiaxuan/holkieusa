@@ -22,7 +22,7 @@
         assign contact = section.blocks | where: "type", "contact" | first
       -%}
       <div class="faqs {{ section.settings.style }} flex flex-col lg:flex-row relative z-1">
-        <div class="grow grid gap-8 md:gap-12">
+        <div class="grow grid gap-2 md:gap-4">
           {%- if section.settings.style == 'with-background' -%}
             {%- if section.settings.heading != blank or section.settings.description != blank or section.settings.button_label != blank -%}
               <div class="grid gap-4 {{ section.settings.heading_alignment }}">

@@ -12,6 +12,17 @@
   #shopify-section-{{ section.id }} .featured-collections__hidden.featured-collections__hidden--expanded {
     display: contents !important;
   }
+
+  /* Disable expand/collapse on mobile */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .featured-collections__expand-btn {
+      display: none !important;
+    }
+
+    #shopify-section-{{ section.id }} .featured-collections__hidden {
+      display: contents !important;
+    }
+  }
 </style>
 
 {%- liquid

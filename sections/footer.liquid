@@ -4,6 +4,71 @@
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
     {%- render 'section-variables', section: section -%}
   }
+
+  /* Mobile accordion layout */
+  @media (max-width: 767px) {
+    .footer__menu-grid {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer__menu-grid > details {
+      border-bottom: 1px solid rgba(var(--color-text), 0.2);
+    }
+
+    .footer__menu-grid > details:last-child {
+      border-bottom: none;
+    }
+
+    .footer__menu-grid > details .details__summary {
+      padding-block: 1rem;
+    }
+
+    .footer__menu-grid > details .details__content {
+      padding-block-end: 1rem;
+    }
+
+    .footer__menu-grid > details .details__content::after {
+      padding-block-end: 0;
+    }
+
+    .footer__mobile-social {
+      display: flex;
+      gap: 1rem;
+      padding-top: 1rem;
+    }
+  }
+
+  /* Desktop layout - accordion appears as normal columns */
+  @media (min-width: 768px) {
+    .footer__menu-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-around;
+      flex: 1;
+    }
+
+    .footer__menu-grid > details {
+      border-bottom: none !important;
+    }
+
+    .footer__menu-grid > details .details__summary {
+      display: none !important;
+    }
+
+    .footer__menu-grid > details .details__content {
+      padding-block-end: 0;
+    }
+
+    .footer__menu-grid > details .details__content::after {
+      padding-block-end: 0;
+    }
+
+    .footer__mobile-social {
+      display: none !important;
+    }
+  }
 </style>
 
 {%- liquid
@@ -11,77 +76,88 @@
   if section.settings.enable_newsletter or section.settings.show_social or shop.features.follow_on_shop? and section.settings.enable_follow_on_shop
     assign enable_footer_info = true
   endif
+
+  assign has_contact_block = false
+  for block in section.blocks
+    if block.type == 'contact_info'
+      assign has_contact_block = true
+      break
+    endif
+  endfor
 -%}
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded{% endif %}"{% if section.settings.enable_parallax %} is="footer-parallax"{% endif %}>
-  <div class="footer{% if enable_footer_info %}{% if section.settings.invert_newsletter_others %} footer--inverted{% endif %}{% else %} footer--no-info{% endif %} page-width{% if section.settings.full_width %} page-width--full{% endif %} relative grid" role="region" aria-label="Footer">
-    {%- if section.blocks.size > 0 -%}
-      <div class="footer__left flex flex-col md:flex-row gap-10">
-        {%- liquid
-          assign block = section.blocks | where: "type", "logo_social" | first
-          if block
-            render 'footer-logo', block: block
-          endif
-        -%}
+  <div class="footer page-width{% if section.settings.full_width %} page-width--full{% endif %} relative" role="region" aria-label="Footer">
+    <div class="flex flex-col gap-6 md:flex-row md:justify-center">
+      {%- liquid
+        assign logo_block = section.blocks | where: "type", "logo_social" | first
+        if logo_block
+          render 'footer-logo', block: logo_block
+        endif
+      -%}
 
-        <div class="footer__accordions flex flex-wrap flex-col md:flex-row md:grow md:gap-12">
-          {%- liquid
-            for block in section.blocks
-              case block.type
-                when 'link_list'
-                  render 'footer-menu', block: block
+      {% comment %} {# Menu grid (accordion on mobile, columns on desktop) #} {% endcomment %}
+      <div class="footer__menu-grid w-full md:w-auto">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'link_list' -%}
+              {%- render 'footer-menu', block: block -%}
+            {%- when 'text' -%}
+              {%- render 'footer-text', block: block -%}
+            {%- when 'brand_information' -%}
+              {%- render 'footer-contact', block: block -%}
+            {%- when 'contact_info' -%}
+              {%- render 'footer-contact-info', block: block -%}
+          {%- endcase -%}
+        {%- endfor -%}
 
-                when 'text'
-                  render 'footer-text', block: block
-
-                when 'brand_information'
-                  render 'footer-contact', block: block
-              endcase
-            endfor
-          -%}
-        </div>
+        {% comment %} {# Social icons in mobile (when from logo block) #} {% endcomment %}
+        {%- if section.settings.show_social and logo_block -%}
+          <div class="footer__mobile-social">
+            {%- render 'social-icons', size: 'md', gap: '4' -%}
+          </div>
+        {%- endif -%}
       </div>
-    {%- endif -%}
 
-    {%- if section.settings.enable_newsletter or section.settings.show_social or shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
-      <div class="footer__right grid gap-10">
+      {% comment %} {# Desktop social icons (when placed in logo block) #} {% endcomment %}
+      {%- if section.settings.show_social and logo_block -%}
+        <div class="footer__socials hidden md:flex gap-4">
+          {%- render 'social-icons', size: 'md', gap: '4' -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {% comment %} {# Bottom newsletter bar #} {% endcomment %}
+  {%- if section.settings.enable_newsletter or section.settings.show_social or shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
+    <div class="footer__bar{% if section.settings.full_width %} page-width--full{% endif %}">
+      <div class="footer__bar-inner page-width{% if section.settings.full_width %} page-width--full{% endif %} flex flex-col md:flex-row items-center gap-4 md:gap-8">
         {%- if section.settings.enable_newsletter -%}
-          <div class="footer__newsletter grid gap-6">
-            {%- if section.settings.newsletter_logo -%}
-              <p class="footer__logo leading-none">
-                <a href="{{ routes.root_url }}">
-                  <span class="sr-only">{{ shop.name }}</span>
-                  {%- capture sizes -%}{{ section.settings.newsletter_logo_height | times: section.settings.newsletter_logo.aspect_ratio }}px{%- endcapture -%}
-                  {%- capture widths -%}{{ section.settings.newsletter_logo_height | times: section.settings.newsletter_logo.aspect_ratio }}, {{ section.settings.newsletter_logo_height | times: section.settings.newsletter_logo.aspect_ratio | times: 2 | at_most: section.settings.newsletter_logo.width }}{%- endcapture -%}
-                  {%- capture style -%}--image-width: {{ section.settings.newsletter_logo_height | times: section.settings.newsletter_logo.aspect_ratio }}px; --image-height: {{ section.settings.newsletter_logo_height }}px;{%- endcapture -%}
-                  {{- section.settings.newsletter_logo | image_url: width: section.settings.newsletter_logo.width | image_tag: loading: 'lazy', widths: widths, sizes: sizes, style: style, preload: true, is: 'lazy-image' -}}
-                </a>
-              </p>
-            {%- endif -%}
-
-            <p class="h3 text-xl {{ section.settings.newsletter_heading_size }} leading-none tracking-none font-medium lg:font-heading">{{ section.settings.newsletter_heading | escape }}</p>
-            {%- render 'newsletter-form', section_id: section.id, context: 'footer' -%}
-
+          <div class="footer__bar-newsletter flex flex-col gap-4 flex-1 w-full">
+            <p class="footer__bar-heading text-lg font-bold uppercase tracking-[0.2em]">{{ section.settings.newsletter_heading | escape }}</p>
+            <div class="w-full">
+              {%- render 'newsletter-form', section_id: section.id, context: 'footer-bar' -%}
+            </div>
             {%- if section.settings.newsletter_text != blank -%}
-              <div class="rte text-sm leading-tight">{{ section.settings.newsletter_text }}</div>
+              <div class="footer__bar-text text-sm opacity-80">{{ section.settings.newsletter_text }}</div>
             {%- endif -%}
           </div>
         {%- endif -%}
 
-        {%- if section.settings.show_social -%}
-          <div class="footer__socials flex align-self-end justify-start md:justify-end xl:justify-start">
-            {%- render 'social-icons', size: 'lg', gap: '7' -%}
+        {%- if section.settings.show_social and logo_block == nil -%}
+          <div class="footer__bar-socials flex gap-4">
+            {%- render 'social-icons', size: 'md', gap: '4' -%}
           </div>
         {%- endif -%}
 
         {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
-          <div class="follow-on-shop">
+          <div class="follow-on-shop shrink-0">
             {{- shop | login_button: action: 'follow' -}}
           </div>
         {%- endif -%}
       </div>
-    {%- endif -%}
-  </div>
+    </div>
+  {%- endif -%}
 
   {%- if section.settings.enable_parallax -%}
     <parallax-overlay class="footer-overlay hidden md:block z-20 absolute left-0 top-0 w-full pointer-events-none" data-target="height" data-start="100%" data-stop="0%"></parallax-overlay>
@@ -239,7 +315,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.global.settings.padding_top.label",
-      "default": 72
+      "default": 40
     },
     {
       "type": "range",
@@ -249,7 +325,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.global.settings.padding_bottom.label",
-      "default": 72
+      "default": 40
     },
     {
       "type": "checkbox",
@@ -328,26 +404,6 @@
           "default": "footer",
           "label": "t:sections.footer.blocks.link_list.settings.menu.label",
           "info": "t:sections.footer.blocks.link_list.settings.menu.info"
-        },
-        {
-          "type": "range",
-          "id": "container_width",
-          "label": "t:sections.footer.blocks.global.settings.container_width.label",
-          "default": 50,
-          "min": 15,
-          "max": 95,
-          "step": 1,
-          "unit": "%"
-        },
-        {
-          "type": "header",
-          "content": "t:sections.global.settings.header__mobile.content"
-        },
-        {
-          "type": "checkbox",
-          "id": "opened",
-          "default": false,
-          "label": "t:sections.footer.blocks.global.settings.opened.label"
         }
       ]
     },
@@ -367,26 +423,6 @@
           "id": "text",
           "label": "t:sections.global.settings.text.label",
           "default": "<p>Share contact information, store details, and brand content with your customers.</p>"
-        },
-        {
-          "type": "range",
-          "id": "container_width",
-          "label": "t:sections.footer.blocks.global.settings.container_width.label",
-          "default": 50,
-          "min": 15,
-          "max": 95,
-          "step": 1,
-          "unit": "%"
-        },
-        {
-          "type": "header",
-          "content": "t:sections.global.settings.header__mobile.content"
-        },
-        {
-          "type": "checkbox",
-          "id": "opened",
-          "default": false,
-          "label": "t:sections.footer.blocks.global.settings.opened.label"
         }
       ]
     },
@@ -460,6 +496,75 @@
           "id": "opened",
           "default": false,
           "label": "t:sections.footer.blocks.global.settings.opened.label"
+        }
+      ]
+    },
+    {
+      "type": "contact_info",
+      "name": "Contact Info",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Contact"
+        },
+        {
+          "type": "text",
+          "id": "phone_label",
+          "label": "Phone Label",
+          "default": "Sales & Tech Support"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone Number",
+          "placeholder": "1-800-123-4567"
+        },
+        {
+          "type": "text",
+          "id": "phone_hours",
+          "label": "Phone Hours",
+          "placeholder": "Mon-Fri 8AM-5PM CST"
+        },
+        {
+          "type": "text",
+          "id": "email_label",
+          "label": "Email Label",
+          "default": "Email"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email Address",
+          "placeholder": "info@example.com"
+        },
+        {
+          "type": "text",
+          "id": "address_label",
+          "label": "Address Label",
+          "default": "Headquarters"
+        },
+        {
+          "type": "richtext",
+          "id": "address",
+          "label": "Address"
+        },
+        {
+          "type": "header",
+          "content": "Call-to-Action Button"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Button Label",
+          "placeholder": "Request a Quote"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "Button Link"
         }
       ]
     }

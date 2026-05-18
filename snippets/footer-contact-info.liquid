@@ -1,0 +1,97 @@
+{%- doc -%}
+  Renders a footer contact info block with phone, email, address, and optional CTA button.
+
+  On mobile, renders as an accordion item. On desktop, renders as a static column.
+
+  @param {object} block - Shopify block object with settings and attributes
+
+  @example
+  {% render 'footer-contact-info', block: block %}
+{%- enddoc -%}
+
+{%- if block.settings.phone != blank or block.settings.email != blank or block.settings.address != blank or block.settings.cta_label != blank -%}
+  {%- capture contact_content -%}
+    <div class="details__content">
+      <h3 class="footer__column-heading text-sm font-bold uppercase tracking-widest border-b-2 border-current pb-2 mb-4 hidden md:block">{{ block.settings.heading | escape }}</h3>
+      <div class="footer__contact-details flex flex-col gap-3 text-sm">
+        {%- if block.settings.phone != blank -%}
+          <p class="grid gap-0">
+            <span class="text-xs opacity-70 uppercase tracking-wide">{{ block.settings.phone_label | default: 'Sales &amp; Tech Support' | escape }}</span>
+            <a href="tel:{{ block.settings.phone | replace: ' ', '' }}" class="link-reset text-base font-semibold">{{ block.settings.phone | escape }}</a>
+            {%- if block.settings.phone_hours != blank -%}
+              <span class="text-xs opacity-70">{{ block.settings.phone_hours | escape }}</span>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        {%- if block.settings.email != blank -%}
+          <p class="grid gap-0">
+            <span class="text-xs opacity-70 uppercase tracking-wide">{{ block.settings.email_label | default: 'Email' | escape }}</span>
+            <a href="mailto:{{ block.settings.email }}" class="link-reset">{{ block.settings.email | escape }}</a>
+          </p>
+        {%- endif -%}
+
+        {%- if block.settings.address != blank -%}
+          <p class="grid gap-0">
+            <span class="text-xs opacity-70 uppercase tracking-wide">{{ block.settings.address_label | default: 'Headquarters' | escape }}</span>
+            <span>{{ block.settings.address }}</span>
+          </p>
+        {%- endif -%}
+      </div>
+
+      {%- if block.settings.cta_label != blank -%}
+        <div class="footer__contact-cta pt-1">
+          <a href="{{ block.settings.cta_link }}" class="button button--primary w-full text-center text-sm font-semibold uppercase tracking-widest" is="magnet-button" data-magnet="20">
+            <span class="btn-text">{{ block.settings.cta_label | escape }}</span>
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endcapture -%}
+
+  {%- if block.settings.heading != blank -%}
+    <details class="footer__menu-accordion details active" is="footer-details" {{ block.shopify_attributes }}>
+      <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
+        <span class="footer__column-heading text-sm font-bold uppercase tracking-widest">{{ block.settings.heading | escape }}</span>
+        {%- render 'icon', icon: 'chevron-up' -%}
+      </summary>
+      {{- contact_content -}}
+    </details>
+  {%- else -%}
+    <div class="footer__contact-info flex flex-col gap-4" {{ block.shopify_attributes }}>
+      <div class="footer__contact-details flex flex-col gap-3 text-sm">
+        {%- if block.settings.phone != blank -%}
+          <p class="grid gap-0">
+            <span class="text-xs opacity-70 uppercase tracking-wide">{{ block.settings.phone_label | default: 'Sales &amp; Tech Support' | escape }}</span>
+            <a href="tel:{{ block.settings.phone | replace: ' ', '' }}" class="link-reset text-base font-semibold">{{ block.settings.phone | escape }}</a>
+            {%- if block.settings.phone_hours != blank -%}
+              <span class="text-xs opacity-70">{{ block.settings.phone_hours | escape }}</span>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        {%- if block.settings.email != blank -%}
+          <p class="grid gap-0">
+            <span class="text-xs opacity-70 uppercase tracking-wide">{{ block.settings.email_label | default: 'Email' | escape }}</span>
+            <a href="mailto:{{ block.settings.email }}" class="link-reset">{{ block.settings.email | escape }}</a>
+          </p>
+        {%- endif -%}
+
+        {%- if block.settings.address != blank -%}
+          <p class="grid gap-0">
+            <span class="text-xs opacity-70 uppercase tracking-wide">{{ block.settings.address_label | default: 'Headquarters' | escape }}</span>
+            <span>{{ block.settings.address }}</span>
+          </p>
+        {%- endif -%}
+      </div>
+
+      {%- if block.settings.cta_label != blank -%}
+        <div class="footer__contact-cta pt-1">
+          <a href="{{ block.settings.cta_link }}" class="button button--primary w-full text-center text-sm font-semibold uppercase tracking-widest" is="magnet-button" data-magnet="20">
+            <span class="btn-text">{{ block.settings.cta_label | escape }}</span>
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+{%- endif -%}

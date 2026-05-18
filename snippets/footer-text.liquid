@@ -2,6 +2,7 @@
   Renders rich text content block in the footer with optional collapsible wrapper.
 
   Displays HTML/rich text content either directly or within an expandable section.
+  On mobile, renders as an accordion item. On desktop, renders as a static column.
 
   @param {object} block - Shopify block object with settings and attributes
 
@@ -10,28 +11,28 @@
 {%- enddoc -%}
 
 {%- if block.settings.heading != blank or block.settings.text != blank -%}
-  {%- capture block_content -%}
+  {%- capture text_content -%}
     <div class="details__content">
-      {{ block.settings.text }}
+      <h3 class="footer__column-heading text-sm font-bold uppercase tracking-widest border-b-2 border-current pb-2 mb-4 hidden md:block">{{ block.settings.heading | escape }}</h3>
+      <div class="footer__column-text rte text-sm leading-snug opacity-80">
+        {{ block.settings.text }}
+      </div>
     </div>
-    <style>
-      @media (min-width: 1280px) {
-        .footer__item--{{ block.id }} { width: calc({{ block.settings.container_width }}% - var(--sp-12)); }
-      }
-    </style>
   {%- endcapture -%}
 
-  {%- if block.settings.heading == blank -%}
-    <div class="footer__item--{{ block.id }} no-details rte" {{ block.shopify_attributes }}>
-      {{- block_content -}}
-    </div>
-  {%- else -%}
-    <details class="footer__item--{{ block.id }} details active" is="footer-details"{% if block.settings.opened %} data-opened{% endif %} {{ block.shopify_attributes }}>
+  {%- if block.settings.heading != blank -%}
+    <details class="footer__menu-accordion details active" is="footer-details" {{ block.shopify_attributes }}>
       <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
-        <span class="heading text-base-2xl font-medium lg:font-heading">{{ block.settings.heading | escape }}</span>
+        <span class="footer__column-heading text-sm font-bold uppercase tracking-widest">{{ block.settings.heading | escape }}</span>
         {%- render 'icon', icon: 'chevron-up' -%}
       </summary>
-      {{- block_content -}}
+      {{- text_content -}}
     </details>
+  {%- else -%}
+    <div class="footer__column" {{ block.shopify_attributes }}>
+      <div class="footer__column-text rte text-sm leading-snug opacity-80">
+        {{ block.settings.text }}
+      </div>
+    </div>
   {%- endif -%}
 {%- endif -%}
