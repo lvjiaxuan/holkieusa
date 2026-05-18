@@ -1,1 +1,274 @@
-{"type":"header","name":"t:sections.header-group.name","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-1":{"type":"announcement","settings":{"icon":"truck","text":"Free shipping","link":"","hide_icon_mobile":true,"text_mobile":"","highlighted_text":"none","highlighted_scribble":"circle"}},"announcement-2":{"type":"announcement","disabled":true,"settings":{"icon":"gift","text":"Buy 6 Save 20% \/ Buy 2 Save 10%","link":"","hide_icon_mobile":true,"text_mobile":"","highlighted_text":"none","highlighted_scribble":"circle"}}},"block_order":["announcement-1","announcement-2"],"settings":{"show_social":false,"enable_language_selector":false,"enable_country_selector":true,"invert_icons_selectors":false,"announcement_position":"center","announcement_layout":"carousel","autoplay":false,"autoplay_speed":5,"show_navigation":false,"direction":"left","speed":20,"color_text":"#fed700","color_background":"rgba(0,0,0,0)","gradient_background":"linear-gradient(180deg, rgba(42, 15, 15, 1), rgba(26, 11, 11, 1) 100%)","color_highlight":"#fed700","gradient_highlight":"linear-gradient(135deg, rgba(254, 215, 0, 1), rgba(234, 179, 8, 1) 100%)","hide_homepage":false,"full_width":true,"rounded":false}},"header":{"type":"header","blocks":{"mega_menu_wBFTJP":{"type":"mega_menu","settings":{"menu_title":"Shop","menu_width":"medium","show_menu_image":true,"button_label":"Search more","button_link":"https:\/\/www.holkieusa.com\/search?options%5Bprefix%5D=last&q=caster+wheels","promo_image_ratio_1":"adapt","promo_heading_1":"","promo_subtext_1":"","promo_overlay_content_1":true,"promo_link_1":"","promo_tag_1":"","promo_color_text_1":"#ffffff","promo_color_overlay_1":"#000000","promo_overlay_opacity_1":40,"promo_image_ratio_2":"adapt","promo_heading_2":"","promo_subtext_2":"","promo_overlay_content_2":true,"promo_link_2":"","promo_tag_2":"","promo_color_text_2":"#ffffff","promo_color_overlay_2":"#000000","promo_overlay_opacity_2":40,"promo_image_ratio_3":"adapt","promo_heading_3":"","promo_subtext_3":"","promo_overlay_content_3":true,"promo_link_3":"","promo_tag_3":"","promo_color_text_3":"#ffffff","promo_color_overlay_3":"#000000","promo_overlay_opacity_3":40,"promo_image_ratio_4":"adapt","promo_heading_4":"","promo_subtext_4":"","promo_overlay_content_4":true,"promo_link_4":"","promo_tag_4":"","promo_color_text_4":"#ffffff","promo_color_overlay_4":"#000000","promo_overlay_opacity_4":40,"promo_image_ratio_5":"adapt","promo_heading_5":"","promo_subtext_5":"","promo_overlay_content_5":true,"promo_link_5":"","promo_tag_5":"","promo_color_text_5":"#ffffff","promo_color_overlay_5":"#000000","promo_overlay_opacity_5":40}},"mega-menu":{"type":"mega_menu_tab","settings":{"menu_title":"Product","button_label":"View All Products","button_link":"shopify:\/\/collections\/all","heading_1":"Collections","heading_2":"Most popular","show_vendor":false,"show_price":true,"tab_target_1":"Grip Ring Stem Casters","tab_target_link_1":"shopify:\/\/collections\/furniture-casters","tab_products_1":["grip-ring-stem-casters-tpr-swivel-casters","cscgqj-2gt"],"tab_product_limit_1":4,"tab_icon_width_1":42,"promo_image_ratio_1":"adapt","promo_heading_1":"Build your bundle","promo_subtext_1":"Buy 3 and save 30%","promo_overlay_content_1":true,"promo_link_1":"shopify:\/\/products\/1-in-plate-casters-brown-without-brake-8-pack","promo_tag_1":"","promo_color_text_1":"#ffffff","promo_color_overlay_1":"#171717","promo_overlay_opacity_1":0,"tab_target_2":"Threaded Stem Casters Bulk Quantity","tab_target_link_2":"shopify:\/\/collections\/stem-casters","tab_products_2":["3-inch-stem-casters-side-brake-3-8-16-black-8-pack","3-inch-stem-casters-side-brake-3-8-16-grey-8-pack","4-in-stem-casters-black-total-lock-3-8-16-x-1-set-of-8"],"tab_product_limit_2":4,"tab_icon_width_2":42,"promo_image_ratio_2":"adapt","promo_heading_2":"RhythmiQ","promo_subtext_2":"Compact Power Unleashed","promo_overlay_content_2":true,"promo_link_2":"","promo_tag_2":"New Arrival","promo_color_text_2":"#ffffff","promo_color_overlay_2":"#171717","promo_overlay_opacity_2":0,"tab_target_3":"Metric Stem Casters","tab_target_link_3":"shopify:\/\/collections\/stem-casters","tab_products_3":["3-in-stem-caster-wheels-with-side-brake-metric-thread"],"tab_product_limit_3":4,"tab_icon_width_3":42,"promo_image_ratio_3":"adapt","promo_heading_3":"Home Audio","promo_subtext_3":"View the collection","promo_overlay_content_3":true,"promo_link_3":"","promo_tag_3":"New Arrival","promo_color_text_3":"#ffffff","promo_color_overlay_3":"#171717","promo_overlay_opacity_3":0,"tab_target_4":"Plate Casters","tab_target_link_4":"shopify:\/\/collections\/plate-casters","tab_products_4":["1-in-plate-casters-brown-2-brake-2-no-brake-8-pack","1-in-plate-casters-brown-without-brake-8-pack","2-in-plate-casters-black-with-brake-8-pack","2-in-plate-casters-black-without-brake-8-pack","4-in-plate-casters-black-with-brake-set-of-8","4-in-plate-casters-black-without-brake-set-of-8"],"tab_product_limit_4":4,"tab_icon_width_4":42,"promo_image_ratio_4":"adapt","promo_heading_4":"Build your bundle","promo_subtext_4":"Save $30 when buying all 3 items","promo_overlay_content_4":true,"promo_link_4":"","promo_tag_4":"","promo_color_text_4":"#ffffff","promo_color_overlay_4":"#171717","promo_overlay_opacity_4":0,"tab_target_5":"","tab_target_link_5":"","tab_products_5":[],"tab_product_limit_5":4,"tab_icon_width_5":32,"promo_image_ratio_5":"adapt","promo_heading_5":"","promo_subtext_5":"","promo_overlay_content_5":true,"promo_link_5":"","promo_tag_5":"","promo_color_text_5":"#ffffff","promo_color_overlay_5":"#171717","promo_overlay_opacity_5":30}}},"block_order":["mega_menu_wBFTJP","mega-menu"],"settings":{"logo_h1":true,"menu":"main-menu","menu_mobile":"","menu_active":"block","hover_menu":true,"header_layout":"left-center","sticky_header_type":"on-scroll-up","icons_size":"lg","menu_drawer_icon_label":"","enable_language_selector_desktop":false,"enable_country_selector_desktop":false,"show_country_name_dekstop":false,"show_country_flag_desktop":false,"logo_position_mobile":"left","accordion_menu_mobile":true,"show_social":false,"enable_language_selector":false,"enable_country_selector":true,"transparent_color_text":"#ffffff","color_text":"#1f2933","color_background":"#f8fafc","color_localization":"","padding_top":4,"padding_bottom":4,"full_width":false,"rounded":false}}},"order":["announcement-bar","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:sections.header-group.name",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-1": {
+          "type": "announcement",
+          "settings": {
+            "icon": "truck",
+            "text": "Free shipping",
+            "link": "",
+            "hide_icon_mobile": true,
+            "text_mobile": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "announcement-2": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "icon": "gift",
+            "text": "Buy 6 Save 20% / Buy 2 Save 10%",
+            "link": "",
+            "hide_icon_mobile": true,
+            "text_mobile": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-1",
+        "announcement-2"
+      ],
+      "settings": {
+        "show_social": false,
+        "enable_language_selector": false,
+        "enable_country_selector": true,
+        "invert_icons_selectors": false,
+        "announcement_position": "center",
+        "announcement_layout": "carousel",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "show_navigation": false,
+        "direction": "left",
+        "speed": 20,
+        "color_text": "#fed700",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient_background": "linear-gradient(180deg, rgba(42, 15, 15, 1), rgba(26, 11, 11, 1) 100%)",
+        "color_highlight": "#fed700",
+        "gradient_highlight": "linear-gradient(135deg, rgba(254, 215, 0, 1), rgba(234, 179, 8, 1) 100%)",
+        "hide_homepage": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_vertical_xYWNX7": {
+          "type": "mega_menu_vertical",
+          "settings": {
+            "menu_title": "Shop",
+            "product_limit": 12,
+            "product_columns": 4
+          }
+        },
+        "mega_menu_wBFTJP": {
+          "type": "mega_menu",
+          "disabled": true,
+          "settings": {
+            "menu_title": "Shop",
+            "menu_width": "medium",
+            "show_menu_image": true,
+            "button_label": "Search more",
+            "button_link": "https://www.holkieusa.com/search?options%5Bprefix%5D=last&q=caster+wheels",
+            "promo_image_ratio_1": "adapt",
+            "promo_heading_1": "",
+            "promo_subtext_1": "",
+            "promo_overlay_content_1": true,
+            "promo_link_1": "",
+            "promo_tag_1": "",
+            "promo_color_text_1": "#ffffff",
+            "promo_color_overlay_1": "#000000",
+            "promo_overlay_opacity_1": 40,
+            "promo_image_ratio_2": "adapt",
+            "promo_heading_2": "",
+            "promo_subtext_2": "",
+            "promo_overlay_content_2": true,
+            "promo_link_2": "",
+            "promo_tag_2": "",
+            "promo_color_text_2": "#ffffff",
+            "promo_color_overlay_2": "#000000",
+            "promo_overlay_opacity_2": 40,
+            "promo_image_ratio_3": "adapt",
+            "promo_heading_3": "",
+            "promo_subtext_3": "",
+            "promo_overlay_content_3": true,
+            "promo_link_3": "",
+            "promo_tag_3": "",
+            "promo_color_text_3": "#ffffff",
+            "promo_color_overlay_3": "#000000",
+            "promo_overlay_opacity_3": 40,
+            "promo_image_ratio_4": "adapt",
+            "promo_heading_4": "",
+            "promo_subtext_4": "",
+            "promo_overlay_content_4": true,
+            "promo_link_4": "",
+            "promo_tag_4": "",
+            "promo_color_text_4": "#ffffff",
+            "promo_color_overlay_4": "#000000",
+            "promo_overlay_opacity_4": 40,
+            "promo_image_ratio_5": "adapt",
+            "promo_heading_5": "",
+            "promo_subtext_5": "",
+            "promo_overlay_content_5": true,
+            "promo_link_5": "",
+            "promo_tag_5": "",
+            "promo_color_text_5": "#ffffff",
+            "promo_color_overlay_5": "#000000",
+            "promo_overlay_opacity_5": 40
+          }
+        },
+        "mega-menu": {
+          "type": "mega_menu_tab",
+          "settings": {
+            "menu_title": "Product",
+            "button_label": "View All Products",
+            "button_link": "shopify://collections/all",
+            "heading_1": "Collections",
+            "heading_2": "Most popular",
+            "show_vendor": false,
+            "show_price": true,
+            "tab_target_1": "Grip Ring Stem Casters",
+            "tab_target_link_1": "shopify://collections/furniture-casters",
+            "tab_products_1": [
+              "grip-ring-stem-casters-tpr-swivel-casters",
+              "cscgqj-2gt"
+            ],
+            "tab_product_limit_1": 4,
+            "tab_icon_width_1": 42,
+            "promo_image_ratio_1": "adapt",
+            "promo_heading_1": "Build your bundle",
+            "promo_subtext_1": "Buy 3 and save 30%",
+            "promo_overlay_content_1": true,
+            "promo_link_1": "shopify://products/1-in-plate-casters-brown-without-brake-8-pack",
+            "promo_tag_1": "",
+            "promo_color_text_1": "#ffffff",
+            "promo_color_overlay_1": "#171717",
+            "promo_overlay_opacity_1": 0,
+            "tab_target_2": "Threaded Stem Casters Bulk Quantity",
+            "tab_target_link_2": "shopify://collections/stem-casters",
+            "tab_products_2": [
+              "3-inch-stem-casters-side-brake-3-8-16-black-8-pack",
+              "3-inch-stem-casters-side-brake-3-8-16-grey-8-pack",
+              "4-in-stem-casters-black-total-lock-3-8-16-x-1-set-of-8"
+            ],
+            "tab_product_limit_2": 4,
+            "tab_icon_width_2": 42,
+            "promo_image_ratio_2": "adapt",
+            "promo_heading_2": "RhythmiQ",
+            "promo_subtext_2": "Compact Power Unleashed",
+            "promo_overlay_content_2": true,
+            "promo_link_2": "",
+            "promo_tag_2": "New Arrival",
+            "promo_color_text_2": "#ffffff",
+            "promo_color_overlay_2": "#171717",
+            "promo_overlay_opacity_2": 0,
+            "tab_target_3": "Metric Stem Casters",
+            "tab_target_link_3": "shopify://collections/stem-casters",
+            "tab_products_3": [
+              "3-in-stem-caster-wheels-with-side-brake-metric-thread"
+            ],
+            "tab_product_limit_3": 4,
+            "tab_icon_width_3": 42,
+            "promo_image_ratio_3": "adapt",
+            "promo_heading_3": "Home Audio",
+            "promo_subtext_3": "View the collection",
+            "promo_overlay_content_3": true,
+            "promo_link_3": "",
+            "promo_tag_3": "New Arrival",
+            "promo_color_text_3": "#ffffff",
+            "promo_color_overlay_3": "#171717",
+            "promo_overlay_opacity_3": 0,
+            "tab_target_4": "Plate Casters",
+            "tab_target_link_4": "shopify://collections/plate-casters",
+            "tab_products_4": [
+              "1-in-plate-casters-brown-2-brake-2-no-brake-8-pack",
+              "1-in-plate-casters-brown-without-brake-8-pack",
+              "2-in-plate-casters-black-with-brake-8-pack",
+              "2-in-plate-casters-black-without-brake-8-pack",
+              "4-in-plate-casters-black-with-brake-set-of-8",
+              "4-in-plate-casters-black-without-brake-set-of-8"
+            ],
+            "tab_product_limit_4": 4,
+            "tab_icon_width_4": 42,
+            "promo_image_ratio_4": "adapt",
+            "promo_heading_4": "Build your bundle",
+            "promo_subtext_4": "Save $30 when buying all 3 items",
+            "promo_overlay_content_4": true,
+            "promo_link_4": "",
+            "promo_tag_4": "",
+            "promo_color_text_4": "#ffffff",
+            "promo_color_overlay_4": "#171717",
+            "promo_overlay_opacity_4": 0,
+            "tab_target_5": "",
+            "tab_target_link_5": "",
+            "tab_products_5": [],
+            "tab_product_limit_5": 4,
+            "tab_icon_width_5": 32,
+            "promo_image_ratio_5": "adapt",
+            "promo_heading_5": "",
+            "promo_subtext_5": "",
+            "promo_overlay_content_5": true,
+            "promo_link_5": "",
+            "promo_tag_5": "",
+            "promo_color_text_5": "#ffffff",
+            "promo_color_overlay_5": "#171717",
+            "promo_overlay_opacity_5": 30
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_vertical_xYWNX7",
+        "mega_menu_wBFTJP",
+        "mega-menu"
+      ],
+      "settings": {
+        "logo_h1": true,
+        "menu": "main-menu",
+        "menu_mobile": "",
+        "menu_active": "block",
+        "hover_menu": true,
+        "header_layout": "left-center",
+        "sticky_header_type": "on-scroll-up",
+        "icons_size": "lg",
+        "menu_drawer_icon_label": "",
+        "enable_language_selector_desktop": false,
+        "enable_country_selector_desktop": false,
+        "show_country_name_dekstop": false,
+        "show_country_flag_desktop": false,
+        "logo_position_mobile": "left",
+        "accordion_menu_mobile": true,
+        "show_social": false,
+        "enable_language_selector": false,
+        "enable_country_selector": true,
+        "transparent_color_text": "#ffffff",
+        "color_text": "#1f2933",
+        "color_background": "#f8fafc",
+        "color_localization": "",
+        "padding_top": 4,
+        "padding_bottom": 4,
+        "full_width": false,
+        "rounded": false
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}
