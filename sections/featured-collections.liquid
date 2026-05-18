@@ -4,6 +4,14 @@
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
     {%- render 'section-variables', section: section -%}
   }
+
+  #shopify-section-{{ section.id }} .featured-collections__hidden {
+    display: none !important;
+  }
+
+  #shopify-section-{{ section.id }} .featured-collections__hidden.featured-collections__hidden--expanded {
+    display: contents !important;
+  }
 </style>
 
 {%- liquid
@@ -90,8 +98,15 @@
           <div id="TabPanelContent-{{ block.id }}">
             {%- if section_rendering_api or forloop.first -%}
               <slider-element id="Slider-{{ block.id }}" class="grid slider{% if section.settings.carousel_on_desktop %} slider--desktop{% endif %}{% if section.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card"{% if section.settings.carousel_on_desktop or section.settings.swipe_on_mobile %} tabindex="0"{% endif %}>
-                <motion-list class="product-grid card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid">
+                <motion-list class="product-grid card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid{% if section.settings.show_expand_button %} featured-collections__grid{% endif %}" data-expand-limit="{{ section.settings.expand_limit }}">
                   {%- for product in products limit: section.settings.product_limit -%}
+                    {%- liquid
+                      assign is_hidden = false
+                      if section.settings.show_expand_button and forloop.index > section.settings.expand_limit
+                        assign is_hidden = true
+                      endif
+                    -%}
+                    <div class="{% if is_hidden %} featured-collections__hidden{% endif %}">
                     {%- render 'product-card-industrial',
                       product: product,
                       product_id: product.id,
@@ -116,6 +131,7 @@
                       save_type: settings.product_save_type,
                       show_icon_list: settings.product_icon_list
                     -%}
+                    </div>
                   {%- else -%}
                     {%- for i in (1..section.settings.product_limit) -%}
                       {%- capture placeholder -%}product-{% cycle '1', '2', '3', '4', '5', '6' %}{%- endcapture -%}
@@ -140,6 +156,18 @@
                       -%}
                     </span>
                   </a>
+                </p>
+              {%- endif -%}
+
+              {%- if section.settings.show_expand_button and collection != blank and section.settings.product_limit < collection.all_products_count -%}
+                <p class="text-center mt-4">
+                  <button class="button button--secondary icon-with-text featured-collections__expand-btn" type="button" data-block-id="{{ block.id }}" data-expand-text="{{ 'sections.featured_collection.expand' | t }}" data-collapse-text="{{ 'sections.featured_collection.collapse' | t }}">
+                    <span class="btn-fill" data-fill></span>
+                    <span class="btn-text">
+                      {%- render 'icon', icon: 'chevron-down', class: 'featured-collections__expand-icon transform' -%}
+                      {{ 'sections.featured_collection.expand' | t }}
+                    </span>
+                  </button>
                 </p>
               {%- endif -%}
             {%- endif -%}
@@ -186,6 +214,20 @@
       "label": "t:sections.featured-collection.settings.show_view_all.label",
       "info": "t:sections.featured-collection.settings.show_view_all.info",
       "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_expand_button",
+      "label": "t:sections.featured-collection.settings.show_expand_button.label",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "expand_limit",
+      "label": "t:sections.featured-collection.settings.expand_limit.label",
+      "info": "t:sections.featured-collection.settings.show_view_all.info",
+      "default": 4,
+      "visible_if": "{{ section.settings.show_expand_button == true }}"
     },
     {
       "type": "header",

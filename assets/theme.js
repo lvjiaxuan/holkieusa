@@ -989,6 +989,42 @@ console.log(theme.settings.themeName + ' theme (' + theme.settings.themeVersion 
   window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('loaded');
     document.dispatchEvent(new CustomEvent('page:loaded'));
+
+    // Featured collections expand/collapse button
+    document.querySelectorAll('.featured-collections__expand-btn').forEach((button) => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const blockId = this.getAttribute('data-block-id');
+        const tabPanel = document.getElementById(`TabPanel-${blockId}`);
+        if (!tabPanel) return;
+
+        const hiddenItems = tabPanel.querySelectorAll('.featured-collections__hidden');
+        const icon = this.querySelector('.featured-collections__expand-icon');
+        const btnText = this.querySelector('.btn-text');
+        const expandText = this.getAttribute('data-expand-text') || 'Show more products';
+        const collapseText = this.getAttribute('data-collapse-text') || 'Show less';
+
+        const isExpanded = hiddenItems.length > 0 && hiddenItems[0].classList.contains('featured-collections__hidden--expanded');
+
+        if (isExpanded) {
+          // Collapse
+          hiddenItems.forEach((item) => item.classList.remove('featured-collections__hidden--expanded'));
+          if (icon) icon.classList.add('transform');
+          btnText.innerHTML = icon ? icon.outerHTML + ' ' + expandText : expandText;
+
+          // Scroll back to top of product grid
+          const productGrid = tabPanel.querySelector('.product-grid');
+          if (productGrid) {
+            productGrid.scrollIntoView({ behavior: 'smooth', block: 'center', });
+          }
+        } else {
+          // Expand
+          hiddenItems.forEach((item) => item.classList.add('featured-collections__hidden--expanded'));
+          if (icon) icon.classList.remove('transform');
+          btnText.innerHTML = icon ? icon.outerHTML + ' ' + collapseText : collapseText;
+        }
+      });
+    });
   });
   window.addEventListener('pageshow', (event) => {
     // Removes unload class when returning to page via history

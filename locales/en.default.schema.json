@@ -2120,6 +2120,13 @@
         "show_view_all": {
           "label": "Enable \"View all\" button",
           "info": "If collection has more products than shown."
+        },
+        "show_expand_button": {
+          "label": "Show expand/collapse button"
+        },
+        "expand_limit":{
+          "info": "收起时显示的产品数量",
+          "label": "Number of products when collapsed"
         }
       }
     },
