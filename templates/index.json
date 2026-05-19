@@ -492,9 +492,9 @@
         "product_limit": 12,
         "columns": 4,
         "carousel_on_desktop": false,
-        "show_view_all": false,
-        "show_expand_button": false,
-        "expand_limit": 4,
+        "show_view_all": true,
+        "show_expand_button": true,
+        "expand_limit": 5,
         "columns_mobile": "1",
         "swipe_on_mobile": true,
         "heading": "Best Sellers",
@@ -1315,6 +1315,33 @@
     "faq_r9UUX4": {
       "type": "faq",
       "blocks": {
+        "rich_text_3B6WHq": {
+          "type": "rich-text",
+          "settings": {
+            "heading": "Rich text",
+            "text": "<p>Use this section for any descriptive text you need to fill out your pages or to add introductory headings between other blocks.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_tkihAe": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_xdaDKX": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
         "question_mPjzgx": {
           "type": "question",
           "settings": {
@@ -1362,6 +1389,9 @@
         }
       },
       "block_order": [
+        "rich_text_3B6WHq",
+        "question_tkihAe",
+        "question_xdaDKX",
         "question_mPjzgx",
         "question_6mhTHq",
         "question_G4fxdY",
