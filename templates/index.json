@@ -43,7 +43,7 @@
         "padding_bottom": 0,
         "divider": false,
         "narrow": false,
-        "full_width": false,
+        "full_width": true,
         "rounded": false
       }
     },
@@ -146,7 +146,7 @@
         "padding_top": 32,
         "padding_bottom": 32,
         "divider": false,
-        "full_width": false,
+        "full_width": true,
         "rounded": false
       }
     },
