@@ -242,7 +242,7 @@
         "menu": "main-menu",
         "menu_mobile": "",
         "menu_active": "block",
-        "hover_menu": true,
+        "hover_menu": false,
         "header_layout": "left-center",
         "sticky_header_type": "on-scroll-up",
         "icons_size": "lg",
