@@ -354,13 +354,14 @@
               {%- for childlink in link.links -%}
                 <div class="mega-menu__nav--vertical-item" data-index="{{ forloop.index0 }}">
                   {%- if childlink.links != blank -%}
-                    <button type="button" class="mega-menu__nav--vertical-link{% if childlink.current %} active{% endif %}" aria-expanded="false">
+                    <button type="button" class="heading leading-none mega-menu__nav--vertical-link{% if childlink.current %} active{% endif %}" aria-expanded="false">
                       <span>{{ childlink.title | escape }}</span>
-                      {% comment %} {%- render 'icon', icon: 'arrow-right', size: 'xs', class: 'mega-menu__nav--vertical-icon' -%} {% endcomment %}
+                      {%- render 'icon', icon: 'chevron-right', size: 'xs', class: 'ml-2' -%}
                     </button>
                   {%- else -%}
-                    <a href="{{ childlink.url }}" class="mega-menu__nav--vertical-link{% if childlink.current %} active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                    <a href="{{ childlink.url }}" class="heading leading-none mega-menu__nav--vertical-link{% if childlink.current %} active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
                       <span>{{ childlink.title | escape }}</span>
+                      {%- render 'icon', icon: 'chevron-right', size: 'xs', class: 'ml-2' -%}
                     </a>
                   {%- endif -%}
                 </div>
@@ -373,8 +374,9 @@
                     <ul class="mega-menu__nav--vertical-sublist">
                       {%- for grandchildlink in childlink.links -%}
                         <li data-collection-index="{{ forloop.index0 }}">
-                          <a href="{{ grandchildlink.url }}" class="mega-menu__nav--vertical-sublink{% if grandchildlink.current %} active{% endif %}">
-                            {{- grandchildlink.title | escape -}}
+                          <a href="{{ grandchildlink.url }}" class="flex justify-between items-center gap-2 heading leading-none mega-menu__nav--vertical-sublink{% if grandchildlink.current %} active{% endif %}">
+                            <span>{{- grandchildlink.title | escape -}}</span>
+                            {%- render 'icon', icon: 'chevron-right', size: 'xs', class: 'ml-2' -%}
                           </a>
                         </li>
                       {%- endfor -%}
