@@ -13,7 +13,7 @@
 {%- if block.settings.heading != blank or block.settings.text != blank -%}
   {%- capture text_content -%}
     <div class="details__content">
-      <h3 class="footer__column-heading text-sm font-bold uppercase tracking-widest border-b-2 border-current pb-2 mb-4 hidden md:block">{{ block.settings.heading | escape }}</h3>
+      <h3 class="footer__column-heading text-base font-bold uppercase tracking-widest border-b-2 border-current pb-2 mb-4 hidden md:block">{{ block.settings.heading | escape }}</h3>
       <div class="footer__column-text rte text-sm leading-snug opacity-80">
         {{ block.settings.text }}
       </div>

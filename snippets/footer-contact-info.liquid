@@ -12,7 +12,7 @@
 {%- if block.settings.phone != blank or block.settings.email != blank or block.settings.address != blank or block.settings.cta_label != blank -%}
   {%- capture contact_content -%}
     <div class="details__content">
-      <h3 class="footer__column-heading text-sm font-bold uppercase tracking-widest border-b-2 border-current pb-2 mb-4 hidden md:block">{{ block.settings.heading | escape }}</h3>
+      <h3 class="footer__column-heading text-base font-bold uppercase tracking-widest border-b-2 border-current pb-2 mb-4 hidden md:block">{{ block.settings.heading | escape }}</h3>
       <div class="footer__contact-details flex flex-col gap-3 text-sm">
         {%- if block.settings.phone != blank -%}
           <p class="grid gap-0">
