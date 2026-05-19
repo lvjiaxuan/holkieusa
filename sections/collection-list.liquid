@@ -6,8 +6,10 @@
   }
 </style>
 
-<div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
+<div id="CollectionList-{{ section.id }}" class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
+    {% comment %} {%- assign collections_label = 'breadcrumbs.collections' | t -%} {% endcomment %}
+    {%- capture view_all_text -%}{{ 'sections.collection_list.view_all' | t }}({{ collections.size }}){%- endcapture -%}
     {%- capture view_all -%}
       {%- if section.settings.show_view_all and section.blocks.size < collections.size -%}
         <a class="button button--secondary icon-with-text" href="{{ routes.collections_url }}" is="hover-link">
@@ -15,7 +17,7 @@
           <span class="btn-text">
             {%- liquid
               render 'icon', icon: 'newspaper'
-              echo 'sections.collection_list.view_all' | t
+              echo view_all_text
             -%}
           </span>
         </a>
@@ -48,6 +50,10 @@
       <motion-list class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid">
         {%- for block in section.blocks -%}
           {%- assign collection = collections[block.settings.collection] -%}
+          {%- assign show_more_class = '' -%}
+          {%- if section.settings.carousel_on_desktop == false and forloop.index > 4 -%}
+            {%- assign show_more_class = 'show-more-item hidden' -%}
+          {%- endif -%}
           {%- render 'collection-card',
             block: block,
             collection: collection,
@@ -55,7 +61,8 @@
             image_type: section.settings.image_type,
             image_ratio: section.settings.image_ratio,
             show_products_count: section.settings.show_products_count,
-            position: forloop.index
+            position: forloop.index,
+            extra_classes: show_more_class
           -%}
         {%- endfor -%}
       </motion-list>
@@ -79,6 +86,60 @@
         {%- endif -%}
       {%- endif -%}
     </slider-element>
+
+    {%- if section.settings.carousel_on_desktop == false and section.blocks.size > 4 -%}
+      <button type="button" class="button button--secondary w-full more-less-btn" id="CollectionListShowMore-{{ section.id }}">
+        <span class="btn-fill" data-fill></span>
+        <span class="btn-text flex items-center justify-center">
+          <span class="btn-label tracking-widest">{{ view_all_text }}</span>
+          <span class="btn-icon inline-flex items-center" style="padding-left: 5px;">
+            {%- render 'icon', icon: 'chevron-down', size: 'sm', class: 'icon-chevron-down' -%}
+            {%- render 'icon', icon: 'chevron-up', size: 'sm', class: 'icon-chevron-up hidden' -%}
+          </span>
+        </span>
+      </button>
+      <script>
+        (function() {
+          const section = document.getElementById('CollectionList-{{ section.id }}');
+          const button = document.getElementById('CollectionListShowMore-{{ section.id }}');
+          const showMoreText = '{{ view_all_text }}';
+          const showLessText = '{{ 'sections.featured_collection.collapse' | t }}';
+
+          function initShowMore() {
+            if (!section || !button) return;
+            const hiddenItems = section.querySelectorAll('.show-more-item');
+            const iconDown = button.querySelector('.icon-chevron-down');
+            const iconUp = button.querySelector('.icon-chevron-up');
+            const label = button.querySelector('.btn-label');
+
+            button.addEventListener('click', function() {
+              const isCollapsed = Array.from(hiddenItems).some(function(item) {
+                return item.classList.contains('hidden');
+              });
+              hiddenItems.forEach(function(item) {
+                item.classList.toggle('hidden', !isCollapsed);
+              });
+
+              if (isCollapsed) {
+                label.textContent = showLessText;
+                if (iconDown) iconDown.classList.add('hidden');
+                if (iconUp) iconUp.classList.remove('hidden');
+              } else {
+                label.textContent = showMoreText;
+                if (iconDown) iconDown.classList.remove('hidden');
+                if (iconUp) iconUp.classList.add('hidden');
+              }
+            });
+          }
+
+          if (document.readyState !== 'loading') {
+            initShowMore();
+          } else {
+            document.addEventListener('DOMContentLoaded', initShowMore);
+          }
+        })();
+      </script>
+    {%- endif -%}
 
     {%- if section.settings.carousel_on_desktop -%}
       <p class="hidden lg:block">{{ view_all }}</p>

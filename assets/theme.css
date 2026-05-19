@@ -3317,6 +3317,17 @@ button.shopify-payment-button__button--unbranded::after {
   background-color: rgb(var(--color-button-background));
 }
 
+.button--secondary.more-less-btn {
+  margin-top: 30px;
+  transition: background var(--animation-fast);
+}
+
+@media (hover: hover) {
+  .button--secondary.more-less-btn:hover {
+    background: rgb(var(--color-button-background));
+  }
+}
+
 .button[disabled],
 button.shopify-payment-button__button--unbranded[disabled] {
   opacity: 0.6;
@@ -8324,6 +8335,7 @@ details.active .drawer__promotions .mega-menu__item,
       background-size: 100% 1px;
     }
   }
+}
 
 .mega-menu__list--tabs {
   --nav-tabs-gap: var(--header-nav-gap);
@@ -16776,4 +16788,3 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
     font-size: 11px;
   }
 }
-
