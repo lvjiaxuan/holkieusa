@@ -6613,7 +6613,7 @@ ol {
 .drawer__scrollable {
   overflow-x: hidden;
   overflow-y: auto;
-  padding: var(--sp-6) var(--sp-5)
+  padding: var(--sp-3) var(--sp-5)
 }
 
 @media screen and (min-width: 1024px) {
@@ -7467,7 +7467,8 @@ ol {
   position: absolute;
   inset-block-start: calc(50% - var(--sp-3));
   inset-inline-end: var(--sp-4d5);
-  opacity: 0.4;
+  opacity: 0.6;
+  flex: none;
 }
 
 .drawer__menu summary>.icon-chevron-right {
@@ -7483,8 +7484,9 @@ ol {
 }
 
 .drawer__menu-item {
-  padding-block: var(--sp-2d5);
+  padding-block: var(--sp-2);
   transition: transform var(--animation-primary);
+  padding-right: var(--sp-2);
 }
 
 .drawer__submenu {
@@ -7543,29 +7545,38 @@ li+.drawer__promotions {
 
 /* Mobile drawer: mega_menu_vertical product grid */
 .drawer__vertical-collection {
-  padding-inline-end: var(--sp-5);
+  /* padding-inline-end: var(--sp-2); */
 }
 
 .drawer__vertical-collection .drawer__menu-item {
-  font-size: var(--text-lg);
-  padding-block: var(--sp-2);
-  color: rgb(var(--color-foreground) / 0.85);
+  /* padding-block: var(--sp-2);
+  color: rgb(var(--color-foreground)); */
 }
 
 .drawer__vertical-products {
   padding-inline-start: 0;
   padding-inline-end: 0;
+  padding: 0 var(--sp-1)
+}
+.drawer__vertical-scrollable {
+  max-height: 500px;
+  transform: translateX(-2.4rem);
+  width: 93vw;
 }
 
 .drawer__vertical-product-card {
   text-decoration: none;
   color: rgb(var(--color-foreground));
   transition: opacity var(--animation-short);
-  
+  border-radius: var(--border-radius-small);
+  background: rgb(var(--color-background));
+  box-shadow: 0px 0px 12px 0px rgb(var(--color-foreground) / 0.15);
+  overflow: hidden;
 }
 
 .drawer__vertical-product-card:hover {
   opacity: 0.75;
+  box-shadow: 0 16px 32px -16px rgb(var(--color-foreground)/0.18);
 }
 
 .drawer__vertical-product-card .media {

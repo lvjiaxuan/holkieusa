@@ -37,7 +37,7 @@
   endcapture
 -%}
 <details is="{% if enable_accordion_menu %}accordion-details{% else %}menu-details{% endif %}">
-  <summary class="drawer__menu-item block cursor-pointer relative" aria-expanded="false">
+  <summary class="drawer__menu-item flex justify-between cursor-pointer relative" aria-expanded="false">
     <span class="heading text-2xl leading-none tracking-tight">
       {%- unless section_rendering_api -%}
         <api-button class="api-only" data-id="DrawerSubMenu-{{ section.id }}-{{ position }}" data-section-id="{{ section.id }}"></api-button>
@@ -138,9 +138,9 @@
             <li class="drawer__menu-group">
               {%- if childlink.links != blank -%}
                 <details is="{% if enable_accordion_menu %}accordion-details{% else %}menu-details{% endif %}">
-                  <summary class="drawer__menu-item block heading text-2xl leading-none tracking-tight cursor-pointer relative" aria-expanded="false">
+                  <summary class="drawer__menu-item flex items-center justify-between heading text-2xl leading-none tracking-tight cursor-pointer relative" aria-expanded="false">
+                    <span>{{ childlink.title | escape }}</span>
                     {%- liquid
-                      echo childlink.title | escape
                       echo chevron_icon
                     -%}
                   </summary>
@@ -148,39 +148,48 @@
                     {%- unless enable_accordion_menu -%}
                       <button type="button" class="tracking-tight heading text-base relative flex items-center gap-3 w-full bg-base z-10" data-close>{{ childlink.title | escape }}</button>
                     {%- endunless -%}
-                    <div class="drawer__scrollable flex flex-col h-full" style="max-height: 500px;">
+                    <div class="flex flex-col h-full">
                       {%- for grandchildlink in childlink.links -%}
                         <div class="drawer__menu-group drawer__vertical-collection">
-                          {% comment %} <a class="drawer__menu-item block heading text-xl leading-none tracking-tight" href="{{ grandchildlink.url }}">
-                            {{- grandchildlink.title | escape -}}
-                          </a> {% endcomment %}
                           {%- if grandchildlink.object != blank and grandchildlink.object.products != blank -%}
-                            {%- liquid
-                              assign product_limit = block.settings.product_limit | default: 6
-                            -%}
-                            <div class="drawer__vertical-products grid grid-cols-2 gap-1d5 mt-1d5 mb-1d5">
-                              {%- for product in grandchildlink.object.products limit: product_limit -%}
-                                <a href="{{ product.url }}" class="drawer__vertical-product-card flex flex-col gap-1">
-                                  {%- if product.featured_media -%}
-                                    <div class="media media--square relative overflow-hidden rounded">
-                                      {{- product.featured_media | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200,400', class: 'w-full h-full object-cover' -}}
-                                    </div>
-                                  {%- else -%}
-                                    <div class="media media--square relative overflow-hidden rounded bg-gray-100">
-                                      {{- 'product-1' | placeholder_svg_tag: 'w-full h-full' -}}
-                                    </div>
-                                  {%- endif -%}
-                                  <span class="text-xs leading-tight line-clamp-2">{{ product.title | escape }}</span>
-                                </a>
-                              {%- endfor -%}
-                            </div>
-                            {%- if grandchildlink.object.products_count > product_limit -%}
-                              <a href="{{ grandchildlink.url }}" class="drawer__vertical-view-all text-sm text-opacity flex items-center gap-1 mb-4">
-                                {{- 'collections.subcollections.all_products' | t: collection: grandchildlink.title -}}
-                                ({{ grandchildlink.object.products_count }})
-                                {%- render 'icon', icon: 'arrow-right', size: 'xs', class: 'transform' -%}
-                              </a>
-                            {%- endif -%}
+                            <details is="{% if enable_accordion_menu %}accordion-details{% else %}menu-details{% endif %}">
+                              <summary class="drawer__menu-item flex items-center justify-between heading text-2xl leading-none tracking-tight cursor-pointer relative" aria-expanded="false">
+                                <span>{{ grandchildlink.title | escape }}</span>
+                                {%- liquid
+                                  echo chevron_icon
+                                -%}
+                              </summary>
+                              <div class="drawer__submenu{% unless enable_accordion_menu %} z-1 absolute top-0 left-0{% endunless %} flex flex-col w-full h-full">
+                                {%- unless enable_accordion_menu -%}
+                                  <button type="button" class="tracking-tight heading text-base relative flex items-center gap-3 w-full bg-base z-10" data-close>{{ grandchildlink.title | escape }}</button>
+                                {%- endunless -%}
+                                {%- liquid
+                                  assign product_limit = block.settings.product_limit | default: 6
+                                -%}
+                                <div class="drawer__scrollable drawer__vertical-scrollable flex flex-col h-full">
+                                  <div class="drawer__vertical-products grid grid-cols-2 gap-3 mt-1d5 mb-1d5">
+                                    {%- for product in grandchildlink.object.products limit: product_limit -%}
+                                      <a href="{{ product.url }}" class="drawer__vertical-product-card flex flex-col gap-1">
+                                        {%- if product.featured_media -%}
+                                          <div class="media media--square relative overflow-hidden rounded">
+                                            {{- product.featured_media | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200,400', class: 'w-full h-full object-cover' -}}
+                                          </div>
+                                        {%- else -%}
+                                          <div class="media media--square relative overflow-hidden rounded bg-gray-100">
+                                            {{- 'product-1' | placeholder_svg_tag: 'w-full h-full' -}}
+                                          </div>
+                                        {%- endif -%}
+                                        <span class="text-xs leading-tight line-clamp-2" style="padding: 0 8px;">{{ product.title | escape }}</span>
+                                      </a>
+                                    {%- endfor -%}
+                                  </div>
+                                </div>
+                              </div>
+                            </details>
+                          {%- else -%}
+                            <a class="drawer__menu-item block heading text-xl leading-none tracking-tight" href="{{ grandchildlink.url }}">
+                              {{- grandchildlink.title | escape -}}
+                            </a>
                           {%- endif -%}
                         </div>
                       {%- endfor -%}
