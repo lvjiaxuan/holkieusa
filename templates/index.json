@@ -1,1 +1,1486 @@
-{"sections":{"custom_liquid_6XL67n":{"type":"custom-liquid","name":"t:sections.custom-liquid.name","settings":{"liquid":"<style>\n#holkie-hero-v2,\n#holkie-hero-v2 *{\n  box-sizing:border-box;\n}\n\n#holkie-hero-v2{\n  width:100%;\n  background:\n    linear-gradient(180deg,#2A0F0F 0%,#1A0B0B 100%);\n  overflow:hidden;\n  position:relative;\n}\n\n#holkie-hero-v2::before{\n  content:\"\";\n  position:absolute;\n  right:-120px;\n  top:-120px;\n  width:320px;\n  height:320px;\n  background:radial-gradient(circle,rgba(254,215,0,.10) 0%,transparent 70%);\n  pointer-events:none;\n}\n\n#holkie-hero-v2::after{\n  content:\"\";\n  position:absolute;\n  right:18%;\n  bottom:-80px;\n  width:220px;\n  height:220px;\n  background:radial-gradient(circle,rgba(249,115,22,.10) 0%,transparent 70%);\n  pointer-events:none;\n}\n\n#holkie-hero-inner{\n  max-width:1320px;\n  margin:0 auto;\n  padding:0 28px;\n  position:relative;\n  z-index:2;\n}\n\n#holkie-hero-main{\n  min-height:184px;\n  display:grid;\n  grid-template-columns:1.2fr .8fr;\n  gap:40px;\n  align-items:center;\n}\n\n#holkie-hero-left{\n  padding:20px 0;\n  min-width:0;\n}\n\n.holkie-top-row{\n  display:flex;\n  align-items:center;\n  gap:8px;\n  margin-bottom:12px;\n  flex-wrap:wrap;\n}\n\n.holkie-pill{\n  display:inline-flex;\n  align-items:center;\n  gap:6px;\n  padding:5px 10px;\n  border-radius:999px;\n  background:rgba(249,115,22,.10);\n  border:1px solid rgba(249,115,22,.22);\n  color:#FDBA74;\n  font-size:9px;\n  font-weight:700;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  line-height:1;\n}\n\n.holkie-pill-dot{\n  width:6px;\n  height:6px;\n  border-radius:50%;\n  background:#F97316;\n}\n\n#holkie-hero-left h2{\n  margin:0 0 10px;\n  font-size:42px;\n  line-height:.94;\n  letter-spacing:-.04em;\n  color:#FFFFFF;\n  font-weight:700;\n}\n\n.holkie-accent{\n  color:#FED700;\n}\n\n.holkie-subtext{\n  max-width:680px;\n  font-size:13px;\n  line-height:1.65;\n  color:rgba(255,255,255,.72);\n  margin-bottom:16px;\n}\n\n.holkie-cta-row{\n  display:flex;\n  align-items:center;\n  gap:10px;\n  flex-wrap:wrap;\n}\n\n.holkie-btn-primary{\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  height:40px;\n  padding:0 18px;\n  border-radius:10px;\n  background:#952525;\n  color:#FFFFFF;\n  text-decoration:none;\n  font-size:12px;\n  font-weight:700;\n  letter-spacing:.04em;\n  transition:.2s ease;\n  border:1px solid #952525;\n  white-space:nowrap;\n}\n\n.holkie-btn-primary:hover{\n  background:#7F1D1D;\n  transform:translateY(-1px);\n}\n\n.holkie-btn-secondary{\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  height:40px;\n  padding:0 18px;\n  border-radius:10px;\n  background:rgba(255,255,255,.04);\n  border:1px solid rgba(255,255,255,.10);\n  color:#FFFFFF;\n  text-decoration:none;\n  font-size:12px;\n  font-weight:600;\n  transition:.2s ease;\n  white-space:nowrap;\n}\n\n.holkie-btn-secondary:hover{\n  border-color:#FED700;\n  color:#FED700;\n}\n\n#holkie-hero-right{\n  display:flex;\n  justify-content:flex-end;\n  align-items:center;\n}\n\n.holkie-stat-wrap{\n  width:100%;\n  max-width:320px;\n  display:grid;\n  grid-template-columns:1fr 1fr;\n  gap:18px;\n}\n\n.holkie-stat{\n  padding-left:14px;\n  border-left:2px solid rgba(249,115,22,.42);\n}\n\n.holkie-stat-number{\n  font-size:32px;\n  line-height:1;\n  font-weight:700;\n  color:#FFFFFF;\n  margin-bottom:6px;\n  letter-spacing:-.03em;\n}\n\n.holkie-stat-label{\n  color:rgba(255,255,255,.60);\n  font-size:10px;\n  line-height:1.5;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  font-weight:600;\n}\n\n@media screen and (max-width:989px){\n\n  #holkie-hero-inner{\n    padding:0 16px;\n  }\n\n  #holkie-hero-main{\n    min-height:270px;\n    grid-template-columns:1fr;\n    gap:0;\n    align-items:flex-start;\n  }\n\n  #holkie-hero-left{\n    padding:18px 0 14px;\n  }\n\n  .holkie-top-row{\n    margin-bottom:10px;\n    overflow-x:auto;\n    flex-wrap:nowrap;\n    scrollbar-width:none;\n  }\n\n  .holkie-top-row::-webkit-scrollbar{\n    display:none;\n  }\n\n  .holkie-pill{\n    flex-shrink:0;\n    font-size:8px;\n  }\n\n  #holkie-hero-left h1{\n    font-size:28px;\n    margin-bottom:10px;\n  }\n\n  .holkie-subtext{\n    font-size:11px;\n    line-height:1.6;\n    margin-bottom:14px;\n  }\n\n  .holkie-cta-row{\n    width:100%;\n  }\n\n  .holkie-btn-primary,\n  .holkie-btn-secondary{\n    flex:1;\n    height:38px;\n    font-size:11px;\n    padding:0 12px;\n  }\n\n  #holkie-hero-right{\n    width:100%;\n    padding:0 0 16px;\n    justify-content:flex-start;\n  }\n\n  .holkie-stat-wrap{\n    max-width:none;\n    gap:14px;\n  }\n\n  .holkie-stat-number{\n    font-size:22px;\n  }\n\n  .holkie-stat-label{\n    font-size:8px;\n  }\n\n}\n<\/style>\n\n<section id=\"holkie-hero-v2\">\n\n  <div id=\"holkie-hero-inner\">\n\n    <div id=\"holkie-hero-main\">\n\n      <div id=\"holkie-hero-left\">\n\n        <div class=\"holkie-top-row\">\n\n          <span class=\"holkie-pill\">\n            <span class=\"holkie-pill-dot\"><\/span>\n            US Warehouses\n          <\/span>\n\n          <span class=\"holkie-pill\">\n            <span class=\"holkie-pill-dot\"><\/span>\n            Factory Since 1995\n          <\/span>\n\n          <span class=\"holkie-pill\">\n            <span class=\"holkie-pill-dot\"><\/span>\n            OEM Support\n          <\/span>\n\n        <\/div>\n\n        <h2>\n          Industrial Casters Built<br>\n          for <span class=\"holkie-accent\">Real Work.<\/span>\n        <\/h2>\n\n        <div class=\"holkie-subtext\">\n          Fast shipping from local warehouses. Trusted by workshops, factories, furniture makers, and OEM buyers since 1995.\n        <\/div>\n\n        <div class=\"holkie-cta-row\">\n\n          <a href=\"\/#shopify-section-template--21878555672813__collection-list\" class=\"holkie-btn-primary\">\n            Shop Casters\n          <\/a>\n\n          <a href=\"\/pages\/bulk-order\" class=\"holkie-btn-secondary\">\n            Request Bulk Quote\n          <\/a>\n\n        <\/div>\n\n      <\/div>\n\n      <div id=\"holkie-hero-right\">\n\n        <div class=\"holkie-stat-wrap\">\n\n          <div class=\"holkie-stat\">\n            <div class=\"holkie-stat-number\">\n              10K+\n            <\/div>\n            <div class=\"holkie-stat-label\">\n              Orders Shipped\n            <\/div>\n          <\/div>\n\n          <div class=\"holkie-stat\">\n            <div class=\"holkie-stat-number\">\n              30+\n            <\/div>\n            <div class=\"holkie-stat-label\">\n              Industrial Categories\n            <\/div>\n          <\/div>\n\n        <\/div>\n\n      <\/div>\n\n    <\/div>\n\n  <\/div>\n\n<\/section>","color_text":"","color_background":"","gradient_background":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":0,"padding_bottom":0,"divider":false,"narrow":false,"rounded":false}},"custom_liquid_zjWbEj":{"type":"custom-liquid","name":"t:sections.custom-liquid.name","settings":{"liquid":"<style>\n#holkie-trust-wrap{\n  background:#FFFFFF;\n  border-top:1px solid #E5E7EB;\n  border-bottom:1px solid #E5E7EB;\n  overflow:hidden;\n}\n\n#holkie-trust-inner{\n  max-width:1320px;\n  margin:0 auto;\n  padding:12px 24px;\n  display:flex;\n  justify-content:center;\n  align-items:center;\n  gap:18px;\n  flex-wrap:wrap;\n}\n\n.holkie-trust-item{\n  display:inline-flex;\n  align-items:center;\n  gap:8px;\n  color:#374151;\n  font-size:12px;\n  font-weight:700;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  white-space:nowrap;\n}\n\n.holkie-trust-check{\n  color:#F97316;\n  font-size:14px;\n  font-weight:800;\n}\n\n.holkie-trust-divider{\n  width:4px;\n  height:4px;\n  border-radius:50%;\n  background:#CBD5E1;\n}\n\n@media screen and (max-width:990px){\n\n  #holkie-trust-inner{\n    justify-content:flex-start;\n    overflow-x:auto;\n    flex-wrap:nowrap;\n    scrollbar-width:none;\n    -ms-overflow-style:none;\n  }\n\n  #holkie-trust-inner::-webkit-scrollbar{\n    display:none;\n  }\n\n  .holkie-trust-item{\n    font-size:10px;\n  }\n\n  .holkie-trust-divider{\n    display:none;\n  }\n\n}\n<\/style>\n\n<section id=\"holkie-trust-wrap\">\n\n  <div id=\"holkie-trust-inner\">\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓<\/span>\n      10,000+ Orders\n    <\/div>\n\n    <div class=\"holkie-trust-divider\"><\/div>\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓<\/span>\n      US \/ CA \/ EU \/ UK Warehouses\n    <\/div>\n\n    <div class=\"holkie-trust-divider\"><\/div>\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓<\/span>\n      Retail & Bulk Orders\n    <\/div>\n\n    <div class=\"holkie-trust-divider\"><\/div>\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓<\/span>\n      Nationwide Bulk Shipping\n    <\/div>\n\n    <div class=\"holkie-trust-divider\"><\/div>\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓<\/span>\n      OEM & Custom Support\n    <\/div>\n\n  <\/div>\n\n<\/section>","color_text":"","color_background":"","gradient_background":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":0,"padding_bottom":0,"divider":false,"narrow":false,"rounded":false}},"logo_list_G69UT9":{"type":"logo-list","blocks":{"logo_Jcqk4r":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/amazon-logo-squid-ink-smile-grey-transp.png","height":32,"link":""}},"logo_KWhNhx":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/TS_logo_grey-transp.png","height":32,"link":""}},"logo_qcM6dz":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/Mor-Medical_International-grey-transp.png","height":32,"link":""}},"logo_NcyYdg":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/sblabs-normal-logo_8e4cfdec-e719-495b-b6b0-ce8638881688.png","height":32,"link":""}},"logo_XHiRd8":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/partner_11_grey_transp.png","height":32,"link":""}},"logo_h7dLrq":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/partner_10_grey-transp.png","height":32,"link":""}},"logo_eU7iNF":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/partner_logo_9-grey-transp.png","height":32,"link":""}}},"block_order":["logo_Jcqk4r","logo_KWhNhx","logo_qcM6dz","logo_NcyYdg","logo_XHiRd8","logo_h7dLrq","logo_eU7iNF"],"name":"t:sections.logo-list.name","settings":{"layout":"marquee","grid_horizontal":70,"direction":"left","speed":13,"heading":"","heading_size":"title-sm","heading_alignment":"text-center md:items-center","heading_tag":"h2","subheading":"","description":"","button_label":"","button_link":"","button_external":false,"button_icon":true,"highlighted_text":"none","highlighted_scribble":"circle","highlighted_reveal":false,"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":32,"padding_bottom":32,"divider":false,"full_width":false,"rounded":false}},"collection-list":{"type":"collection-list","blocks":{"collection-2":{"type":"collection","settings":{"collection":"workbench-casters","image":"shopify:\/\/shop_images\/caster_for_workbench.webp","title":"Workbench","description":"For mobile workstations and shop tables","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection-1":{"type":"collection","settings":{"collection":"rolling-tool-cart-casters","image":"shopify:\/\/shop_images\/casters_for_tool_cart.webp","title":"Tool Cart","description":"Built for garage and workshop carts","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection-3":{"type":"collection","settings":{"collection":"industrial-cart-casters","image":"shopify:\/\/shop_images\/casters_for_industrial_cart.webp","title":"Industrial Cart","description":"Heavy-duty mobility for industrial transport","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection-4":{"type":"collection","settings":{"collection":"office-chair-wheels","image":"shopify:\/\/shop_images\/6_5ff70918-b247-4b82-8c78-c68529df9cde.webp","title":"Offce Chair","description":"Smooth rolling replacement chair wheels","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":0}},"collection_CmBhTi":{"type":"collection","settings":{"collection":"furniture-casters","image":"shopify:\/\/shop_images\/casters_for_furniture.webp","title":"Furniture","description":"Protect floors while improving mobility","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection-5":{"type":"collection","settings":{"collection":"wire-shelving-casters","image":"shopify:\/\/shop_images\/1.webp","title":"Wire Shelving","description":"Caster solutions for storage systems","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection-6":{"type":"collection","settings":{"collection":"gate-casters","image":"shopify:\/\/shop_images\/caster_for_gate_use.webp","title":"Gate","description":"Support heavy rolling gates and doors","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection_GNmpX6":{"type":"collection","settings":{"collection":"wheels-for-medical-cart","image":"shopify:\/\/shop_images\/casters_for_medical_equipment.webp","title":"Medical Equipment","description":"Quiet and reliable mobility for care equipment","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}}},"block_order":["collection-2","collection-1","collection-3","collection-4","collection_CmBhTi","collection-5","collection-6","collection_GNmpX6"],"settings":{"card_style":"card","image_type":"collection","image_ratio":"square","show_products_count":true,"show_view_all":false,"columns":4,"carousel_on_desktop":false,"columns_mobile":"2","swipe_on_mobile":false,"heading":"Shop by Application","heading_size":"title-sm","heading_alignment":"text-left md:items-end md:flex-row","heading_tag":"h2","subheading":"","description":"","highlighted_text":"none","highlighted_scribble":"circle","highlighted_reveal":false,"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":36,"padding_bottom":36,"divider":false,"full_width":false,"rounded":false}},"collection_list_HaAQzx":{"type":"collection-list","blocks":{"collection_dpkf34":{"type":"collection","settings":{"collection":"heavy-duty-casters","image":"shopify:\/\/shop_images\/5_inch_plate_caster_wheel_with_total_lock_orange_set_of_4.webp","title":"Heavy-duty Casters","description":"Up to 1,000-capacity industrial loads","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection_ehpRT8":{"type":"collection","settings":{"collection":"stem-casters","image":"shopify:\/\/shop_images\/stem_caster.webp","title":"Stem Casters","description":"Threaded & grip ring mounting options","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection_eGQLUi":{"type":"collection","settings":{"collection":"plate-casters","image":"shopify:\/\/shop_images\/plate_caster.webp","title":"","description":"Stable top plate mounting solutions","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection_FrmYjF":{"type":"collection","settings":{"collection":"total-lock-casters","image":"shopify:\/\/shop_images\/total_lock_caster.webp","title":"Total Lock Casters","description":"Locks wheel rotation and swivel motion","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":0}},"collection_qUP6jL":{"type":"collection","settings":{"collection":"leveling-casters","image":"shopify:\/\/shop_images\/leveling_casters.webp","title":"Leveling Casters","description":"Mobility with built-in stabilization","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection_kWU6Vw":{"type":"collection","settings":{"collection":"light-duty-casters","image":"shopify:\/\/shop_images\/light_duty_caster.webp","title":"Light-duty Casters","description":"Smooth rolling for lighter equipment","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection_9h9EDc":{"type":"collection","settings":{"collection":"standard-duty-casters","image":"shopify:\/\/shop_images\/3_inch_plate_caster_wheel_no_brake.webp","title":"Standard Duty Casters","description":"Everyday commercial mobility solutions","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}},"collection_pXDfj9":{"type":"collection","settings":{"collection":"retractable-casters-leveling-adjustable-caster-wheels","image":"shopify:\/\/shop_images\/retractable_caster.webp","title":"Retractable Casters","description":"Lift equipment off the floor when needed","overlay_content":false,"color_text":"#ffffff","color_overlay":"#171717","overlay_opacity":25}}},"block_order":["collection_dpkf34","collection_ehpRT8","collection_eGQLUi","collection_FrmYjF","collection_qUP6jL","collection_kWU6Vw","collection_9h9EDc","collection_pXDfj9"],"settings":{"card_style":"card","image_type":"collection","image_ratio":"square","show_products_count":true,"show_view_all":false,"columns":4,"carousel_on_desktop":false,"columns_mobile":"2","swipe_on_mobile":false,"heading":"Shop by Casters","heading_size":"title-sm","heading_alignment":"text-left md:items-end md:flex-row","heading_tag":"h2","subheading":"","description":"","highlighted_text":"none","highlighted_scribble":"circle","highlighted_reveal":false,"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":36,"padding_bottom":36,"divider":false,"full_width":false,"rounded":false}},"featured_collections_kqBLEk":{"type":"featured-collections","blocks":{"collection_eD8Yqg":{"type":"collection","settings":{"collection":"best-sellers","products":[],"title":""}},"collection_LnYPae":{"type":"collection","settings":{"collection":"office-chair-wheels","products":[],"title":"Office Chair Wheels"}},"collection_ebTiGe":{"type":"collection","settings":{"collection":"retractable-casters-leveling-adjustable-caster-wheels","products":[],"title":"Retractable Leveling Casters"}}},"block_order":["collection_eD8Yqg","collection_LnYPae","collection_ebTiGe"],"name":"t:sections.featured-collections.name","settings":{"product_limit":12,"columns":4,"carousel_on_desktop":false,"show_view_all":false,"columns_mobile":"1","swipe_on_mobile":true,"heading":"Best Sellers","heading_size":"title-sm","heading_alignment":"text-left md:items-end md:flex-row","heading_tag":"h2","subheading":"","description":"","highlighted_text":"none","highlighted_scribble":"circle","highlighted_reveal":false,"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":36,"padding_bottom":36,"divider":false,"full_width":false,"rounded":false}},"custom_liquid_7E7Epp":{"type":"custom-liquid","name":"t:sections.custom-liquid.name","settings":{"liquid":"<style>\n.holkie-why {\n  width: 100%;\n  background: #f8f9fb;\n  padding: 70px 20px;\n}\n\n.holkie-why-inner {\n  max-width: 1280px;\n  margin: 0 auto;\n}\n\n.holkie-why-head {\n  text-align: center;\n  margin-bottom: 42px;\n}\n\n.holkie-why-head h2 {\n  font-size: 36px;\n  line-height: 1.2;\n  font-weight: 700;\n  color: #1F2933;\n  margin: 0 0 12px;\n}\n\n.holkie-why-head p {\n  font-size: 16px;\n  color: #1F2933;\n  margin: 0;\n}\n\n.holkie-why-grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 18px;\n}\n\n.holkie-why-card {\n  background: #fff;\n  border: 1px solid #e5e7eb;\n  border-radius: 14px;\n  padding: 28px;\n  transition: all .25s ease;\n}\n\n.holkie-why-card h3 {\n  font-size: 20px;\n  line-height: 1.3;\n  font-weight: 600;\n  color: #1F2933;\n  margin: 0 0 10px;\n}\n\n.holkie-why-card p {\n  font-size: 15px;\n  line-height: 1.7;\n  color: #666;\n  margin: 0;\n}\n\n@media screen and (max-width: 990px) {\n  .holkie-why {\n    padding: 56px 16px;\n  }\n\n  .holkie-why-head {\n    margin-bottom: 28px;\n  }\n\n  .holkie-why-head h2 {\n    font-size: 28px;\n  }\n\n  .holkie-why-grid {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 14px;\n  }\n\n  .holkie-why-card {\n    padding: 22px;\n  }\n}\n\n@media screen and (max-width: 640px) {\n  .holkie-why {\n    padding: 46px 14px;\n  }\n\n  .holkie-why-head h2 {\n    font-size: 24px;\n  }\n\n  .holkie-why-head p {\n    font-size: 14px;\n    line-height: 1.6;\n  }\n\n  .holkie-why-grid {\n    grid-template-columns: repeat(2, 1fr);\ngap: 8px;\n  }\n\n  .holkie-why-card {\n    padding: 10px;\n    border-radius: 12px;\n  }\n\n  .holkie-why-card h3 {\n    font-size: 16px;\n    line-height: 1.35;\n  }\n\n  .holkie-why-card p {\n    font-size: 13px;\n    line-height: 1.55;\n  }\n}\n<\/style>\n\n<section class=\"holkie-why\">\n  <div class=\"holkie-why-inner\">\n\n    <div class=\"holkie-why-head\">\n      <h2>Why Choose Holkie<\/h2>\n      <p>\n        Built for industrial, commercial, retail, and OEM mobility solutions.\n      <\/p>\n    <\/div>\n\n    <div class=\"holkie-why-grid\">\n\n      <div class=\"holkie-why-card\">\n        <h3>US \/ CA \/ EU \/ UK Warehouses<\/h3>\n        <p>\n          Fast fulfillment for retail orders, distributors, and nationwide bulk shipments.\n        <\/p>\n      <\/div>\n\n      <div class=\"holkie-why-card\">\n        <h3>OEM & Custom Solutions<\/h3>\n        <p>\n          Custom wheels, brakes, stem sizes, packaging, and logo support available.\n        <\/p>\n      <\/div>\n\n      <div class=\"holkie-why-card\">\n        <h3>Bulk Order Support<\/h3>\n        <p>\n          MOQ-friendly pricing for factories, workshops, industrial projects, and resellers.\n        <\/p>\n      <\/div>\n\n      <div class=\"holkie-why-card\">\n        <h3>Certified Quality Standards<\/h3>\n        <p>\n          TÜV-tested materials and industrial-grade manufacturing standards for reliable performance.\n        <\/p>\n      <\/div>\n\n      <div class=\"holkie-why-card\">\n        <h3>Trusted by Global Buyers<\/h3>\n        <p>\n          Supporting distributors, OEM buyers, workshops, and online sellers worldwide.\n        <\/p>\n      <\/div>\n\n      <div class=\"holkie-why-card\">\n        <h3>Secure Checkout & Business Payments<\/h3>\n        <p>\n          Safe payments via cards, PayPal, and trusted purchasing workflows for business orders.\n        <\/p>\n      <\/div>\n\n    <\/div>\n  <\/div>\n<\/section>","color_text":"","color_background":"","gradient_background":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":0,"padding_bottom":0,"divider":false,"narrow":false,"rounded":false}},"holkie_oem_support_NQqCwi":{"type":"holkie-oem-support","blocks":{"card_rpwUFp":{"type":"card","settings":{"bg_svg":"<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-hard-hat-icon lucide-hard-hat\"><path d=\"M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5\"><\/path><path d=\"M14 6a6 6 0 0 1 6 6v3\"><\/path><path d=\"M4 15v-3a6 6 0 0 1 6-6\"><\/path><rect x=\"2\" y=\"15\" width=\"20\" height=\"4\" rx=\"1\"><\/rect><\/svg>","title":"Engineering Support","text":"Assistance with wheel selection, load ratings, mounting options, and custom mobility solutions."}},"card_74gjxy":{"type":"card","settings":{"bg_svg":"<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-wrench-icon lucide-wrench\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z\"><\/path><\/svg>","title":"Custom Logo & Branding","text":"OEM packaging, private labeling, branded caster wheels, and custom product support available."}},"card_Uq3b93":{"type":"card","settings":{"bg_svg":"<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-boxes-icon lucide-boxes\"><path d=\"M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z\"><\/path><path d=\"m7 16.5-4.74-2.85\"><\/path><path d=\"m7 16.5 5-3\"><\/path><path d=\"M7 16.5v5.17\"><\/path><path d=\"M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z\"><\/path><path d=\"m17 16.5-5-3\"><\/path><path d=\"m17 16.5 4.74-2.85\"><\/path><path d=\"M17 16.5v5.17\"><\/path><path d=\"M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z\"><\/path><path d=\"M12 8 7.26 5.15\"><\/path><path d=\"m12 8 4.74-2.85\"><\/path><path d=\"M12 13.5V8\"><\/path><\/svg>","title":"MOQ & Container Shipping","text":"Flexible minimum order quantities with LCL and full container shipment support worldwide."}},"card_DGfpyP":{"type":"card","settings":{"bg_svg":"<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-factory-icon lucide-factory\"><path d=\"M12 16h.01\"><\/path><path d=\"M16 16h.01\"><\/path><path d=\"M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z\"><\/path><path d=\"M8 16h.01\"><\/path><\/svg>","title":"Factory Direct Supply","text":"Stable production capacity, quality control, and long-term supply support for OEM and industrial buyers."}}},"block_order":["card_rpwUFp","card_74gjxy","card_Uq3b93","card_DGfpyP"],"name":"Holkie OEM","settings":{"kicker":"OEM & BULK SUPPORT","heading":"Need Bulk Pricing or OEM Support?","description":"Holkie supports bulk orders, OEM projects, Amazon sellers, distributors, workshops, and industrial buyers with flexible production, custom caster solutions, and global shipping support.","button_1_text":"Request Quote","button_1_link":"shopify:\/\/pages\/bulk-order","button_2_text":"Talk to Holkie","button_2_link":"shopify:\/\/pages\/contact"}},"shop_the_feed_KC9BJz":{"type":"shop-the-feed","blocks":{"feed_YCbTLQ":{"type":"feed","settings":{"image":"shopify:\/\/shop_images\/leveling_caster_top_plate_mount_from_customer_cases.jpg","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":true,"button_label":"","button_link":"shopify:\/\/products\/td60-leveling-casters-2200lb-workbench","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}},"feed_khaCPj":{"type":"feed","settings":{"image":"shopify:\/\/shop_images\/stem_caster_from_customer_cases.jpg","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":true,"button_label":"","button_link":"shopify:\/\/products\/2-inch-total-lock-casters-3-8-16-stem-black","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}},"feed_cNHwJd":{"type":"feed","settings":{"image":"shopify:\/\/shop_images\/20260119153803_213_22.jpg","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":true,"button_label":"","button_link":"shopify:\/\/products\/retractable-casters-lifting-lowering-function","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}},"feed_4jhq8G":{"type":"feed","settings":{"image":"shopify:\/\/shop_images\/71eVJzKVF9L.jpg","video":"shopify:\/\/files\/videos\/chair wheels.mp4","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":true,"button_label":"","button_link":"shopify:\/\/products\/office-chair-wheels-11x22mm","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}},"feed_yyzJT4":{"type":"feed","settings":{"image":"shopify:\/\/shop_images\/grip_ring_stem_caster_from_customer_cases.jpg","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":true,"button_label":"","button_link":"shopify:\/\/products\/grip-ring-stem-casters-tpr-swivel-casters","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}},"feed_yqHfFC":{"type":"feed","settings":{"image":"shopify:\/\/shop_images\/71Xtxs9lTBL.jpg","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":true,"button_label":"","button_link":"shopify:\/\/products\/2-inch-l-shaped-casters-2-locking-2-swivel","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}},"feed_XgzPME":{"type":"feed","settings":{"image":"shopify:\/\/shop_images\/71YFRdDTECL.jpg","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":true,"button_label":"","button_link":"shopify:\/\/products\/3-inch-adjustable-expanding-stem-casters","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}},"feed_iHjeMz":{"type":"feed","settings":{"video":"shopify:\/\/files\/videos\/leveling casters.mp4","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":false,"button_label":"","button_link":"shopify:\/\/products\/td60-leveling-casters-threaded-stem-2200lb-workbench","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}},"feed_UcgrnV":{"type":"feed","settings":{"video":"shopify:\/\/files\/videos\/stem mount casters.mp4","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":false,"button_label":"","button_link":"shopify:\/\/products\/3-in-stem-caster-wheels-with-side-brake-metric-thread","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}},"feed_pgdXYt":{"type":"feed","settings":{"video":"shopify:\/\/files\/videos\/heavy-duty caster wheels 3.mp4","enable_video_autoplay":true,"enable_video_looping":true,"video_on_hover":false,"button_label":"","button_link":"shopify:\/\/products\/4-inch-plate-casters-with-brake-black","button_external":false,"button_icon":false,"account_name":"","account_description":"","account_button":"","account_link":"","account_link_external":false,"color_text":"rgba(0,0,0,0)","color_button_text":"rgba(0,0,0,0)","color_button_background":"rgba(0,0,0,0)","color_button_gradient":"","hotspot_color_text_1":"#ffffff","hotspot_vertical_1":45,"hotspot_horizontal_1":25,"hotspot_product_1":"","hotspot_color_text_2":"#ffffff","hotspot_vertical_2":30,"hotspot_horizontal_2":65,"hotspot_product_2":"","hotspot_color_text_3":"#ffffff","hotspot_vertical_3":60,"hotspot_horizontal_3":75,"hotspot_product_3":"","hotspot_color_text_4":"#ffffff","hotspot_vertical_4":50,"hotspot_horizontal_4":50,"hotspot_product_4":""}}},"block_order":["feed_YCbTLQ","feed_khaCPj","feed_cNHwJd","feed_4jhq8G","feed_yyzJT4","feed_yqHfFC","feed_XgzPME","feed_iHjeMz","feed_UcgrnV","feed_pgdXYt"],"name":"t:sections.shop-the-feed.name","settings":{"columns":4,"carousel_on_desktop":false,"image_ratio":"portrait","columns_mobile":"1","swipe_on_mobile":true,"account_name":"","show_vendor":false,"show_price":false,"heading":"Real Use Cases","heading_size":"title-sm","heading_alignment":"text-left md:items-end md:flex-row","heading_tag":"h2","subheading":"","description":"","button_label":"","button_link":"","button_external":false,"button_icon":false,"highlighted_text":"none","highlighted_scribble":"circle","highlighted_reveal":false,"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":80,"padding_bottom":100,"divider":false,"full_width":false,"rounded":false}},"reveal_testimonials_qXnT8Y":{"type":"reveal-testimonials","blocks":{"testimonial_CG8ABY":{"type":"testimonial","settings":{"icon":"none","text":"<p>50 + Trusted Worldwide Countries<\/p>","author":"HOLKIE CASTERS","author_info":"To provide the best solutions","author_url":"","image":"shopify:\/\/shop_images\/Holkie_Favicon_2.png","image_ratio":"rounded","highlighted_text":"none","highlighted_scribble":"circle"}},"testimonial_MELxkR":{"type":"testimonial","settings":{"icon":"quote","text":"<p>From small batches to large B2B orders, we ship directly from China factory or overseas stock.<\/p>","author":"Flexible Order Support","author_info":"","author_url":"","image":"shopify:\/\/shop_images\/package_eaeb4774-6ff3-4603-8188-a4505a973e18.svg","image_ratio":"rounded","highlighted_text":"none","highlighted_scribble":"circle"}},"testimonial_tgNL3T":{"type":"testimonial","settings":{"icon":"quote","text":"<p>Leading caster brand on Amazon with thousands of trusted customers.<\/p>","author":"Amazon Top Brand","author_info":"","author_url":"","image":"shopify:\/\/shop_images\/star_b175cc01-3b3a-4669-ad7c-a795f68a18d2.svg","image_ratio":"rounded","highlighted_text":"none","highlighted_scribble":"circle"}},"testimonial_9NEjBd":{"type":"testimonial","settings":{"icon":"quote","text":"<p>Works with TÜV to ensure that HOLKIE casters comply with strict quality standards.<\/p>","author":"Certified by TÜV","author_info":"","author_url":"","image":"shopify:\/\/shop_images\/shield_2f42b106-bcfa-4577-8ed9-836716a79276.svg","image_ratio":"rounded","highlighted_text":"none","highlighted_scribble":"circle"}},"testimonial_88xFdH":{"type":"testimonial","settings":{"icon":"quote","text":"<p>All orders processed within 3-7 business days.<\/p>","author":"Fast & Free Shipping","author_info":"","author_url":"","image":"shopify:\/\/shop_images\/globe_6f5b7a9d-c072-478b-887e-6d1e7d6a6c33.svg","image_ratio":"rounded","highlighted_text":"none","highlighted_scribble":"circle"}},"testimonial_MbPQTn":{"type":"testimonial","settings":{"icon":"quote","text":"<p>Pay securely with Credit Card, PayPal, Google Pay, Shop Pay, Apple Pay, or trusted methods.<\/p>","author":"Secure Payments","author_info":"","author_url":"","image":"shopify:\/\/shop_images\/credit-card_bb31acc4-056c-4b0e-8a10-5bb6c77eb235.svg","image_ratio":"rounded","highlighted_text":"none","highlighted_scribble":"circle"}},"testimonial_VLEqkq":{"type":"testimonial","settings":{"icon":"quote","text":"<p>Quick response and real problem-solving.<\/p>","author":"Expert Support","author_info":"","author_url":"","image":"shopify:\/\/shop_images\/Holkie_CS_200.png","image_ratio":"square","highlighted_text":"none","highlighted_scribble":"circle"}}},"block_order":["testimonial_CG8ABY","testimonial_MELxkR","testimonial_tgNL3T","testimonial_9NEjBd","testimonial_88xFdH","testimonial_MbPQTn","testimonial_VLEqkq"],"disabled":true,"name":"t:sections.reveal-testimonials.name","settings":{"heading":"Why Choose Holkie Caster Wheels","heading_size":"title-sm","heading_tag":"h2","color_text":"","color_background":"rgba(0,0,0,0)","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":72,"padding_bottom":72,"divider":false,"rounded":false}},"rich-text-1":{"type":"rich-text","blocks":{"text":{"type":"text","settings":{"text":"<p><strong>Holkie<\/strong> is a trusted caster manufacturer and global caster supplier founded in 1995. With decades of engineering experience, patented designs, and certified production, we create caster wheels built for reliability and real-world performance.<\/p><p>From our China factory to our U.S., Canada, U.K., and EU warehouses, we deliver fast, flexible service to customers worldwide. As a leading Amazon seller and a dedicated caster factory, we support both small-batch orders and large B2B projects with quick shipping and professional guidance.<\/p><p>Whether you're looking for heavy-duty casters, furniture wheels, or custom mobility solutions, Holkie is here to help you move with confidence.<\/p>","text_font":"body","text_size":"subtext-md","text_max_size":32,"text_line_height":1.6,"text_letter_spacing":0,"text_capitalize":false,"secondary_color":false,"highlighted_text":"none","highlighted_scribble":"circle"}}},"block_order":["text"],"settings":{"text_alignment":"left","text_alignment_mobile":"left","heading":"<em>Rolling for Better Life<\/em>","heading_size":"title-sm","heading_alignment":"text-center md:items-center","heading_width":"small","heading_tag":"h2","subheading":"","description":"","button_label":"About Us","button_link":"shopify:\/\/pages\/about","button_external":true,"button_icon":true,"highlighted_text":"scribble","highlighted_scribble":"squiggle-underline","highlighted_reveal":false,"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":36,"padding_bottom":36,"divider":false,"narrow":false,"rounded":false}},"blog_post_new_djEK66":{"type":"blog-post-new","name":"All Blog Posts","settings":{"post_limit":4,"columns":4,"carousel_on_desktop":false,"show_view_all":true,"columns_mobile":"1","swipe_on_mobile":true,"image_ratio":"square","show_tags":true,"show_date":false,"show_comments":false,"show_author":false,"show_excerpt":false,"heading":"The Journal","heading_size":"title-sm","heading_alignment":"text-left md:items-end md:flex-row","heading_tag":"h2","subheading":"","description":"","highlighted_text":"none","highlighted_scribble":"circle","highlighted_reveal":false,"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":36,"padding_bottom":36,"divider":false,"full_width":false,"rounded":false}},"rich_text_read_button_9BUNLa":{"type":"rich-text-read-button","blocks":{"text_yBbdj7":{"type":"text","settings":{"text":"<h2>Caster Wheels & Casters Engineered for Real-World Performance<\/h2><p>Casters play a critical role in how furniture, equipment, and industrial systems move, stabilize, and perform over time. At Holkie, we design and manufacture caster wheels that deliver smooth mobility, dependable load support, and long-term durability across a wide range of applications.<\/p><p>With decades of caster engineering experience behind every product, Holkie casters are built to meet the practical demands of workshops, warehouses, offices, retail environments, and custom projects. Whether you need compact furniture casters or heavy-duty industrial casters, our solutions are designed to roll smoothly, lock securely, and perform consistently in real-world conditions.<\/p><h3>Explore Holkie Caster Types & Mounting Options<\/h3><p>Different applications require different caster configurations. Holkie offers a complete range of casters and caster wheels, covering multiple mounting styles, wheel materials, and mobility functions.<\/p><p>Our caster collections include:<\/p><ul><li>Stem casters for furniture, carts, and light-duty equipment<\/li><li>Plate casters for stable mounting on workbenches and industrial frames<\/li><li>Swivel casters for maximum maneuverability in tight spaces<\/li><li>Locking casters to secure equipment safely when stationary<\/li><li>Heavy-duty casters designed for high load capacities<\/li><li>Industrial casters for factories, warehouses, and material handling<\/li><li>Office chair wheels for smooth rolling and floor protection<\/li><li>Furniture casters for cabinets, sofas, tables, and storage units<\/li><li>Workbench casters for mobile workstations and tool benches<\/li><li>Retractable casters that allow equipment to remain level when not in motion<\/li><li>Leveling casters that combine mobility with adjustable height control<\/li><\/ul><p>Each caster category is engineered to balance strength, movement control, and mounting compatibility.<\/p><h3>Caster Wheels for Industrial, Commercial & Everyday Use<\/h3><p>Holkie caster wheels are used across a wide range of environments where mobility, stability, and safety matter:<\/p><ul><li>Mobile workbenches and tool carts<\/li><li>Industrial trolleys, racks, and machinery<\/li><li>Office chairs and adjustable furniture<\/li><li>Retail displays and store fixtures<\/li><li>Warehouse equipment and logistics systems<\/li><li>DIY projects, custom furniture, and maker builds<\/li><\/ul><p>By choosing the right caster wheels, businesses and individuals can improve efficiency, reduce physical strain, and extend the lifespan of their equipment.<\/p><h3>How to Choose the Right Casters for Your Application<\/h3><p>Selecting the correct casters depends on several practical factors. When evaluating caster wheels, consider:<\/p><ul><li>Load capacity: Total weight of the equipment plus safety margin<\/li><li>Wheel material: Polyurethane, thermoplastic rubber, polypropylene, or steel for different surfaces<\/li><li>Mounting type: Stem, threaded stem, or top plate installation<\/li><li>Mobility needs: Swivel, rigid, locking, or retractable functionality<\/li><li>Surface conditions: Smooth floors, concrete, carpet, or uneven ground<\/li><\/ul><p>Understanding these factors helps ensure stable movement, reliable braking, and long-term performance.<\/p><h3>Designed for Flexible Orders & Scalable Projects<\/h3><p>Holkie casters are trusted by individual buyers, small businesses, and B2B customers worldwide. Our caster solutions support:<\/p><ul><li>Small-batch orders for repairs, upgrades, or DIY projects<\/li><li>Scalable sourcing for furniture makers and manufacturers<\/li><li>Long-term supply for industrial and commercial operations<\/li><\/ul><p>From furniture casters to industrial-grade mobility solutions, Holkie provides caster wheels that adapt to changing needs without compromising quality or performance.<\/p>","enable_read_more":true,"read_more_label":"Read More","read_less_label":"Read Less","text_font":"body","text_size":"subtext-sm","text_max_size":32,"text_line_height":1.6,"text_letter_spacing":0,"text_capitalize":false,"secondary_color":false,"highlighted_text":"none","highlighted_scribble":"circle"}}},"block_order":["text_yBbdj7"],"name":"Rich text read button","settings":{"text_alignment":"left","text_alignment_mobile":"left","collapsed_height":190,"heading":"","heading_size":"title-sm","heading_alignment":"text-left md:items-end md:flex-row","heading_width":"small","heading_tag":"h2","subheading":"","description":"","button_label":"","button_link":"","button_external":false,"button_icon":true,"highlighted_text":"none","highlighted_scribble":"circle","highlighted_reveal":false,"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":0,"padding_bottom":0,"divider":false,"narrow":true,"rounded":false}},"faq_r9UUX4":{"type":"faq","blocks":{"question_mPjzgx":{"type":"question","settings":{"title":"What are casters used for?","text":"<p>Casters are used to add mobility to furniture, equipment, and industrial systems. They are commonly installed on workbenches, carts, office chairs, storage units, and machinery to make items easier to move, reposition, and secure safely.<\/p>","highlighted_text":"none","highlighted_scribble":"circle"}},"question_6mhTHq":{"type":"question","settings":{"title":"What is the difference between casters and caster wheels?","text":"<p>A caster typically includes the wheel, mounting structure, and swivel or locking mechanism, while a caster wheel refers only to the rolling wheel itself. Complete casters provide both mobility and mounting support for equipment and furniture.<\/p>","highlighted_text":"none","highlighted_scribble":"circle"}},"question_G4fxdY":{"type":"question","settings":{"title":"How do I choose the right casters for my application?","text":"<p>Choosing the right casters depends on load capacity, wheel material, mounting type, and how the equipment will be used. Floor surface, required maneuverability, and whether locking or leveling is needed are also important factors to consider.<\/p>","highlighted_text":"none","highlighted_scribble":"circle"}},"question_eTHVV4":{"type":"question","settings":{"title":"What are retractable casters used for?","text":"<p>Retractable casters allow equipment to be mobile when needed and rest firmly on the floor when not in motion. They are commonly used on workbenches, machinery, and heavy furniture where stability is required during operation.<\/p>","highlighted_text":"none","highlighted_scribble":"circle"}},"question_z3nJGM":{"type":"question","settings":{"title":"What are leveling casters?","text":"<p>Leveling casters combine a rolling wheel with an adjustable leveling foot. After positioning the equipment, the foot can be lowered to stabilize and level it, making leveling casters ideal for uneven floors and precision workstations.<\/p>","highlighted_text":"none","highlighted_scribble":"circle"}}},"block_order":["question_mPjzgx","question_6mhTHq","question_G4fxdY","question_eTHVV4","question_z3nJGM"],"name":"t:sections.faq.name","settings":{"style":"with-background","heading":"FAQs","heading_size":"title-sm","heading_alignment":"text-left md:items-end md:flex-row","heading_tag":"h2","subheading":"","description":"","button_label":"","button_link":"","button_external":false,"button_icon":true,"highlighted_text":"none","highlighted_scribble":"circle","highlighted_reveal":false,"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","color_overlay":"#ffffff","overlay_opacity":16,"padding_top":20,"padding_bottom":20,"divider":false,"narrow":false,"rounded":false}},"1766803414e9238319":{"type":"apps","blocks":{"judge_me_reviews_medals_piR47U":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/medals\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{}},"judge_me_reviews_featured_carousel_pnwkz6":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/featured_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"maxwidth":2000}}},"block_order":["judge_me_reviews_medals_piR47U","judge_me_reviews_featured_carousel_pnwkz6"],"settings":{"color_text":"","color_background":"","gradient_background":"","color_highlight":"","gradient_highlight":"","color_button_text":"","color_button_background":"","color_button_gradient":"","padding_top":72,"padding_bottom":72,"divider":false,"full_width":true,"rounded":false}}},"order":["custom_liquid_6XL67n","custom_liquid_zjWbEj","logo_list_G69UT9","collection-list","collection_list_HaAQzx","featured_collections_kqBLEk","custom_liquid_7E7Epp","holkie_oem_support_NQqCwi","shop_the_feed_KC9BJz","reveal_testimonials_qXnT8Y","rich-text-1","blog_post_new_djEK66","rich_text_read_button_9BUNLa","faq_r9UUX4","1766803414e9238319"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_6XL67n": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "liquid": "<style>\n#holkie-hero-v2,\n#holkie-hero-v2 *{\n  box-sizing:border-box;\n}\n\n#holkie-hero-v2{\n  width:100%;\n  background:\n    linear-gradient(180deg,#2A0F0F 0%,#1A0B0B 100%);\n  overflow:hidden;\n  position:relative;\n}\n\n#holkie-hero-v2::before{\n  content:\"\";\n  position:absolute;\n  right:-120px;\n  top:-120px;\n  width:320px;\n  height:320px;\n  background:radial-gradient(circle,rgba(254,215,0,.10) 0%,transparent 70%);\n  pointer-events:none;\n}\n\n#holkie-hero-v2::after{\n  content:\"\";\n  position:absolute;\n  right:18%;\n  bottom:-80px;\n  width:220px;\n  height:220px;\n  background:radial-gradient(circle,rgba(249,115,22,.10) 0%,transparent 70%);\n  pointer-events:none;\n}\n\n#holkie-hero-inner{\n  max-width:1320px;\n  margin:0 auto;\n  padding:0 28px;\n  position:relative;\n  z-index:2;\n}\n\n#holkie-hero-main{\n  min-height:184px;\n  display:grid;\n  grid-template-columns:1.2fr .8fr;\n  gap:40px;\n  align-items:center;\n}\n\n#holkie-hero-left{\n  padding:20px 0;\n  min-width:0;\n}\n\n.holkie-top-row{\n  display:flex;\n  align-items:center;\n  gap:8px;\n  margin-bottom:12px;\n  flex-wrap:wrap;\n}\n\n.holkie-pill{\n  display:inline-flex;\n  align-items:center;\n  gap:6px;\n  padding:5px 10px;\n  border-radius:999px;\n  background:rgba(249,115,22,.10);\n  border:1px solid rgba(249,115,22,.22);\n  color:#FDBA74;\n  font-size:9px;\n  font-weight:700;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  line-height:1;\n}\n\n.holkie-pill-dot{\n  width:6px;\n  height:6px;\n  border-radius:50%;\n  background:#F97316;\n}\n\n#holkie-hero-left h2{\n  margin:0 0 10px;\n  font-size:42px;\n  line-height:.94;\n  letter-spacing:-.04em;\n  color:#FFFFFF;\n  font-weight:700;\n}\n\n.holkie-accent{\n  color:#FED700;\n}\n\n.holkie-subtext{\n  max-width:680px;\n  font-size:13px;\n  line-height:1.65;\n  color:rgba(255,255,255,.72);\n  margin-bottom:16px;\n}\n\n.holkie-cta-row{\n  display:flex;\n  align-items:center;\n  gap:10px;\n  flex-wrap:wrap;\n}\n\n.holkie-btn-primary{\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  height:40px;\n  padding:0 18px;\n  border-radius:10px;\n  background:#952525;\n  color:#FFFFFF;\n  text-decoration:none;\n  font-size:12px;\n  font-weight:700;\n  letter-spacing:.04em;\n  transition:.2s ease;\n  border:1px solid #952525;\n  white-space:nowrap;\n}\n\n.holkie-btn-primary:hover{\n  background:#7F1D1D;\n  transform:translateY(-1px);\n}\n\n.holkie-btn-secondary{\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  height:40px;\n  padding:0 18px;\n  border-radius:10px;\n  background:rgba(255,255,255,.04);\n  border:1px solid rgba(255,255,255,.10);\n  color:#FFFFFF;\n  text-decoration:none;\n  font-size:12px;\n  font-weight:600;\n  transition:.2s ease;\n  white-space:nowrap;\n}\n\n.holkie-btn-secondary:hover{\n  border-color:#FED700;\n  color:#FED700;\n}\n\n#holkie-hero-right{\n  display:flex;\n  justify-content:flex-end;\n  align-items:center;\n}\n\n.holkie-stat-wrap{\n  width:100%;\n  max-width:320px;\n  display:grid;\n  grid-template-columns:1fr 1fr;\n  gap:18px;\n}\n\n.holkie-stat{\n  padding-left:14px;\n  border-left:2px solid rgba(249,115,22,.42);\n}\n\n.holkie-stat-number{\n  font-size:32px;\n  line-height:1;\n  font-weight:700;\n  color:#FFFFFF;\n  margin-bottom:6px;\n  letter-spacing:-.03em;\n}\n\n.holkie-stat-label{\n  color:rgba(255,255,255,.60);\n  font-size:10px;\n  line-height:1.5;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  font-weight:600;\n}\n\n@media screen and (max-width:989px){\n\n  #holkie-hero-inner{\n    padding:0 16px;\n  }\n\n  #holkie-hero-main{\n    min-height:270px;\n    grid-template-columns:1fr;\n    gap:0;\n    align-items:flex-start;\n  }\n\n  #holkie-hero-left{\n    padding:18px 0 14px;\n  }\n\n  .holkie-top-row{\n    margin-bottom:10px;\n    overflow-x:auto;\n    flex-wrap:nowrap;\n    scrollbar-width:none;\n  }\n\n  .holkie-top-row::-webkit-scrollbar{\n    display:none;\n  }\n\n  .holkie-pill{\n    flex-shrink:0;\n    font-size:8px;\n  }\n\n  #holkie-hero-left h1{\n    font-size:28px;\n    margin-bottom:10px;\n  }\n\n  .holkie-subtext{\n    font-size:11px;\n    line-height:1.6;\n    margin-bottom:14px;\n  }\n\n  .holkie-cta-row{\n    width:100%;\n  }\n\n  .holkie-btn-primary,\n  .holkie-btn-secondary{\n    flex:1;\n    height:38px;\n    font-size:11px;\n    padding:0 12px;\n  }\n\n  #holkie-hero-right{\n    width:100%;\n    padding:0 0 16px;\n    justify-content:flex-start;\n  }\n\n  .holkie-stat-wrap{\n    max-width:none;\n    gap:14px;\n  }\n\n  .holkie-stat-number{\n    font-size:22px;\n  }\n\n  .holkie-stat-label{\n    font-size:8px;\n  }\n\n}\n</style>\n\n<section id=\"holkie-hero-v2\">\n\n  <div id=\"holkie-hero-inner\">\n\n    <div id=\"holkie-hero-main\">\n\n      <div id=\"holkie-hero-left\">\n\n        <div class=\"holkie-top-row\">\n\n          <span class=\"holkie-pill\">\n            <span class=\"holkie-pill-dot\"></span>\n            US Warehouses\n          </span>\n\n          <span class=\"holkie-pill\">\n            <span class=\"holkie-pill-dot\"></span>\n            Factory Since 1995\n          </span>\n\n          <span class=\"holkie-pill\">\n            <span class=\"holkie-pill-dot\"></span>\n            OEM Support\n          </span>\n\n        </div>\n\n        <h2>\n          Industrial Casters Built<br>\n          for <span class=\"holkie-accent\">Real Work.</span>\n        </h2>\n\n        <div class=\"holkie-subtext\">\n          Fast shipping from local warehouses. Trusted by workshops, factories, furniture makers, and OEM buyers since 1995.\n        </div>\n\n        <div class=\"holkie-cta-row\">\n\n          <a href=\"/#shopify-section-template--21878555672813__collection-list\" class=\"holkie-btn-primary\">\n            Shop Casters\n          </a>\n\n          <a href=\"/pages/bulk-order\" class=\"holkie-btn-secondary\">\n            Request Bulk Quote\n          </a>\n\n        </div>\n\n      </div>\n\n      <div id=\"holkie-hero-right\">\n\n        <div class=\"holkie-stat-wrap\">\n\n          <div class=\"holkie-stat\">\n            <div class=\"holkie-stat-number\">\n              10K+\n            </div>\n            <div class=\"holkie-stat-label\">\n              Orders Shipped\n            </div>\n          </div>\n\n          <div class=\"holkie-stat\">\n            <div class=\"holkie-stat-number\">\n              30+\n            </div>\n            <div class=\"holkie-stat-label\">\n              Industrial Categories\n            </div>\n          </div>\n\n        </div>\n\n      </div>\n\n    </div>\n\n  </div>\n\n</section>",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "narrow": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
+    "custom_liquid_zjWbEj": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "liquid": "<style>\n#holkie-trust-wrap{\n  background:#FFFFFF;\n  border-top:1px solid #E5E7EB;\n  border-bottom:1px solid #E5E7EB;\n  overflow:hidden;\n}\n\n#holkie-trust-inner{\n  max-width:1320px;\n  margin:0 auto;\n  padding:12px 24px;\n  display:flex;\n  justify-content:center;\n  align-items:center;\n  gap:18px;\n  flex-wrap:wrap;\n}\n\n.holkie-trust-item{\n  display:inline-flex;\n  align-items:center;\n  gap:8px;\n  color:#374151;\n  font-size:12px;\n  font-weight:700;\n  letter-spacing:.08em;\n  text-transform:uppercase;\n  white-space:nowrap;\n}\n\n.holkie-trust-check{\n  color:#F97316;\n  font-size:14px;\n  font-weight:800;\n}\n\n.holkie-trust-divider{\n  width:4px;\n  height:4px;\n  border-radius:50%;\n  background:#CBD5E1;\n}\n\n@media screen and (max-width:990px){\n\n  #holkie-trust-inner{\n    justify-content:flex-start;\n    overflow-x:auto;\n    flex-wrap:nowrap;\n    scrollbar-width:none;\n    -ms-overflow-style:none;\n  }\n\n  #holkie-trust-inner::-webkit-scrollbar{\n    display:none;\n  }\n\n  .holkie-trust-item{\n    font-size:10px;\n  }\n\n  .holkie-trust-divider{\n    display:none;\n  }\n\n}\n</style>\n\n<section id=\"holkie-trust-wrap\">\n\n  <div id=\"holkie-trust-inner\">\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓</span>\n      10,000+ Orders\n    </div>\n\n    <div class=\"holkie-trust-divider\"></div>\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓</span>\n      US / CA / EU / UK Warehouses\n    </div>\n\n    <div class=\"holkie-trust-divider\"></div>\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓</span>\n      Retail & Bulk Orders\n    </div>\n\n    <div class=\"holkie-trust-divider\"></div>\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓</span>\n      Nationwide Bulk Shipping\n    </div>\n\n    <div class=\"holkie-trust-divider\"></div>\n\n    <div class=\"holkie-trust-item\">\n      <span class=\"holkie-trust-check\">✓</span>\n      OEM & Custom Support\n    </div>\n\n  </div>\n\n</section>",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "narrow": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
+    "logo_list_G69UT9": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_Jcqk4r": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/amazon-logo-squid-ink-smile-grey-transp.png",
+            "height": 32,
+            "link": ""
+          }
+        },
+        "logo_KWhNhx": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/TS_logo_grey-transp.png",
+            "height": 32,
+            "link": ""
+          }
+        },
+        "logo_qcM6dz": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Mor-Medical_International-grey-transp.png",
+            "height": 32,
+            "link": ""
+          }
+        },
+        "logo_NcyYdg": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/sblabs-normal-logo_8e4cfdec-e719-495b-b6b0-ce8638881688.png",
+            "height": 32,
+            "link": ""
+          }
+        },
+        "logo_XHiRd8": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/partner_11_grey_transp.png",
+            "height": 32,
+            "link": ""
+          }
+        },
+        "logo_h7dLrq": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/partner_10_grey-transp.png",
+            "height": 32,
+            "link": ""
+          }
+        },
+        "logo_eU7iNF": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/partner_logo_9-grey-transp.png",
+            "height": 32,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_Jcqk4r",
+        "logo_KWhNhx",
+        "logo_qcM6dz",
+        "logo_NcyYdg",
+        "logo_XHiRd8",
+        "logo_h7dLrq",
+        "logo_eU7iNF"
+      ],
+      "name": "t:sections.logo-list.name",
+      "settings": {
+        "layout": "marquee",
+        "grid_horizontal": 70,
+        "direction": "left",
+        "speed": 13,
+        "heading": "",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "collection-list": {
+      "type": "collection-list",
+      "blocks": {
+        "collection-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "workbench-casters",
+            "image": "shopify://shop_images/caster_for_workbench.webp",
+            "title": "Workbench",
+            "description": "For mobile workstations and shop tables",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "rolling-tool-cart-casters",
+            "image": "shopify://shop_images/casters_for_tool_cart.webp",
+            "title": "Tool Cart",
+            "description": "Built for garage and workshop carts",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "industrial-cart-casters",
+            "image": "shopify://shop_images/casters_for_industrial_cart.webp",
+            "title": "Industrial Cart",
+            "description": "Heavy-duty mobility for industrial transport",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "office-chair-wheels",
+            "image": "shopify://shop_images/6_5ff70918-b247-4b82-8c78-c68529df9cde.webp",
+            "title": "Offce Chair",
+            "description": "Smooth rolling replacement chair wheels",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 0
+          }
+        },
+        "collection_CmBhTi": {
+          "type": "collection",
+          "settings": {
+            "collection": "furniture-casters",
+            "image": "shopify://shop_images/casters_for_furniture.webp",
+            "title": "Furniture",
+            "description": "Protect floors while improving mobility",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection-5": {
+          "type": "collection",
+          "settings": {
+            "collection": "wire-shelving-casters",
+            "image": "shopify://shop_images/1.webp",
+            "title": "Wire Shelving",
+            "description": "Caster solutions for storage systems",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection-6": {
+          "type": "collection",
+          "settings": {
+            "collection": "gate-casters",
+            "image": "shopify://shop_images/caster_for_gate_use.webp",
+            "title": "Gate",
+            "description": "Support heavy rolling gates and doors",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection_GNmpX6": {
+          "type": "collection",
+          "settings": {
+            "collection": "wheels-for-medical-cart",
+            "image": "shopify://shop_images/casters_for_medical_equipment.webp",
+            "title": "Medical Equipment",
+            "description": "Quiet and reliable mobility for care equipment",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        }
+      },
+      "block_order": [
+        "collection-2",
+        "collection-1",
+        "collection-3",
+        "collection-4",
+        "collection_CmBhTi",
+        "collection-5",
+        "collection-6",
+        "collection_GNmpX6"
+      ],
+      "settings": {
+        "card_style": "card",
+        "image_type": "collection",
+        "image_ratio": "square",
+        "show_products_count": true,
+        "show_view_all": false,
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "heading": "Shop by Application",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "collection_list_HaAQzx": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_dpkf34": {
+          "type": "collection",
+          "settings": {
+            "collection": "heavy-duty-casters",
+            "image": "shopify://shop_images/5_inch_plate_caster_wheel_with_total_lock_orange_set_of_4.webp",
+            "title": "Heavy-duty Casters",
+            "description": "Up to 1,000-capacity industrial loads",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection_ehpRT8": {
+          "type": "collection",
+          "settings": {
+            "collection": "stem-casters",
+            "image": "shopify://shop_images/stem_caster.webp",
+            "title": "Stem Casters",
+            "description": "Threaded & grip ring mounting options",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection_eGQLUi": {
+          "type": "collection",
+          "settings": {
+            "collection": "plate-casters",
+            "image": "shopify://shop_images/plate_caster.webp",
+            "title": "",
+            "description": "Stable top plate mounting solutions",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection_FrmYjF": {
+          "type": "collection",
+          "settings": {
+            "collection": "total-lock-casters",
+            "image": "shopify://shop_images/total_lock_caster.webp",
+            "title": "Total Lock Casters",
+            "description": "Locks wheel rotation and swivel motion",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 0
+          }
+        },
+        "collection_qUP6jL": {
+          "type": "collection",
+          "settings": {
+            "collection": "leveling-casters",
+            "image": "shopify://shop_images/leveling_casters.webp",
+            "title": "Leveling Casters",
+            "description": "Mobility with built-in stabilization",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection_kWU6Vw": {
+          "type": "collection",
+          "settings": {
+            "collection": "light-duty-casters",
+            "image": "shopify://shop_images/light_duty_caster.webp",
+            "title": "Light-duty Casters",
+            "description": "Smooth rolling for lighter equipment",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection_9h9EDc": {
+          "type": "collection",
+          "settings": {
+            "collection": "standard-duty-casters",
+            "image": "shopify://shop_images/3_inch_plate_caster_wheel_no_brake.webp",
+            "title": "Standard Duty Casters",
+            "description": "Everyday commercial mobility solutions",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        },
+        "collection_pXDfj9": {
+          "type": "collection",
+          "settings": {
+            "collection": "retractable-casters-leveling-adjustable-caster-wheels",
+            "image": "shopify://shop_images/retractable_caster.webp",
+            "title": "Retractable Casters",
+            "description": "Lift equipment off the floor when needed",
+            "overlay_content": false,
+            "color_text": "#ffffff",
+            "color_overlay": "#171717",
+            "overlay_opacity": 25
+          }
+        }
+      },
+      "block_order": [
+        "collection_dpkf34",
+        "collection_ehpRT8",
+        "collection_eGQLUi",
+        "collection_FrmYjF",
+        "collection_qUP6jL",
+        "collection_kWU6Vw",
+        "collection_9h9EDc",
+        "collection_pXDfj9"
+      ],
+      "settings": {
+        "card_style": "card",
+        "image_type": "collection",
+        "image_ratio": "square",
+        "show_products_count": true,
+        "show_view_all": false,
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "heading": "Shop by Casters",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "featured_collections_kqBLEk": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_eD8Yqg": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers",
+            "products": [],
+            "title": ""
+          }
+        },
+        "collection_LnYPae": {
+          "type": "collection",
+          "settings": {
+            "collection": "office-chair-wheels",
+            "products": [],
+            "title": "Office Chair Wheels"
+          }
+        },
+        "collection_ebTiGe": {
+          "type": "collection",
+          "settings": {
+            "collection": "retractable-casters-leveling-adjustable-caster-wheels",
+            "products": [],
+            "title": "Retractable Leveling Casters"
+          }
+        }
+      },
+      "block_order": [
+        "collection_eD8Yqg",
+        "collection_LnYPae",
+        "collection_ebTiGe"
+      ],
+      "name": "t:sections.featured-collections.name",
+      "settings": {
+        "product_limit": 12,
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "show_view_all": true,
+        "show_expand_button": true,
+        "expand_limit": 5,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Best Sellers",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "custom_liquid_7E7Epp": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "liquid": "<style>\n.holkie-why {\n  width: 100%;\n  background: #f8f9fb;\n  padding: 70px 20px;\n}\n\n.holkie-why-inner {\n  max-width: 1280px;\n  margin: 0 auto;\n}\n\n.holkie-why-head {\n  text-align: center;\n  margin-bottom: 42px;\n}\n\n.holkie-why-head h2 {\n  font-size: 36px;\n  line-height: 1.2;\n  font-weight: 700;\n  color: #1F2933;\n  margin: 0 0 12px;\n}\n\n.holkie-why-head p {\n  font-size: 16px;\n  color: #1F2933;\n  margin: 0;\n}\n\n.holkie-why-grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 18px;\n}\n\n.holkie-why-card {\n  background: #fff;\n  border: 1px solid #e5e7eb;\n  border-radius: 14px;\n  padding: 28px;\n  transition: all .25s ease;\n}\n\n.holkie-why-card h3 {\n  font-size: 20px;\n  line-height: 1.3;\n  font-weight: 600;\n  color: #1F2933;\n  margin: 0 0 10px;\n}\n\n.holkie-why-card p {\n  font-size: 15px;\n  line-height: 1.7;\n  color: #666;\n  margin: 0;\n}\n\n@media screen and (max-width: 990px) {\n  .holkie-why {\n    padding: 56px 16px;\n  }\n\n  .holkie-why-head {\n    margin-bottom: 28px;\n  }\n\n  .holkie-why-head h2 {\n    font-size: 28px;\n  }\n\n  .holkie-why-grid {\n    grid-template-columns: repeat(2, 1fr);\n    gap: 14px;\n  }\n\n  .holkie-why-card {\n    padding: 22px;\n  }\n}\n\n@media screen and (max-width: 640px) {\n  .holkie-why {\n    padding: 46px 14px;\n  }\n\n  .holkie-why-head h2 {\n    font-size: 24px;\n  }\n\n  .holkie-why-head p {\n    font-size: 14px;\n    line-height: 1.6;\n  }\n\n  .holkie-why-grid {\n    grid-template-columns: repeat(2, 1fr);\ngap: 8px;\n  }\n\n  .holkie-why-card {\n    padding: 10px;\n    border-radius: 12px;\n  }\n\n  .holkie-why-card h3 {\n    font-size: 16px;\n    line-height: 1.35;\n  }\n\n  .holkie-why-card p {\n    font-size: 13px;\n    line-height: 1.55;\n  }\n}\n</style>\n\n<section class=\"holkie-why\">\n  <div class=\"holkie-why-inner\">\n\n    <div class=\"holkie-why-head\">\n      <h2>Why Choose Holkie</h2>\n      <p>\n        Built for industrial, commercial, retail, and OEM mobility solutions.\n      </p>\n    </div>\n\n    <div class=\"holkie-why-grid\">\n\n      <div class=\"holkie-why-card\">\n        <h3>US / CA / EU / UK Warehouses</h3>\n        <p>\n          Fast fulfillment for retail orders, distributors, and nationwide bulk shipments.\n        </p>\n      </div>\n\n      <div class=\"holkie-why-card\">\n        <h3>OEM & Custom Solutions</h3>\n        <p>\n          Custom wheels, brakes, stem sizes, packaging, and logo support available.\n        </p>\n      </div>\n\n      <div class=\"holkie-why-card\">\n        <h3>Bulk Order Support</h3>\n        <p>\n          MOQ-friendly pricing for factories, workshops, industrial projects, and resellers.\n        </p>\n      </div>\n\n      <div class=\"holkie-why-card\">\n        <h3>Certified Quality Standards</h3>\n        <p>\n          TÜV-tested materials and industrial-grade manufacturing standards for reliable performance.\n        </p>\n      </div>\n\n      <div class=\"holkie-why-card\">\n        <h3>Trusted by Global Buyers</h3>\n        <p>\n          Supporting distributors, OEM buyers, workshops, and online sellers worldwide.\n        </p>\n      </div>\n\n      <div class=\"holkie-why-card\">\n        <h3>Secure Checkout & Business Payments</h3>\n        <p>\n          Safe payments via cards, PayPal, and trusted purchasing workflows for business orders.\n        </p>\n      </div>\n\n    </div>\n  </div>\n</section>",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "narrow": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "holkie_oem_support_NQqCwi": {
+      "type": "holkie-oem-support",
+      "blocks": {
+        "card_rpwUFp": {
+          "type": "card",
+          "settings": {
+            "bg_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-hard-hat-icon lucide-hard-hat\"><path d=\"M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5\"></path><path d=\"M14 6a6 6 0 0 1 6 6v3\"></path><path d=\"M4 15v-3a6 6 0 0 1 6-6\"></path><rect x=\"2\" y=\"15\" width=\"20\" height=\"4\" rx=\"1\"></rect></svg>",
+            "title": "Engineering Support",
+            "text": "Assistance with wheel selection, load ratings, mounting options, and custom mobility solutions."
+          }
+        },
+        "card_74gjxy": {
+          "type": "card",
+          "settings": {
+            "bg_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-wrench-icon lucide-wrench\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z\"></path></svg>",
+            "title": "Custom Logo & Branding",
+            "text": "OEM packaging, private labeling, branded caster wheels, and custom product support available."
+          }
+        },
+        "card_Uq3b93": {
+          "type": "card",
+          "settings": {
+            "bg_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-boxes-icon lucide-boxes\"><path d=\"M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z\"></path><path d=\"m7 16.5-4.74-2.85\"></path><path d=\"m7 16.5 5-3\"></path><path d=\"M7 16.5v5.17\"></path><path d=\"M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z\"></path><path d=\"m17 16.5-5-3\"></path><path d=\"m17 16.5 4.74-2.85\"></path><path d=\"M17 16.5v5.17\"></path><path d=\"M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z\"></path><path d=\"M12 8 7.26 5.15\"></path><path d=\"m12 8 4.74-2.85\"></path><path d=\"M12 13.5V8\"></path></svg>",
+            "title": "MOQ & Container Shipping",
+            "text": "Flexible minimum order quantities with LCL and full container shipment support worldwide."
+          }
+        },
+        "card_DGfpyP": {
+          "type": "card",
+          "settings": {
+            "bg_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-factory-icon lucide-factory\"><path d=\"M12 16h.01\"></path><path d=\"M16 16h.01\"></path><path d=\"M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z\"></path><path d=\"M8 16h.01\"></path></svg>",
+            "title": "Factory Direct Supply",
+            "text": "Stable production capacity, quality control, and long-term supply support for OEM and industrial buyers."
+          }
+        }
+      },
+      "block_order": [
+        "card_rpwUFp",
+        "card_74gjxy",
+        "card_Uq3b93",
+        "card_DGfpyP"
+      ],
+      "name": "Holkie OEM",
+      "settings": {
+        "kicker": "OEM & BULK SUPPORT",
+        "heading": "Need Bulk Pricing or OEM Support?",
+        "description": "Holkie supports bulk orders, OEM projects, Amazon sellers, distributors, workshops, and industrial buyers with flexible production, custom caster solutions, and global shipping support.",
+        "button_1_text": "Request Quote",
+        "button_1_link": "shopify://pages/bulk-order",
+        "button_2_text": "Talk to Holkie",
+        "button_2_link": "shopify://pages/contact"
+      }
+    },
+    "shop_the_feed_KC9BJz": {
+      "type": "shop-the-feed",
+      "blocks": {
+        "feed_YCbTLQ": {
+          "type": "feed",
+          "settings": {
+            "image": "shopify://shop_images/leveling_caster_top_plate_mount_from_customer_cases.jpg",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": true,
+            "button_label": "",
+            "button_link": "shopify://products/td60-leveling-casters-2200lb-workbench",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        },
+        "feed_khaCPj": {
+          "type": "feed",
+          "settings": {
+            "image": "shopify://shop_images/stem_caster_from_customer_cases.jpg",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": true,
+            "button_label": "",
+            "button_link": "shopify://products/2-inch-total-lock-casters-3-8-16-stem-black",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        },
+        "feed_cNHwJd": {
+          "type": "feed",
+          "settings": {
+            "image": "shopify://shop_images/20260119153803_213_22.jpg",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": true,
+            "button_label": "",
+            "button_link": "shopify://products/retractable-casters-lifting-lowering-function",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        },
+        "feed_4jhq8G": {
+          "type": "feed",
+          "settings": {
+            "image": "shopify://shop_images/71eVJzKVF9L.jpg",
+            "video": "shopify://files/videos/chair wheels.mp4",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": true,
+            "button_label": "",
+            "button_link": "shopify://products/office-chair-wheels-11x22mm",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        },
+        "feed_yyzJT4": {
+          "type": "feed",
+          "settings": {
+            "image": "shopify://shop_images/grip_ring_stem_caster_from_customer_cases.jpg",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": true,
+            "button_label": "",
+            "button_link": "shopify://products/grip-ring-stem-casters-tpr-swivel-casters",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        },
+        "feed_yqHfFC": {
+          "type": "feed",
+          "settings": {
+            "image": "shopify://shop_images/71Xtxs9lTBL.jpg",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": true,
+            "button_label": "",
+            "button_link": "shopify://products/2-inch-l-shaped-casters-2-locking-2-swivel",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        },
+        "feed_XgzPME": {
+          "type": "feed",
+          "settings": {
+            "image": "shopify://shop_images/71YFRdDTECL.jpg",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": true,
+            "button_label": "",
+            "button_link": "shopify://products/3-inch-adjustable-expanding-stem-casters",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        },
+        "feed_iHjeMz": {
+          "type": "feed",
+          "settings": {
+            "video": "shopify://files/videos/leveling casters.mp4",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": false,
+            "button_label": "",
+            "button_link": "shopify://products/td60-leveling-casters-threaded-stem-2200lb-workbench",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        },
+        "feed_UcgrnV": {
+          "type": "feed",
+          "settings": {
+            "video": "shopify://files/videos/stem mount casters.mp4",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": false,
+            "button_label": "",
+            "button_link": "shopify://products/3-in-stem-caster-wheels-with-side-brake-metric-thread",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        },
+        "feed_pgdXYt": {
+          "type": "feed",
+          "settings": {
+            "video": "shopify://files/videos/heavy-duty caster wheels 3.mp4",
+            "enable_video_autoplay": true,
+            "enable_video_looping": true,
+            "video_on_hover": false,
+            "button_label": "",
+            "button_link": "shopify://products/4-inch-plate-casters-with-brake-black",
+            "button_external": false,
+            "button_icon": false,
+            "account_name": "",
+            "account_description": "",
+            "account_button": "",
+            "account_link": "",
+            "account_link_external": false,
+            "color_text": "rgba(0,0,0,0)",
+            "color_button_text": "rgba(0,0,0,0)",
+            "color_button_background": "rgba(0,0,0,0)",
+            "color_button_gradient": "",
+            "hotspot_color_text_1": "#ffffff",
+            "hotspot_vertical_1": 45,
+            "hotspot_horizontal_1": 25,
+            "hotspot_product_1": "",
+            "hotspot_color_text_2": "#ffffff",
+            "hotspot_vertical_2": 30,
+            "hotspot_horizontal_2": 65,
+            "hotspot_product_2": "",
+            "hotspot_color_text_3": "#ffffff",
+            "hotspot_vertical_3": 60,
+            "hotspot_horizontal_3": 75,
+            "hotspot_product_3": "",
+            "hotspot_color_text_4": "#ffffff",
+            "hotspot_vertical_4": 50,
+            "hotspot_horizontal_4": 50,
+            "hotspot_product_4": ""
+          }
+        }
+      },
+      "block_order": [
+        "feed_YCbTLQ",
+        "feed_khaCPj",
+        "feed_cNHwJd",
+        "feed_4jhq8G",
+        "feed_yyzJT4",
+        "feed_yqHfFC",
+        "feed_XgzPME",
+        "feed_iHjeMz",
+        "feed_UcgrnV",
+        "feed_pgdXYt"
+      ],
+      "name": "t:sections.shop-the-feed.name",
+      "settings": {
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "image_ratio": "portrait",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "account_name": "",
+        "show_vendor": false,
+        "show_price": false,
+        "heading": "Real Use Cases",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": false,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 80,
+        "padding_bottom": 100,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "reveal_testimonials_qXnT8Y": {
+      "type": "reveal-testimonials",
+      "blocks": {
+        "testimonial_CG8ABY": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "text": "<p>50 + Trusted Worldwide Countries</p>",
+            "author": "HOLKIE CASTERS",
+            "author_info": "To provide the best solutions",
+            "author_url": "",
+            "image": "shopify://shop_images/Holkie_Favicon_2.png",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_MELxkR": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p>From small batches to large B2B orders, we ship directly from China factory or overseas stock.</p>",
+            "author": "Flexible Order Support",
+            "author_info": "",
+            "author_url": "",
+            "image": "shopify://shop_images/package_eaeb4774-6ff3-4603-8188-a4505a973e18.svg",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_tgNL3T": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p>Leading caster brand on Amazon with thousands of trusted customers.</p>",
+            "author": "Amazon Top Brand",
+            "author_info": "",
+            "author_url": "",
+            "image": "shopify://shop_images/star_b175cc01-3b3a-4669-ad7c-a795f68a18d2.svg",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_9NEjBd": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p>Works with TÜV to ensure that HOLKIE casters comply with strict quality standards.</p>",
+            "author": "Certified by TÜV",
+            "author_info": "",
+            "author_url": "",
+            "image": "shopify://shop_images/shield_2f42b106-bcfa-4577-8ed9-836716a79276.svg",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_88xFdH": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p>All orders processed within 3-7 business days.</p>",
+            "author": "Fast & Free Shipping",
+            "author_info": "",
+            "author_url": "",
+            "image": "shopify://shop_images/globe_6f5b7a9d-c072-478b-887e-6d1e7d6a6c33.svg",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_MbPQTn": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p>Pay securely with Credit Card, PayPal, Google Pay, Shop Pay, Apple Pay, or trusted methods.</p>",
+            "author": "Secure Payments",
+            "author_info": "",
+            "author_url": "",
+            "image": "shopify://shop_images/credit-card_bb31acc4-056c-4b0e-8a10-5bb6c77eb235.svg",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_VLEqkq": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p>Quick response and real problem-solving.</p>",
+            "author": "Expert Support",
+            "author_info": "",
+            "author_url": "",
+            "image": "shopify://shop_images/Holkie_CS_200.png",
+            "image_ratio": "square",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_CG8ABY",
+        "testimonial_MELxkR",
+        "testimonial_tgNL3T",
+        "testimonial_9NEjBd",
+        "testimonial_88xFdH",
+        "testimonial_MbPQTn",
+        "testimonial_VLEqkq"
+      ],
+      "disabled": true,
+      "name": "t:sections.reveal-testimonials.name",
+      "settings": {
+        "heading": "Why Choose Holkie Caster Wheels",
+        "heading_size": "title-sm",
+        "heading_tag": "h2",
+        "color_text": "",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "rounded": false
+      }
+    },
+    "rich-text-1": {
+      "type": "rich-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Holkie</strong> is a trusted caster manufacturer and global caster supplier founded in 1995. With decades of engineering experience, patented designs, and certified production, we create caster wheels built for reliability and real-world performance.</p><p>From our China factory to our U.S., Canada, U.K., and EU warehouses, we deliver fast, flexible service to customers worldwide. As a leading Amazon seller and a dedicated caster factory, we support both small-batch orders and large B2B projects with quick shipping and professional guidance.</p><p>Whether you're looking for heavy-duty casters, furniture wheels, or custom mobility solutions, Holkie is here to help you move with confidence.</p>",
+            "text_font": "body",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "text"
+      ],
+      "settings": {
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "heading": "<em>Rolling for Better Life</em>",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-center md:items-center",
+        "heading_width": "small",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "About Us",
+        "button_link": "shopify://pages/about",
+        "button_external": true,
+        "button_icon": true,
+        "highlighted_text": "scribble",
+        "highlighted_scribble": "squiggle-underline",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "divider": false,
+        "narrow": false,
+        "rounded": false
+      }
+    },
+    "blog_post_new_djEK66": {
+      "type": "blog-post-new",
+      "name": "All Blog Posts",
+      "settings": {
+        "post_limit": 4,
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "show_view_all": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "show_tags": true,
+        "show_date": false,
+        "show_comments": false,
+        "show_author": false,
+        "show_excerpt": false,
+        "heading": "The Journal",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "rich_text_read_button_9BUNLa": {
+      "type": "rich-text-read-button",
+      "blocks": {
+        "text_yBbdj7": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Caster Wheels & Casters Engineered for Real-World Performance</h2><p>Casters play a critical role in how furniture, equipment, and industrial systems move, stabilize, and perform over time. At Holkie, we design and manufacture caster wheels that deliver smooth mobility, dependable load support, and long-term durability across a wide range of applications.</p><p>With decades of caster engineering experience behind every product, Holkie casters are built to meet the practical demands of workshops, warehouses, offices, retail environments, and custom projects. Whether you need compact furniture casters or heavy-duty industrial casters, our solutions are designed to roll smoothly, lock securely, and perform consistently in real-world conditions.</p><h3>Explore Holkie Caster Types & Mounting Options</h3><p>Different applications require different caster configurations. Holkie offers a complete range of casters and caster wheels, covering multiple mounting styles, wheel materials, and mobility functions.</p><p>Our caster collections include:</p><ul><li>Stem casters for furniture, carts, and light-duty equipment</li><li>Plate casters for stable mounting on workbenches and industrial frames</li><li>Swivel casters for maximum maneuverability in tight spaces</li><li>Locking casters to secure equipment safely when stationary</li><li>Heavy-duty casters designed for high load capacities</li><li>Industrial casters for factories, warehouses, and material handling</li><li>Office chair wheels for smooth rolling and floor protection</li><li>Furniture casters for cabinets, sofas, tables, and storage units</li><li>Workbench casters for mobile workstations and tool benches</li><li>Retractable casters that allow equipment to remain level when not in motion</li><li>Leveling casters that combine mobility with adjustable height control</li></ul><p>Each caster category is engineered to balance strength, movement control, and mounting compatibility.</p><h3>Caster Wheels for Industrial, Commercial & Everyday Use</h3><p>Holkie caster wheels are used across a wide range of environments where mobility, stability, and safety matter:</p><ul><li>Mobile workbenches and tool carts</li><li>Industrial trolleys, racks, and machinery</li><li>Office chairs and adjustable furniture</li><li>Retail displays and store fixtures</li><li>Warehouse equipment and logistics systems</li><li>DIY projects, custom furniture, and maker builds</li></ul><p>By choosing the right caster wheels, businesses and individuals can improve efficiency, reduce physical strain, and extend the lifespan of their equipment.</p><h3>How to Choose the Right Casters for Your Application</h3><p>Selecting the correct casters depends on several practical factors. When evaluating caster wheels, consider:</p><ul><li>Load capacity: Total weight of the equipment plus safety margin</li><li>Wheel material: Polyurethane, thermoplastic rubber, polypropylene, or steel for different surfaces</li><li>Mounting type: Stem, threaded stem, or top plate installation</li><li>Mobility needs: Swivel, rigid, locking, or retractable functionality</li><li>Surface conditions: Smooth floors, concrete, carpet, or uneven ground</li></ul><p>Understanding these factors helps ensure stable movement, reliable braking, and long-term performance.</p><h3>Designed for Flexible Orders & Scalable Projects</h3><p>Holkie casters are trusted by individual buyers, small businesses, and B2B customers worldwide. Our caster solutions support:</p><ul><li>Small-batch orders for repairs, upgrades, or DIY projects</li><li>Scalable sourcing for furniture makers and manufacturers</li><li>Long-term supply for industrial and commercial operations</li></ul><p>From furniture casters to industrial-grade mobility solutions, Holkie provides caster wheels that adapt to changing needs without compromising quality or performance.</p>",
+            "enable_read_more": true,
+            "read_more_label": "Read More",
+            "read_less_label": "Read Less",
+            "text_font": "body",
+            "text_size": "subtext-sm",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "text_yBbdj7"
+      ],
+      "name": "Rich text read button",
+      "settings": {
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "collapsed_height": 190,
+        "heading": "",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "faq_r9UUX4": {
+      "type": "faq",
+      "blocks": {
+        "rich_text_3B6WHq": {
+          "type": "rich-text",
+          "settings": {
+            "heading": "Rich text",
+            "text": "<p>Use this section for any descriptive text you need to fill out your pages or to add introductory headings between other blocks.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_tkihAe": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_xdaDKX": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_mPjzgx": {
+          "type": "question",
+          "settings": {
+            "title": "What are casters used for?",
+            "text": "<p>Casters are used to add mobility to furniture, equipment, and industrial systems. They are commonly installed on workbenches, carts, office chairs, storage units, and machinery to make items easier to move, reposition, and secure safely.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_6mhTHq": {
+          "type": "question",
+          "settings": {
+            "title": "What is the difference between casters and caster wheels?",
+            "text": "<p>A caster typically includes the wheel, mounting structure, and swivel or locking mechanism, while a caster wheel refers only to the rolling wheel itself. Complete casters provide both mobility and mounting support for equipment and furniture.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_G4fxdY": {
+          "type": "question",
+          "settings": {
+            "title": "How do I choose the right casters for my application?",
+            "text": "<p>Choosing the right casters depends on load capacity, wheel material, mounting type, and how the equipment will be used. Floor surface, required maneuverability, and whether locking or leveling is needed are also important factors to consider.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_eTHVV4": {
+          "type": "question",
+          "settings": {
+            "title": "What are retractable casters used for?",
+            "text": "<p>Retractable casters allow equipment to be mobile when needed and rest firmly on the floor when not in motion. They are commonly used on workbenches, machinery, and heavy furniture where stability is required during operation.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_z3nJGM": {
+          "type": "question",
+          "settings": {
+            "title": "What are leveling casters?",
+            "text": "<p>Leveling casters combine a rolling wheel with an adjustable leveling foot. After positioning the equipment, the foot can be lowered to stabilize and level it, making leveling casters ideal for uneven floors and precision workstations.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_3B6WHq",
+        "question_tkihAe",
+        "question_xdaDKX",
+        "question_mPjzgx",
+        "question_6mhTHq",
+        "question_G4fxdY",
+        "question_eTHVV4",
+        "question_z3nJGM"
+      ],
+      "name": "t:sections.faq.name",
+      "settings": {
+        "style": "with-background",
+        "heading": "FAQs",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "color_overlay": "#ffffff",
+        "overlay_opacity": 16,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "divider": false,
+        "narrow": false,
+        "rounded": false
+      }
+    },
+    "1766803414e9238319": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_medals_piR47U": {
+          "type": "shopify://apps/judge-me-reviews/blocks/medals/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "judge_me_reviews_featured_carousel_pnwkz6": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 2000
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_medals_piR47U",
+        "judge_me_reviews_featured_carousel_pnwkz6"
+      ],
+      "settings": {
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": true,
+        "rounded": false
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_6XL67n",
+    "custom_liquid_zjWbEj",
+    "logo_list_G69UT9",
+    "collection-list",
+    "collection_list_HaAQzx",
+    "featured_collections_kqBLEk",
+    "custom_liquid_7E7Epp",
+    "holkie_oem_support_NQqCwi",
+    "shop_the_feed_KC9BJz",
+    "reveal_testimonials_qXnT8Y",
+    "rich-text-1",
+    "blog_post_new_djEK66",
+    "rich_text_read_button_9BUNLa",
+    "faq_r9UUX4",
+    "1766803414e9238319"
+  ]
+}
