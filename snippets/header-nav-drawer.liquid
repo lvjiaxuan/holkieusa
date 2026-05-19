@@ -139,7 +139,7 @@
               {%- if childlink.links != blank -%}
                 <details is="{% if enable_accordion_menu %}accordion-details{% else %}menu-details{% endif %}">
                   <summary class="drawer__menu-item flex items-center justify-between heading text-2xl leading-none tracking-tight cursor-pointer relative" aria-expanded="false">
-                    <span>{{ childlink.title | escape }}</span>
+                    <span class="menu_title">{{ childlink.title | escape }}</span>
                     {%- liquid
                       echo chevron_icon
                     -%}
@@ -154,7 +154,7 @@
                           {%- if grandchildlink.object != blank and grandchildlink.object.products != blank -%}
                             <details is="{% if enable_accordion_menu %}accordion-details{% else %}menu-details{% endif %}">
                               <summary class="drawer__menu-item flex items-center justify-between heading text-2xl leading-none tracking-tight cursor-pointer relative" aria-expanded="false">
-                                <span>{{ grandchildlink.title | escape }}</span>
+                                <span class="menu_title">{{ grandchildlink.title | escape }}</span>
                                 {%- liquid
                                   echo chevron_icon
                                 -%}
