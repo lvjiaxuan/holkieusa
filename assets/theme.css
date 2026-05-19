@@ -5061,14 +5061,17 @@ ol {
   border-end-end-radius: var(--border-radius);
   border-end-start-radius: var(--border-radius);
 }
-
-.section--divider::after {
-  content: '';
+.section--divider::before {
+  position: relative;
+}
+.section--divider {
+  /* content: ''; */
   inset-block-start: 0;
   inset-inline-start: 0;
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
-  border-block-start: 1px solid rgb(var(--color-border));
+  border-block: 1px solid rgb(var(--color-border));
+  margin: 20px 0;
 }
 
 .section--plain {
