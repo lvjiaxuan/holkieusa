@@ -73,8 +73,8 @@
           "type": "mega_menu_vertical",
           "settings": {
             "menu_title": "Shop",
-            "product_limit": 12,
-            "product_columns": 4
+            "product_limit": 20,
+            "product_columns": 6
           }
         },
         "mega_menu_wBFTJP": {
