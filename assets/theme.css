@@ -8550,6 +8550,7 @@ details.active .drawer__promotions .mega-menu__item,
   display: none;
   flex: 1;
   padding-inline-start: var(--sp-4);
+  padding-top: var(--sp-3);
   overflow-y: auto;
 }
 
