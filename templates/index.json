@@ -145,7 +145,7 @@
         "color_button_gradient": "",
         "padding_top": 32,
         "padding_bottom": 32,
-        "divider": false,
+        "divider": true,
         "full_width": false,
         "rounded": false
       }
@@ -273,7 +273,8 @@
         "image_type": "collection",
         "image_ratio": "square",
         "show_products_count": true,
-        "show_view_all": false,
+        "show_view_all": true,
+        "show_view_all_bottom": true,
         "columns": 4,
         "carousel_on_desktop": false,
         "columns_mobile": "2",
@@ -426,6 +427,7 @@
         "image_ratio": "square",
         "show_products_count": true,
         "show_view_all": false,
+        "show_view_all_bottom": false,
         "columns": 4,
         "carousel_on_desktop": false,
         "columns_mobile": "2",
