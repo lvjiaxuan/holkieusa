@@ -9,7 +9,7 @@
 <div id="CollectionList-{{ section.id }}" class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
     {% comment %} {%- assign collections_label = 'breadcrumbs.collections' | t -%} {% endcomment %}
-    {%- capture view_all_text -%}{{ 'sections.collection_list.view_all' | t }}({{ collections.size }}){%- endcapture -%}
+    {%- capture view_all_text -%}{{ 'sections.collection_list.view_all' | t }}({{ section.blocks.size }}){%- endcapture -%}
     {%- capture view_all -%}
       {%- if section.settings.show_view_all and section.blocks.size < collections.size -%}
         <a class="button button--secondary icon-with-text" href="{{ routes.collections_url }}" is="hover-link">
@@ -51,7 +51,7 @@
         {%- for block in section.blocks -%}
           {%- assign collection = collections[block.settings.collection] -%}
           {%- assign show_more_class = '' -%}
-          {%- if section.settings.carousel_on_desktop == false and forloop.index > section.settings.columns -%}
+          {%- if section.settings.carousel_on_desktop == false and section.settings.show_view_all_bottom and forloop.index > section.settings.columns -%}
             {%- assign show_more_class = 'show-more-item hidden' -%}
           {%- endif -%}
           {%- render 'collection-card',
@@ -87,8 +87,8 @@
       {%- endif -%}
     </slider-element>
 
-    {%- if section.settings.carousel_on_desktop == false and section.blocks.size > section.settings.columns and section.settings.show_view_all_bottom -%}
-      <button type="button" class="button button--secondary w-full more-less-btn" id="CollectionListShowMore-{{ section.id }}">
+    {%- if section.settings.carousel_on_desktop == false and section.blocks.size < collections.size and section.blocks.size > section.settings.columns and section.settings.show_view_all_bottom -%}
+      <button type="button" class="button button--secondary w-full more-less-btn" is="hover-button" id="CollectionListShowMore-{{ section.id }}">
         <span class="btn-fill" data-fill></span>
         <span class="btn-text flex items-center justify-center">
           <span class="btn-label tracking-widest">{{ view_all_text }}</span>
@@ -98,6 +98,7 @@
           </span>
         </span>
       </button>
+
       <script>
         (function() {
           const section = document.getElementById('CollectionList-{{ section.id }}');
@@ -112,7 +113,8 @@
             const iconUp = button.querySelector('.icon-chevron-up');
             const label = button.querySelector('.btn-label');
 
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function(event) {
+              event.preventDefault(); // 阻止默认行为（跳转/打开新标签页）
               const isCollapsed = Array.from(hiddenItems).some(function(item) {
                 return item.classList.contains('hidden');
               });

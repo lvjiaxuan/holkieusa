@@ -1553,7 +1553,7 @@
           "info": "If list includes more collections than shown."
         },
         "show_view_all_bottom": {
-          "label": "Enable \"View all\" button on bottom",
+          "label": "Enable \"View all/Show less\" button.",
           "info": "If list includes more collections than shown."
         }
       }
