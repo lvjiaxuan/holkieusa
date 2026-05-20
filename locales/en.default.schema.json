@@ -1551,6 +1551,10 @@
         "show_view_all": {
           "label": "Enable \"View all\" button",
           "info": "If list includes more collections than shown."
+        },
+        "show_view_all_bottom": {
+          "label": "Enable \"View all\" button on bottom",
+          "info": "If list includes more collections than shown."
         }
       }
     },

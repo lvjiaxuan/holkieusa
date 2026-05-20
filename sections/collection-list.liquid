@@ -51,7 +51,7 @@
         {%- for block in section.blocks -%}
           {%- assign collection = collections[block.settings.collection] -%}
           {%- assign show_more_class = '' -%}
-          {%- if section.settings.carousel_on_desktop == false and forloop.index > 4 -%}
+          {%- if section.settings.carousel_on_desktop == false and forloop.index > section.settings.columns -%}
             {%- assign show_more_class = 'show-more-item hidden' -%}
           {%- endif -%}
           {%- render 'collection-card',
@@ -87,7 +87,7 @@
       {%- endif -%}
     </slider-element>
 
-    {%- if section.settings.carousel_on_desktop == false and section.blocks.size > 4 -%}
+    {%- if section.settings.carousel_on_desktop == false and section.blocks.size > section.settings.columns and section.settings.show_view_all_bottom -%}
       <button type="button" class="button button--secondary w-full more-less-btn" id="CollectionListShowMore-{{ section.id }}">
         <span class="btn-fill" data-fill></span>
         <span class="btn-text flex items-center justify-center">
@@ -232,6 +232,13 @@
       "default": false,
       "label": "t:sections.collection-list.settings.show_view_all.label",
       "info": "t:sections.collection-list.settings.show_view_all.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all_bottom",
+      "default": false,
+      "label": "t:sections.collection-list.settings.show_view_all_bottom.label",
+      "info": "t:sections.collection-list.settings.show_view_all_bottom.info"
     },
     {
       "type": "range",
