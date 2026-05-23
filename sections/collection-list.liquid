@@ -8,8 +8,7 @@
 
 <div id="CollectionList-{{ section.id }}" class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
-    {% comment %} {%- assign collections_label = 'breadcrumbs.collections' | t -%} {% endcomment %}
-    {%- capture view_all_text -%}{{ 'sections.collection_list.view_all' | t }}({{ section.blocks.size }}){%- endcapture -%}
+    {%- capture view_all_text -%}{{ 'sections.collection_list.view_all' | t }}{%- endcapture -%}
     {%- capture view_all -%}
       {%- if section.settings.show_view_all and section.blocks.size < collections.size -%}
         <a class="button button--secondary icon-with-text" href="{{ routes.collections_url }}" is="hover-link">
@@ -51,7 +50,7 @@
         {%- for block in section.blocks -%}
           {%- assign collection = collections[block.settings.collection] -%}
           {%- assign show_more_class = '' -%}
-          {%- if section.settings.carousel_on_desktop == false and section.settings.show_view_all_bottom and forloop.index > section.settings.columns -%}
+          {%- if section.settings.show_expand_button and forloop.index > section.settings.columns -%}
             {%- assign show_more_class = 'show-more-item hidden' -%}
           {%- endif -%}
           {%- render 'collection-card',
@@ -87,11 +86,15 @@
       {%- endif -%}
     </slider-element>
 
-    {%- if section.settings.carousel_on_desktop == false and section.blocks.size < collections.size and section.blocks.size > section.settings.columns and section.settings.show_view_all_bottom -%}
+    {%- if section.settings.carousel_on_desktop -%}
+      <p class="hidden lg:block">{{ view_all }}</p>
+    {%- endif -%}
+
+    {%- if section.blocks.size < collections.size and section.blocks.size > section.settings.columns and section.settings.show_expand_button -%}
       <button type="button" class="button button--secondary w-full more-less-btn" is="hover-button" id="CollectionListShowMore-{{ section.id }}">
         <span class="btn-fill" data-fill></span>
         <span class="btn-text flex items-center justify-center">
-          <span class="btn-label tracking-widest">{{ view_all_text }}</span>
+          <span class="btn-label tracking-widest">{{ view_all_text }}({{ section.blocks.size }})</span>
           <span class="btn-icon inline-flex items-center" style="padding-left: 5px;">
             {%- render 'icon', icon: 'chevron-down', size: 'sm', class: 'icon-chevron-down' -%}
             {%- render 'icon', icon: 'chevron-up', size: 'sm', class: 'icon-chevron-up hidden' -%}
@@ -113,6 +116,29 @@
             const iconUp = button.querySelector('.icon-chevron-up');
             const label = button.querySelector('.btn-label');
 
+            const carouselOnDesktop = {{ section.settings.carousel_on_desktop | json }};
+            function applyDesktopVisibility() {
+              const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+              // 桌面端且开启轮播时，始终隐藏 show more button，显示所有项目
+              if (isDesktop && carouselOnDesktop) {
+                button.style.display = 'none';
+                hiddenItems.forEach(function(item) {
+                  item.classList.remove('hidden');
+                });
+              } else {
+                // 移动端（忽略轮播设置）或桌面端未开启轮播：显示 show more button，隐藏超出列数的项目
+                hiddenItems.forEach(function(item) {
+                  if (!item.classList.contains('show-more-expanded')) {
+                    item.classList.add('hidden');
+                  }
+                });
+                button.style.display = '';
+              }
+            }
+
+            applyDesktopVisibility();
+            window.addEventListener('resize', applyDesktopVisibility);
+
             button.addEventListener('click', function(event) {
               event.preventDefault(); // 阻止默认行为（跳转/打开新标签页）
               const isCollapsed = Array.from(hiddenItems).some(function(item) {
@@ -120,6 +146,11 @@
               });
               hiddenItems.forEach(function(item) {
                 item.classList.toggle('hidden', !isCollapsed);
+                if (isCollapsed) {
+                  item.classList.add('show-more-expanded');
+                } else {
+                  item.classList.remove('show-more-expanded');
+                }
               });
 
               if (isCollapsed) {
@@ -141,10 +172,6 @@
           }
         })();
       </script>
-    {%- endif -%}
-
-    {%- if section.settings.carousel_on_desktop -%}
-      <p class="hidden lg:block">{{ view_all }}</p>
     {%- endif -%}
   </div>
 </div>
@@ -237,10 +264,10 @@
     },
     {
       "type": "checkbox",
-      "id": "show_view_all_bottom",
+      "id": "show_expand_button",
       "default": false,
-      "label": "t:sections.collection-list.settings.show_view_all_bottom.label",
-      "info": "t:sections.collection-list.settings.show_view_all_bottom.info"
+      "label": "t:sections.collection-list.settings.show_expand_button.label",
+      "info": "t:sections.collection-list.settings.show_expand_button.info"
     },
     {
       "type": "range",

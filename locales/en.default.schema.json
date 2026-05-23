@@ -1558,9 +1558,9 @@
           "label": "Enable \"View all\" button",
           "info": "If list includes more collections than shown."
         },
-        "show_view_all_bottom": {
-          "label": "Enable \"View all/Show less\" button.",
-          "info": "If list includes more collections than shown."
+        "show_expand_button": {
+          "label": "Enable \"View all/Show less\" button on bottom",
+          "info": "If list includes more collections than shown.\nWhen carousel on desktop is enabled, this button will be useless."
         }
       }
     },
@@ -2141,7 +2141,8 @@
           "info": "If collection has more products than shown."
         },
         "show_expand_button": {
-          "label": "Show expand/collapse button"
+          "label": "Enable \"View all/Show less\" button on bottom",
+          "info": "If list includes more collections than shown.\nWhen carousel on desktop is enabled, this button will be useless."
         },
         "expand_limit":{
           "info": "收起时显示的产品数量",

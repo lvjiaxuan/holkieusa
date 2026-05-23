@@ -4,25 +4,6 @@
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
     {%- render 'section-variables', section: section -%}
   }
-
-  #shopify-section-{{ section.id }} .featured-collections__hidden {
-    display: none !important;
-  }
-
-  #shopify-section-{{ section.id }} .featured-collections__hidden.featured-collections__hidden--expanded {
-    display: contents !important;
-  }
-
-  /* Disable expand/collapse on mobile */
-  @media (max-width: 767px) {
-    #shopify-section-{{ section.id }} .featured-collections__expand-btn {
-      display: none !important;
-    }
-
-    #shopify-section-{{ section.id }} .featured-collections__hidden {
-      display: contents !important;
-    }
-  }
 </style>
 
 {%- liquid
@@ -32,9 +13,37 @@
   endif
 -%}
 
-<div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
+<div id="FeaturedCollections-{{ section.id }}" class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
-    {%- render 'section-heading', section: section -%}
+    {%- capture view_all -%}
+      {%- if section.settings.show_view_all and section.blocks.size > 0 -%}
+        {%- assign first_block = blank -%}
+        {%- for block in section.blocks limit: 1 -%}
+          {%- assign first_block = block -%}
+        {%- endfor -%}
+
+        {%- if first_block.settings.collection != blank and section.settings.product_limit < first_block.settings.collection.all_products_count -%}
+          <p class="featured-collections__view-all">
+            <a class="button button--secondary icon-with-text" href="{{ first_block.settings.collection.url }}" is="hover-link" aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: first_block.settings.collection.title | escape }}">
+              <span class="btn-fill" data-fill></span>
+              <span class="btn-text">
+                {%- liquid
+                  render 'icon', icon: 'newspaper'
+                  echo 'sections.featured_collection.view_all' | t
+                -%}
+              </span>
+            </a>
+          </p>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endcapture -%}
+    {%- capture section_button -%}
+      {%- unless section.settings.carousel_on_desktop -%}
+        <p>{{ view_all }}</p>
+      {%- endunless -%}
+    {%- endcapture -%}
+
+    {%- render 'section-heading', section: section, section_button: section_button -%}
 
     {%- if section.blocks.size > 0 -%}
       <tabs-element class="tab-list flex gap-6 justify-between">
@@ -43,7 +52,7 @@
             <div class="flex gap-4" role="tablist">
               {%- for block in section.blocks -%}
                 {%- assign collection = block.settings.collection -%}
-                <button class="tab__item button{% if forloop.first %} button--primary{% else %} button--secondary{% endif %} whitespace-nowrap"{% if forloop.first %} disabled{% endif %} type="button" is="hover-button" role="tab" aria-controls="TabPanel-{{ block.id }}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                <button class="tab__item button{% if forloop.first %} button--primary{% else %} button--secondary{% endif %} whitespace-nowrap"{% if forloop.first %} disabled{% endif %} type="button" is="hover-button" role="tab" aria-controls="TabPanel-{{ block.id }}" data-index="{{ forloop.index0 }}" data-url="{{ collection.url }}" data-aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: collection.title | escape }}" {{ block.shopify_attributes }}>
                   {%- unless forloop.first -%}
                     {%- unless section_rendering_api -%}
                       <api-button class="api-only" data-id="TabPanelContent-{{ block.id }}" data-section-id="{{ section.id }}"></api-button>
@@ -99,7 +108,38 @@
           {%- endfor -%}
         {%- endif -%}
       </tabs-element>
-      
+
+      <script>
+        (function() {
+          const section = document.getElementById('FeaturedCollections-{{ section.id }}');
+          if (!section) return;
+
+          const viewAllButton = section.querySelector('.featured-collections__view-all a');
+          const tabButtons = Array.from(section.querySelectorAll('.tab__item[data-url]'));
+          if (!viewAllButton || tabButtons.length === 0) return;
+
+          function updateViewAll(tabButton) {
+            const url = tabButton.dataset.url;
+            const ariaLabel = tabButton.dataset.ariaLabel;
+            if (url) {
+              viewAllButton.setAttribute('href', url);
+            }
+            if (ariaLabel) {
+              viewAllButton.setAttribute('aria-label', ariaLabel);
+            }
+          }
+
+          const initialTab = section.querySelector('.tab__item[disabled]') || tabButtons[0];
+          if (initialTab) updateViewAll(initialTab);
+
+          tabButtons.forEach((tabButton) => {
+            tabButton.addEventListener('click', function() {
+              updateViewAll(this);
+            });
+          });
+        })();
+      </script>
+
       {%- for block in section.blocks -%}
         {%- liquid
           assign collection = block.settings.collection
@@ -109,15 +149,15 @@
           <div id="TabPanelContent-{{ block.id }}">
             {%- if section_rendering_api or forloop.first -%}
               <slider-element id="Slider-{{ block.id }}" class="grid slider{% if section.settings.carousel_on_desktop %} slider--desktop{% endif %}{% if section.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card"{% if section.settings.carousel_on_desktop or section.settings.swipe_on_mobile %} tabindex="0"{% endif %}>
-                <motion-list class="product-grid card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid{% if section.settings.show_expand_button %} featured-collections__grid{% endif %}" data-expand-limit="{{ section.settings.expand_limit }}">
+                <motion-list class="product-grid card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid{% if section.settings.show_expand_button %} featured-collections__grid{% endif %}">
                   {%- for product in products limit: section.settings.product_limit -%}
                     {%- liquid
                       assign is_hidden = false
-                      if section.settings.show_expand_button and forloop.index > section.settings.expand_limit
+                      if section.settings.carousel_on_desktop == false and section.settings.show_expand_button and forloop.index > section.settings.columns
                         assign is_hidden = true
                       endif
                     -%}
-                    <div class="{% if is_hidden %} featured-collections__hidden{% endif %}">
+                    <div class="{% if is_hidden %}show-more-item hidden{% endif %}">
                     {%- render 'product-card-industrial',
                       product: product,
                       product_id: product.id,
@@ -155,31 +195,71 @@
                   {%- endfor -%}
                 </motion-list>
               </slider-element>
-        
-              {%- if section.settings.show_view_all and collection != blank and section.settings.product_limit < collection.all_products_count -%}
-                <p class="text-center">
-                  <a class="button button--secondary icon-with-text" href="{{ collection.url }}" is="hover-link" aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: collection.title }}">
-                    <span class="btn-fill" data-fill></span>
-                    <span class="btn-text">
-                      {%- liquid
-                        render 'icon', icon: 'newspaper'
-                        echo 'sections.featured_collection.view_all' | t
-                      -%}
-                    </span>
-                  </a>
-                </p>
-              {%- endif -%}
 
-              {%- if section.settings.show_expand_button and collection != blank and section.settings.product_limit < collection.all_products_count -%}
-                <p class="text-center mt-4">
-                  <button class="button button--secondary icon-with-text featured-collections__expand-btn" type="button" data-block-id="{{ block.id }}" data-expand-text="{{ 'sections.featured_collection.expand' | t }}" data-collapse-text="{{ 'sections.featured_collection.collapse' | t }}">
-                    <span class="btn-fill" data-fill></span>
-                    <span class="btn-text">
-                      {%- render 'icon', icon: 'chevron-down', class: 'featured-collections__expand-icon transform' -%}
-                      {{ 'sections.featured_collection.expand' | t }}
+              {%- if section.settings.carousel_on_desktop -%}
+                {{ view_all }}
+              {%- endif -%}
+        
+              {%- if section.settings.show_expand_button and section.settings.carousel_on_desktop == false and section.settings.product_limit > section.settings.columns and products.size > section.settings.columns -%}
+                {%- capture expand_btn_id -%}FeaturedCollectionsShowMore-{{ section.id }}-{{ block.id }}{%- endcapture -%}
+                <button type="button" class="button button--secondary w-full more-less-btn" is="hover-button" id="{{ expand_btn_id }}">
+                  <span class="btn-fill" data-fill></span>
+                  <span class="btn-text flex items-center justify-center">
+                    <span class="btn-label tracking-widest">{{ 'sections.collection_list.view_all' | t }}({{ section.settings.product_limit }})</span>
+                    <span class="btn-icon inline-flex items-center" style="padding-left: 5px;">
+                      {%- render 'icon', icon: 'chevron-down', size: 'sm', class: 'icon-chevron-down' -%}
+                      {%- render 'icon', icon: 'chevron-up', size: 'sm', class: 'icon-chevron-up hidden' -%}
                     </span>
-                  </button>
-                </p>
+                  </span>
+                </button>
+
+                <script>
+                  (function() {
+                    const tabPanel = document.getElementById('TabPanel-{{ block.id }}');
+                    const button = document.getElementById('{{ expand_btn_id }}');
+                    const showMoreText = {{ 'sections.collection_list.view_all' | t | json }} + '({{ section.settings.product_limit }})';
+                    const showLessText = {{ 'sections.featured_collection.collapse' | t | json }};
+
+                    function initExpandBtn() {
+                      if (!tabPanel || !button) return;
+                      const hiddenItems = tabPanel.querySelectorAll('.show-more-item');
+                      const iconDown = button.querySelector('.icon-chevron-down');
+                      const iconUp = button.querySelector('.icon-chevron-up');
+                      const label = button.querySelector('.btn-label');
+
+                      button.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        const isCollapsed = Array.from(hiddenItems).some(function(item) {
+                          return item.classList.contains('hidden');
+                        });
+                        hiddenItems.forEach(function(item) {
+                          item.classList.toggle('hidden', !isCollapsed);
+                          if (isCollapsed) {
+                            item.classList.add('show-more-expanded');
+                          } else {
+                            item.classList.remove('show-more-expanded');
+                          }
+                        });
+
+                        if (isCollapsed) {
+                          label.textContent = showLessText;
+                          if (iconDown) iconDown.classList.add('hidden');
+                          if (iconUp) iconUp.classList.remove('hidden');
+                        } else {
+                          label.textContent = showMoreText;
+                          if (iconDown) iconDown.classList.remove('hidden');
+                          if (iconUp) iconUp.classList.add('hidden');
+                        }
+                      });
+                    }
+
+                    if (document.readyState !== 'loading') {
+                      initExpandBtn();
+                    } else {
+                      document.addEventListener('DOMContentLoaded', initExpandBtn);
+                    }
+                  })();
+                </script>
               {%- endif -%}
             {%- endif -%}
           </div>
@@ -230,15 +310,8 @@
       "type": "checkbox",
       "id": "show_expand_button",
       "label": "t:sections.featured-collection.settings.show_expand_button.label",
+      "info": "t:sections.featured-collection.settings.show_expand_button.info",
       "default": false
-    },
-    {
-      "type": "number",
-      "id": "expand_limit",
-      "label": "t:sections.featured-collection.settings.expand_limit.label",
-      "info": "t:sections.featured-collection.settings.show_view_all.info",
-      "default": 4,
-      "visible_if": "{{ section.settings.show_expand_button == true }}"
     },
     {
       "type": "header",

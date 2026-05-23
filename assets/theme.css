@@ -12150,11 +12150,11 @@ details.active .drawer__promotions .mega-menu__item,
     padding-block-end: var(--card-shadow-vertical-offset);
   }
 
-  .slider--tablet .card-grid {
+  /* .slider--tablet .card-grid {
     --slider-item-width: 36vw;
     --slider-grid: auto / auto-flow var(--slider-item-width);
     grid: var(--slider-grid);
-  }
+  } */
 }
 
 @media screen and (max-width: 639px) {
