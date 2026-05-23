@@ -5042,11 +5042,20 @@ ol {
   padding-block-end: calc(var(--section-padding-bottom) * 0.75);
 }
 
+.section-margin {
+  margin-block-start: calc(var(--section-margin-top) * 0.75);
+  margin-block-end: calc(var(--section-margin-bottom) * 0.75);
+}
+
 @media screen and (min-width: 768px) {
   .section--padding {
     padding-block-start: var(--section-padding-top);
     padding-block-end: var(--section-padding-bottom);
   }
+  .section-margin {
+  margin-block-start: var(--section-margin-top);
+  margin-block-end: var(--section-margin-bottom);
+}
 }
 
 .section--rounded {
@@ -5078,7 +5087,6 @@ ol {
 .section--divider-logo-list {
   border-block-start: 1px solid rgb(var(--color-border));
   border-block-end: 1px solid rgb(var(--color-border));
-  margin: 20px 0;
 }
 .section--divider-logo-list::before {
   position: relative;

@@ -2,12 +2,14 @@
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-margin-top: {{ section.settings.margin_top }}px;
+    --section-margin-bottom: {{ section.settings.margin_bottom }}px;
     {%- render 'section-variables', section: section -%}
     --section-grid-gap: {{ section.settings.grid_horizontal }}px;
   }
 </style>
 
-<div class="section section--padding{% if section.settings.divider %} section--divider-logo-list{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
+<div class="section section-margin section--padding{% if section.settings.divider %} section--divider-logo-list{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="{% if section.settings.layout == 'default' %}page-width {% if section.settings.full_width %}page-width--full {% endif %}{% else %}{% unless section.settings.full_width %}page-width {% endunless %}{% endif %}relative">
     {%- render 'section-heading', section: section -%}
 
@@ -398,6 +400,26 @@
       "unit": "px",
       "label": "t:sections.global.settings.padding_bottom.label",
       "default": 72
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.global.settings.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.global.settings.margin_bottom.label",
+      "default": 0
     },
     {
       "type": "checkbox",

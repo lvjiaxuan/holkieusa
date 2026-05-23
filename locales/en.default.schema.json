@@ -1090,6 +1090,12 @@
         "padding_bottom": {
           "label": "Bottom padding"
         },
+        "margin_top": {
+          "label": "Top margin"
+        },
+        "margin_bottom": {
+          "label": "Bottom margin"
+        },
         "secondary_color": {
           "label": "Use secondary color"
         },
